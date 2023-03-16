@@ -6,12 +6,12 @@ import { getFirestore } from 'firebase/firestore'
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: 'AIzaSyC5vpfgD2AVS2m-mV2nGPg_cLEY_Zl_DsE',
-  authDomain: 'hotel-bnb-d9ca0.firebaseapp.com',
-  projectId: 'hotel-bnb-d9ca0',
-  storageBucket: 'hotel-bnb-d9ca0.appspot.com',
-  messagingSenderId: '213469209745',
-  appId: '1:213469209745:web:4e5c8c420bf76ff5064b30',
+  apiKey: `${import.meta.env.VITE_FB_API_KEY}`,
+  authDomain: `${import.meta.env.VITE_FB_AUTH_DOMAIN}`,
+  projectId: `${import.meta.env.VITE_PROJECT_ID}`,
+  storageBucket: `${import.meta.env.VITE_FB_STORAGE_BUCKET}`,
+  messagingSenderId: `${import.meta.env.VITE_FB_MESSAGING_SENDER_ID}`,
+  appId: `${import.meta.env.VITE_FB_API_ID}`,
 }
 
 // Initialize Firebase
