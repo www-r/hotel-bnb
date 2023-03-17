@@ -11,4 +11,5 @@ module.exports = {
   },
 
   parserOptions: { ecmaVersion: 2020 },
+  projectDependencies: false,
 }
