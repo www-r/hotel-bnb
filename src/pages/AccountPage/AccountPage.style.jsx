@@ -51,3 +51,7 @@ export const Bold = styled.h3`
   font-size: 16px;
   font-weight: 600px;
 `
+
+export const ContentWrapper = styled.div`
+  margin-bottom: 80px;
+`
