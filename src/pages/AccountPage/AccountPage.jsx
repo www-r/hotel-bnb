@@ -21,21 +21,20 @@ const AccountPage = () => {
           </S.menu>
           <div>
             <S.ContentContainer>
-              <S.MainContentContainer>
-                <section>
+              <S.MainContainer>
+                <S.ContentWrapper>
                   <S.ContentTitle>결제 내역</S.ContentTitle>
                   <div>모든 결제 및 환불 내역을 확인하세요.</div>
                   <div>
-                    <button>결제 관리하기</button>
                   </div>
-                </section>
-                <section>
+                </S.ContentWrapper>
+                <S.ContentWrapper>
                   <S.ContentTitle>결제 수단</S.ContentTitle>
                   <div>호텔비앤비의 안전한 결제 시스템을 이용해 결제 수단을 추가하고 다음 여행 계획을 세워 보세요.</div>
                   <div>
                     <button>결제 수단 추가</button>
                   </div>
-                </section>
+                </S.ContentWrapper>
               </S.MainContainer>
               <S.SubContainer>
                 <section>
