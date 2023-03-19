@@ -1,13 +1,13 @@
 import React from 'react'
-import './App.css'
 
 import Router from '@/routes/Router'
+import RoomsProvider from './contexts/RoomsProvider'
 
 function App() {
   return (
-    <div>
+    <RoomsProvider>
       <Router />
-    </div>
+    </RoomsProvider>
   )
 }
 
