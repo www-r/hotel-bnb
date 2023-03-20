@@ -3,25 +3,14 @@ import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/ap
 import useGetRooms from '../../hooks/useGetRooms'
 
 const containerStyle = {
-  width: '900px',
+  width: '1200px',
   height: '900px',
 }
 
 const centers = {
-  lat: 37.5400456,
-  lng: 126.9921017,
+  lat: 36.34,
+  lng: 127.77,
 }
-
-const arr = [
-  {
-    a: 11,
-    b: 22,
-  },
-  {
-    a: 11,
-    b: 22,
-  },
-]
 
 const MapPage = () => {
   const rooms = useGetRooms('/rooms')
