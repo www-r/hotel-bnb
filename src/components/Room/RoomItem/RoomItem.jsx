@@ -3,10 +3,19 @@ import { AiFillStar } from 'react-icons/ai'
 import * as S from '@/components/Room/RoomItem/RoomItem.style'
 import { RoomItemImg } from './RoomItem.style'
 import { formatDate, formatPrice } from '@/utils/format'
+import { useNavigate } from 'react-router-dom'
 
 const RoomItem = ({ room }) => {
+  const navigate = useNavigate()
+
+  const handleNavigateToRoomDetail = () => {
+    navigate(`/room/${room.id}`, {
+      state: { ...room },
+    })
+  }
+
   return (
-    <S.RoomItem>
+    <S.RoomItem onClick={handleNavigateToRoomDetail}>
       <RoomItemImg src={room.img} alt={room.id} />
       <div>
         <S.RoomItemTitle>
