@@ -1,20 +1,14 @@
-/** @jsxImportSource @emotion/react */
 import React from 'react'
 import { IconHeaderMenu } from '@/public/index.js'
-import Image from './HeaderMenu.style'
+import { Image, Division } from './HeaderMenu.style'
+import { IconHeaderAuthor } from '../../../public'
 
 const HeaderMenu = () => {
   return (
-    <div className="header__menu">
-      HeaderMenu
-      <div className="btnMenu">
-        <button>
-          <div className=" dir dir-ltr">
-            <Image src={IconHeaderMenu} />
-          </div>
-        </button>
-      </div>
-    </div>
+    <Division width="77px" height="42px" onClick={() => console.log('click')}>
+      <Image src={IconHeaderMenu} width={'16px'} height={'16px'} />
+      <Image src={IconHeaderAuthor} width={'30px'} height={'30px'} />
+    </Division>
   )
 }
 
