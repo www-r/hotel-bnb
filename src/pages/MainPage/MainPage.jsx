@@ -1,5 +1,5 @@
 import React from 'react'
-import RoomList from '@/components/Room/RoomList'
+import RoomList from '@/components/Room/RoomList/RoomList'
 
 const MainPage = () => {
   return (
