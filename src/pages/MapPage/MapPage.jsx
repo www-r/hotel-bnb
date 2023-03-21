@@ -28,6 +28,7 @@ const MapPage = () => {
               <div>
                 <h2>{selectedMarker.title}</h2>
                 <h2>{selectedMarker.price}</h2>
+                <img src={selectedMarker.thumbnail} alt={selectedMarker.title} />
                 <button onClick={() => setSelectedMarker(null)}>close</button>
               </div>
             </InfoWindow>

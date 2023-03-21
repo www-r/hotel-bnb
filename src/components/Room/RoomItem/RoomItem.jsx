@@ -16,7 +16,7 @@ const RoomItem = ({ room }) => {
 
   return (
     <S.RoomItem onClick={handleNavigateToRoomDetail}>
-      <RoomItemImg src={room.img} alt={room.id} />
+      <RoomItemImg src={room.thumbnail} alt={room.id} />
       <div>
         <S.RoomItemTitle>
           <h2> {room.title}</h2>
