@@ -3,8 +3,9 @@
     {
       "id": "anmyeoneuppensyeon",
       "title": "안면읍 자연속 한적한 펜션의 송화",
+      "thumbnail": "https://firebasestorage.googleapis.com/v0/b/hotel-bnb-d9ca0.appspot.com/o/rooms%2Fanmyeoneuppensyeon%2F5bb38727-a300-4850-852d-687f28999690.jpeg?alt=media&token=a7d7017d-6fb3-4240-8928-ad937b0b7346",
       "price": 454000,
-      "location": "충첨남도 태안군",
+      "location": "충청남도 태안군",
       "description": "안녕하세요. 저희는 다양한 휴식 공간을 연구하고 제공하는 Onda입니다. 이 곳에서 머무르실 모든 분들께서 편안하고 행복한 시간을 보내시길 바랍니다.",
       "rating": 4.7,
       "reservation": {
@@ -20,6 +21,7 @@
     {
       "id": "yangpyeonghanok",
       "title": "양평전통한옥",
+      "thumbnail": "https://firebasestorage.googleapis.com/v0/b/hotel-bnb-d9ca0.appspot.com/o/rooms%2Fyangpyeonghanok%2Faa2faf1b-a330-465e-bc02-a5cc0e4f45ad.webp?alt=media&token=71f8905b-7d0b-4b10-beaf-19ea3c861e77",
       "price": 210000,
       "location": "경기도 양평군",
       "description": "전통한옥 공법으로 잘지은 한옥독체입니다. 배산임수로 무엇보다 단지뒤 고래산자락 둘레길 21km 산책로가 너무너무 좋습니다. 제2영동고속도로 동여주ic3km위치하고 있어 판교까지 30분이내 진입,  일신역2km 중앙선 무궁화기치이용 청리리역 까지 50분정도 소요됩니다.",
@@ -28,10 +30,57 @@
         "start": "2023-05-01T00:00:00.000Z",
         "end": "2023-05-12T00:00:00.000Z"
       },
-      "amenities": ["헤어드라이기", "수건", "와이파이", "무료주차", "낸방", "난방", "조리도구", "주방", "세탁기", "TV"],
+      "amenities": [
+        "헤어드라이기",
+        "수건",
+        "와이파이",
+        "무료주차",
+        "에어컨",
+        "난방",
+        "조리도구",
+        "주방",
+        "세탁기",
+        "TV"
+      ],
       "geoLocation": {
         "lat": 37.4912195,
         "lng": 127.4875607
+      }
+    },
+    {
+      "id": "namdohanok",
+      "title": "남도여행의 떠오르는 메카 고흥, 프라이빗 한옥스테이",
+      "thumbnail": "https://firebasestorage.googleapis.com/v0/b/hotel-bnb-d9ca0.appspot.com/o/rooms%2Fnamdohanok%2F89626a48-2a16-444f-92af-e62a1edf5681.webp?alt=media&token=bf186f3c-7d86-4237-962f-4d3688e491b4",
+      "price": 264286,
+      "location": "전라남도 나주시 문평면",
+      "description": "남도여행의 떠오르는 핫플, 고흥 팔영산국립공원과 서핑의 메카 남열해돋이해수욕장, 팔영대교로 이어진 여수까지 고즈넉한 산자락 아래 자리잡은 한옥스테이 에서 프라이빗하게 힐링하세요~",
+      "rating": 4.5,
+      "reservation": {
+        "start": "2023-04-01T00:00:00.000Z",
+        "end": "2023-04-11T00:00:00.000Z"
+      },
+      "amenities": ["정원 전망", "주방", "에어컨", "와이파이", "무료주차", "TV", "냉장고", "커피"],
+      "geoLocation": {
+        "lat": 34.4715961,
+        "lng": 126.5028108
+      }
+    },
+    {
+      "id": "jeonjusiwansanguhanga",
+      "title": "전주한가로운한가",
+      "thumbnail": "https://firebasestorage.googleapis.com/v0/b/hotel-bnb-d9ca0.appspot.com/o/rooms%2Fjeongjusiwansanguhanga%2F3f7e87e3-f3ad-48a2-bd4f-3fbc1417179c.webp?alt=media&token=e7cdd128-b6a2-4198-8ea8-329ed3cd61bb",
+      "price": 232000,
+      "location": "전주시 완산구",
+      "description": "오늘하루 한가로운 한가(han ga)는 프라이빗한 나만의 공간 입니다. 유리블럭을 통해 집안으로 쏟아지는 따뜻한 햇살을 만끽하면서 한가롭고 프라이빗하게 힐링하세요.",
+      "rating": 4.93,
+      "reservation": {
+        "start": "2023-05-01T00:00:00.000Z",
+        "end": "2023-05-12T00:00:00.000Z"
+      },
+      "amenities": ["헤어드라이기", "수건", "와이파이", "무료주차", "낸방", "난방", "넷플릭스", "주방"],
+      "geoLocation": {
+        "lat": 35.8305,
+        "lng": 127.1146
       }
     }
   ]
