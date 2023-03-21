@@ -4,7 +4,7 @@ import * as S from '@/components/Room/RoomItem/RoomItem.style'
 import { RoomItemImg } from './RoomItem.style'
 import { formatDate, formatPrice } from '@/utils/format'
 import { useNavigate } from 'react-router-dom'
-import { ReactComponent as Heart } from '@/assets/images/Heart.svg'
+import { Heart } from '@/assets/images'
 
 const RoomItem = ({ room }) => {
   const [isClicked, setIsClicked] = useState(false)
