@@ -1,36 +1,28 @@
-/** @jsxImportSource @emotion/react */
-import { Global, css } from '@emotion/react'
+import styled from '@emotion/styled'
 
-const flexCenter = {
-  display: 'flex',
-  alignItems: 'center',
-  gap: '10px',
-}
+const flexCenter = `
+display: flex;
+align-Items: center;
+Justify-Content: center;
+`
 
-const type = {
-  // container,
-}
+export const MenuImage = styled.img`
+  src: ${(props) => props.src};
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
+`
 
-function Image({ src, width, height }) {
-  return <img src={src} css={{ width: width, height: height }}></img>
-}
-function Division({ children, width = 'auto', height = 'auto', onClick }) {
-  return (
-    <div
-      css={{
-        width: width,
-        height: height,
-        padding: '10px',
-        ...flexCenter,
-        color: '#ddd',
-        border: '1px solid',
-        borderRadius: '25px',
-      }}
-      onClick={onClick}
-    >
-      {children}
-    </div>
-  )
-}
-
-export { Image, Division }
+export const MenuContainer = styled.div`
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
+  color: #ddd;
+  border: 1px solid;
+  border-radius: 25px;
+  ${flexCenter}
+  gap: 10px;
+  transition: all ease 0.3s;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0 3px 5px #ccc;
+  }
+`
