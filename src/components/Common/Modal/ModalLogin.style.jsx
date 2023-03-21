@@ -25,13 +25,47 @@ export const LoginContainer = styled.div`
   border-radius: 15px;
 `
 
-export const Division = styled.div`
+export const TitleContainer = styled.div`
   position: relative;
   height: ${(props) => props.height}px;
   border-bottom: 1px solid #ebebeb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
-export const AbsoluteButton = styled.button`
+export const ContentContainer = styled.div`
+  height: ${(props) => props.height}px;
+  padding: 24px;
+`
+
+export const TextContainer = styled.div`
+  margin-top: 8px;
+  margin-bottom: 24px;
+  font-size: 22px;
+`
+
+export const LoginForm = styled.form``
+
+export const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  border: 1px solid;
+  ${(props) => (props.upper ? '' : `border-top: none;`)}
+  border-radius: ${(props) => (props.upper ? '8px 8px 0 0;' : '0 0 8px 8px')};
+`
+
+export const InputIDPW = styled.input`
+  font-size: 16px;
+  padding: 26px 36px 10px 12px;
+  border-radius: 8px;
+  border: none;
+  &:focus {
+    outline: none;
+  }
+`
+
+export const BtnCloseModal = styled.button`
   position: absolute;
   top: ${(props) => props.top}px;
   left: ${(props) => props.left}px;
