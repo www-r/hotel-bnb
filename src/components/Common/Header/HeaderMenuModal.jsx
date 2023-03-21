@@ -20,7 +20,7 @@ const HeaderMenuModal = ({ isClicked }) => {
         <S.ContentItem>개인 정보 수정</S.ContentItem>
         <S.ContentItem>결제 수단 관리</S.ContentItem>
       </S.ContentList>
-      <ModalLogin open={showLogin} />
+      <ModalLogin open={showLogin} set={setShowLogin} />
     </S.ModalMenu>
   )
 }

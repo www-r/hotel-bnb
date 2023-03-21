@@ -30,4 +30,5 @@ export const ContentItem = styled.li`
   &:hover {
     background-color: #f6f6f6;
   }
+  font-weight: bold;
 `
