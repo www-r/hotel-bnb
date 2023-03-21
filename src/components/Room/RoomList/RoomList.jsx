@@ -6,7 +6,7 @@ const RoomList = () => {
   const rooms = useGetRooms('/rooms')
 
   return (
-    <main>
+    <main style={{ paddingTop: '80px' }}>
       {rooms.map((room) => (
         <RoomItem room={room} key={room.id} />
       ))}
