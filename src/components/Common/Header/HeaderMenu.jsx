@@ -1,7 +1,6 @@
 import React from 'react'
-import { IconHeaderMenu } from '@/public/index.js'
+import { IconHeaderMenu, IconHeaderAuthor } from '@/assets/images'
 import { Image, Division } from './HeaderMenu.style'
-import { IconHeaderAuthor } from '../../../public'
 
 const HeaderMenu = () => {
   return (

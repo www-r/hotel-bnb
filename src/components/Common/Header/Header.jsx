@@ -6,10 +6,12 @@ import { Image } from './HeaderMenu.style'
 
 const Header = () => {
   return (
-    <Container>
-      <div>로고</div>
-      <HeaderMenu />
-    </Container>
+    <header style={{ display: 'flex', justifyContent: 'center' }}>
+      <Container>
+        <div>로고</div>
+        <HeaderMenu />
+      </Container>
+    </header>
   )
 }
 
