@@ -1,7 +1,7 @@
 import React from 'react'
 import { Global, css } from '@emotion/react'
 
-const style = css`
+const reset = css`
   * {
     box-sizing: border-box;
   }
@@ -52,9 +52,7 @@ const style = css`
     font-size: 100%;
     vertical-align: baseline;
   }
-  body {
-    line-height: 1;
-  }
+
   ol,
   ul {
     list-style: none;
@@ -75,8 +73,40 @@ const style = css`
   }
 `
 
+const style = css`
+  :root {
+
+    /**Common */
+   --center-align: display: flex; align-items: center; justify-content: center;
+    --box-shadow: 0 0 10px #DDD;
+
+    /** Font */
+    --font-semi-blod: 600; 
+    --font-blod: 800;
+
+    /** Color */
+    --color-main: #FF385C;
+    --color-footer-grey: #F7F7F7;
+    --color-light-grey: #DDD;
+    --color-white: #FFF;
+    --color-black: #000;
+ 
+
+    /** Border */
+    --border-button-radius: 26px;
+    --border-container-radius: 12px;
+    --border : 1px solid #DDD
+
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+`
+
 const GlobalStyle = () => {
-  return <Global styles={style} />
+  return <Global styles={(reset, style)} />
 }
 
 export default GlobalStyle
