@@ -1,5 +1,5 @@
 import IconHeaderMenu from './IconHeaderMenu.svg'
 import IconHeaderAuthor from './IconHeaderAuthor.svg'
-import { ReactComponent as HeartEmpty } from '@/assets/images/HeartEmpty.svg'
+import { ReactComponent as Heart } from '@/assets/images/Heart.svg'
 
-export { IconHeaderMenu, IconHeaderAuthor, HeartEmpty }
+export { IconHeaderMenu, IconHeaderAuthor, Heart }
