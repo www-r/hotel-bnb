@@ -19,6 +19,34 @@
       }
     },
     {
+      "amenities": [
+        "헤어드라이기",
+        "수건",
+        "와이파이",
+        "무료주차",
+        "낸방",
+        "난방",
+        "넷플릭스",
+        "주방"
+      ],
+      "description": "오늘하루 한가로운 한가(han ga)는 프라이빗한 나만의 공간 입니다. 유리블럭을 통해 집안으로 쏟아지는 따뜻한 햇살을 만끽하면서 한가롭고 프라이빗하게 힐링하세요.",
+      "geoLocation": {
+        "lat": 35.8305,
+        "lng": 127.1146
+      },
+      "id": "jeonjusiwansanguhanga",
+      "img": "https://console.firebase.google.com/project/hotel-bnb-d9ca0/storage/hotel-bnb-d9ca0.appspot.com/files?hl=ko",
+      "location": "전주시 완산구",
+      "price": 232000,
+      "rating": 4.93,
+      "reservation": {
+        "end": "2023-05-12T00:00:00.000Z",
+        "start": "2023-05-01T00:00:00.000Z"
+      },
+      "title": "전주한가로운한가"
+    }
+,
+    {
       "id": "yangpyeonghanok",
       "title": "양평전통한옥",
       "thumbnail": "https://firebasestorage.googleapis.com/v0/b/hotel-bnb-d9ca0.appspot.com/o/rooms%2Fyangpyeonghanok%2Faa2faf1b-a330-465e-bc02-a5cc0e4f45ad.webp?alt=media&token=71f8905b-7d0b-4b10-beaf-19ea3c861e77",

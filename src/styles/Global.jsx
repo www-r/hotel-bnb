@@ -52,7 +52,10 @@ const reset = css`
     font-size: 100%;
     vertical-align: baseline;
   }
-
+  body {
+    line-height: 1.43;
+    color: #222;
+  }
   ol,
   ul {
     list-style: none;
@@ -65,11 +68,11 @@ const reset = css`
     border-spacing: 0;
   }
   a {
-    color: black;
+    color: #000;
     text-decoration: none;
   }
   a:visited {
-    color: black;
+    color: #000;
   }
 `
 
