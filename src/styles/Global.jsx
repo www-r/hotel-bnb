@@ -53,7 +53,8 @@ const style = css`
     vertical-align: baseline;
   }
   body {
-    line-height: 1;
+    line-height: 1.43;
+    color: #222;
   }
   ol,
   ul {
@@ -67,11 +68,11 @@ const style = css`
     border-spacing: 0;
   }
   a {
-    color: black;
+    color: #000;
     text-decoration: none;
   }
   a:visited {
-    color: black;
+    color: #000;
   }
 `
 
