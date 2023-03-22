@@ -84,15 +84,16 @@ const style = css`
     --box-shadow: 0 0 10px #DDD;
 
     /** Font */
-    --font-semi-blod: 600; 
-    --font-blod: 800;
+    --font-semi-bold: 600; 
+    --font-bold: 800;
 
     /** Color */
     --color-main: #FF385C;
     --color-footer-grey: #F7F7F7;
     --color-light-grey: #DDD;
     --color-white: #FFF;
-    --color-black: #000;
+    --color-black: #222;
+    
  
 
     /** Border */
