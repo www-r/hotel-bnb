@@ -8,6 +8,7 @@ import WishListPage from '@/pages/WishListpage/WishListpage'
 import PersonalInfoPage from '@/pages/PersonalInfoPage/PersonalInfoPage'
 import AccountPage from '@/pages/AccountPage/AccountPage'
 import ErrorPage from '@/pages/ErrorPage/ErrorPage'
+import AdminPage from '../pages/AdminPage/AdminPage'
 
 const Router = () => {
   return (
@@ -19,6 +20,7 @@ const Router = () => {
       <Route path="/wishlist" element={<WishListPage />} />
       <Route path="/personalInfo" element={<PersonalInfoPage />} />
       <Route path="/account" element={<AccountPage />} />
+      <Route path="/admin" element={<AdminPage />} />
       <Route path="/notfound" element={<ErrorPage />} />
     </Routes>
   )
