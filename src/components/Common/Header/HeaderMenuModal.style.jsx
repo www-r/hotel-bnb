@@ -5,7 +5,6 @@ export const ModalMenu = styled.div`
   top: 70px;
   right: 50px;
   width: 240px;
-  // border: 1px solid black;
   border-radius: 10px;
   display: ${(props) => (props.isClicked ? 'block' : 'none')};
   box-shadow: 0 0 10px #ddd;
@@ -27,6 +26,7 @@ export const ContentItem = styled.li`
   align-items: center;
   padding-left: 5px;
   cursor: pointer;
+  background-color: #fff;
   &:hover {
     background-color: #f6f6f6;
   }
