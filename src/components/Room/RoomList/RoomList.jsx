@@ -1,16 +1,19 @@
 import React from 'react'
 import useGetRooms from '@/hooks/useGetRooms'
 import RoomItem from '@/components/Room/RoomItem/RoomItem'
+import * as S from '@/components/Room/RoomList/RoomList.style'
 
 const RoomList = () => {
   const rooms = useGetRooms('/rooms')
 
   return (
-    <main style={{ paddingTop: '80px' }}>
-      {rooms.map((room) => (
-        <RoomItem room={room} key={room.id} />
-      ))}
-    </main>
+    <S.Main>
+      <S.Container>
+        {rooms.map((room) => (
+          <RoomItem room={room} key={room.id} />
+        ))}
+      </S.Container>
+    </S.Main>
   )
 }
 
