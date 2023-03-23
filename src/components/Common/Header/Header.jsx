@@ -2,11 +2,20 @@
 import React from 'react'
 import { Container } from './Header.style'
 import HeaderMenu from './HeaderMenu'
-import { Image } from './HeaderMenu.style'
+import HeaderMenuModal from './HeaderMenuModal'
 
 const Header = () => {
   return (
-    <header style={{ display: 'flex', justifyContent: 'center' }}>
+    <header
+      style={{
+        position: 'fixed',
+        left: 0,
+        right: 0,
+        display: 'flex',
+        alignItems: 'center',
+        flexDirection: 'column',
+      }}
+    >
       <Container>
         <div>로고</div>
         <HeaderMenu />

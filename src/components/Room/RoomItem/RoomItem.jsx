@@ -9,18 +9,15 @@ const RoomItem = ({ room }) => {
   const [isClicked, setIsClicked] = useState(false)
 
   const navigate = useNavigate()
-
   const handleNavigateToRoomDetail = () => {
     navigate(`/room/${room.id}`, {
       state: { ...room },
     })
   }
-
   const handleClickHeart = (e) => {
     e.stopPropagation()
     setIsClicked(!isClicked)
   }
-
   return (
     <S.Container onClick={handleNavigateToRoomDetail}>
       <S.ImgContainer>
@@ -43,5 +40,4 @@ const RoomItem = ({ room }) => {
     </S.Container>
   )
 }
-
 export default RoomItem
