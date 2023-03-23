@@ -9,8 +9,8 @@
       "description": "안녕하세요. 저희는 다양한 휴식 공간을 연구하고 제공하는 Onda입니다. 이 곳에서 머무르실 모든 분들께서 편안하고 행복한 시간을 보내시길 바랍니다.",
       "rating": 4.7,
       "reservation": {
-        "start": "2023-03-19T00:00:00.000Z",
-        "end": "2023-04-02T00:00:00.000Z"
+        "start": 4,
+        "end": 4
       },
       "amenities": ["수건", "TV"],
       "geoLocation": {
@@ -19,16 +19,7 @@
       }
     },
     {
-      "amenities": [
-        "헤어드라이기",
-        "수건",
-        "와이파이",
-        "무료주차",
-        "낸방",
-        "난방",
-        "넷플릭스",
-        "주방"
-      ],
+      "amenities": ["헤어드라이기", "수건", "와이파이", "무료주차", "낸방", "난방", "넷플릭스", "주방"],
       "description": "오늘하루 한가로운 한가(han ga)는 프라이빗한 나만의 공간 입니다. 유리블럭을 통해 집안으로 쏟아지는 따뜻한 햇살을 만끽하면서 한가롭고 프라이빗하게 힐링하세요.",
       "geoLocation": {
         "lat": 35.8305,
@@ -40,12 +31,11 @@
       "price": 232000,
       "rating": 4.93,
       "reservation": {
-        "end": "2023-05-12T00:00:00.000Z",
-        "start": "2023-05-01T00:00:00.000Z"
+        "end": 4,
+        "start": 4
       },
       "title": "전주한가로운한가"
-    }
-,
+    },
     {
       "id": "yangpyeonghanok",
       "title": "양평전통한옥",
@@ -55,8 +45,8 @@
       "description": "전통한옥 공법으로 잘지은 한옥독체입니다. 배산임수로 무엇보다 단지뒤 고래산자락 둘레길 21km 산책로가 너무너무 좋습니다. 제2영동고속도로 동여주ic3km위치하고 있어 판교까지 30분이내 진입,  일신역2km 중앙선 무궁화기치이용 청리리역 까지 50분정도 소요됩니다.",
       "rating": 4.6,
       "reservation": {
-        "start": "2023-05-01T00:00:00.000Z",
-        "end": "2023-05-12T00:00:00.000Z"
+        "start": 4,
+        "end": 4
       },
       "amenities": [
         "헤어드라이기",
@@ -84,8 +74,8 @@
       "description": "남도여행의 떠오르는 핫플, 고흥 팔영산국립공원과 서핑의 메카 남열해돋이해수욕장, 팔영대교로 이어진 여수까지 고즈넉한 산자락 아래 자리잡은 한옥스테이 에서 프라이빗하게 힐링하세요~",
       "rating": 4.5,
       "reservation": {
-        "start": "2023-04-01T00:00:00.000Z",
-        "end": "2023-04-11T00:00:00.000Z"
+        "start": 4,
+        "end": 4
       },
       "amenities": ["정원 전망", "주방", "에어컨", "와이파이", "무료주차", "TV", "냉장고", "커피"],
       "geoLocation": {
@@ -94,21 +84,39 @@
       }
     },
     {
-      "id": "jeonjusiwansanguhanga",
-      "title": "전주한가로운한가",
-      "thumbnail": "https://firebasestorage.googleapis.com/v0/b/hotel-bnb-d9ca0.appspot.com/o/rooms%2Fjeongjusiwansanguhanga%2F3f7e87e3-f3ad-48a2-bd4f-3fbc1417179c.webp?alt=media&token=e7cdd128-b6a2-4198-8ea8-329ed3cd61bb",
-      "price": 232000,
-      "location": "전주시 완산구",
-      "description": "오늘하루 한가로운 한가(han ga)는 프라이빗한 나만의 공간 입니다. 유리블럭을 통해 집안으로 쏟아지는 따뜻한 햇살을 만끽하면서 한가롭고 프라이빗하게 힐링하세요.",
-      "rating": 4.93,
+      "id": "jeonjudeokjinguosher",
+      "title": "전주 오쉐르",
+      "thumbnail": "https://firebasestorage.googleapis.com/v0/b/hotel-bnb-d9ca0.appspot.com/o/rooms%2Fjeonjudeokjinguosher%2F30844505-9818-416a-b6f7-b368474e426a.webp?alt=media&token=aadee0c2-0167-4936-ac04-a35009a6731d",
+      "price": 115000,
+      "location": "전주시 덕진구",
+      "description": "아침햇살에 눈을 뜨고 나면 테라스로 나가 상큼한 공기를 마셔보세요. 솔솔 부는 바람을 느끼며 스윙체어에 기대어보고, 싱그러운 녹화벽 앞에서 소중한 사람과 함께 기념 사진도 찍어보세요.여행하며 생긴 피로마저 사르르 녹아내릴거에요. 오쉐르는 '행복' 을 뜻하는 말입니다.",
+      "rating": 4.92,
       "reservation": {
-        "start": "2023-05-01T00:00:00.000Z",
-        "end": "2023-05-12T00:00:00.000Z"
+        "start": 4,
+        "end": 4
       },
-      "amenities": ["헤어드라이기", "수건", "와이파이", "무료주차", "낸방", "난방", "넷플릭스", "주방"],
+      "amenities": ["헤어드라이기", "수건", "와이파이", "무료주차", "냉방", "난방", "넷플릭스", "주방"],
       "geoLocation": {
-        "lat": 35.8305,
-        "lng": 127.1146
+        "lat": 35.8484,
+        "lng": 127.1525
+      }
+    },
+    {
+      "id": "jejuaewolpresentfromroomnumberseven",
+      "title": "제주 7번방의선물",
+      "thumbnail": "https://firebasestorage.googleapis.com/v0/b/hotel-bnb-d9ca0.appspot.com/o/rooms%2Fjejuaewolpresentfromroomnumberseven%2Fc5b0a45c-619e-4674-ae37-62e89586e56a.webp?alt=media&token=90d2fe63-ff73-4da5-b8de-b000e3babf53",
+      "price": 237000,
+      "location": "제주시 애월읍",
+      "description": "저희 숙소 7번방의선물은 곽지해수욕장과 애월해안도로 사이에 위치해있습니다. 마당포함 약 70평 단독주택이며 마당에는 자쿠지보다 크기가 넓은 높이1.2미터/가로3미터/세로4미터 규모의 큰 수영장과 식사공간이 준비되어 있어요. 하루에 단 한팀만 이용하는 독채입니다.",
+      "rating": 4.88,
+      "reservation": {
+        "start": 4,
+        "end": 4
+      },
+      "amenities": ["헤어드라이기", "수건", "와이파이", "무료주차", "냉방", "난방", "세탁기", "주방"],
+      "geoLocation": {
+        "lat": 33.4314,
+        "lng": 126.3202
       }
     }
   ]

@@ -82,15 +82,16 @@ const style = css`
     --box-shadow: 0 0 10px #ddd;
 
     /** Font */
-    --font-semi-blod: 600;
-    --font-blod: 800;
+
+    --font-semi-bold: 600;
+    --font-bold: 800;
 
     /** Color */
     --color-main: #ff385c;
     --color-footer-grey: #f7f7f7;
     --color-light-grey: #ddd;
     --color-white: #fff;
-    --color-black: #000;
+    --color-black: #222;
 
     /** Border */
     --border-button-radius: 26px;
