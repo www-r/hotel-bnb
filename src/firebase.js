@@ -1,7 +1,12 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app'
-import { getDatabase, get, onValue, ref, set } from 'firebase/database'
-import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import { getDatabase, get, onValue, ref, set, push, update } from 'firebase/database'
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+} from 'firebase/auth'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -21,30 +26,75 @@ export const db = getDatabase(app)
 
 // 데이터 읽기
 const starCountRef = ref(db, 'rooms/')
-const getData = onValue(starCountRef, (snapshot) => {
-  const data = snapshot.val()
-  console.log(data)
-})
-
-// 데이터 쓰기
-export function writeUserData() {
-  const postID = onValue(starCountRef, (snapshot) => {
+function getData() {
+  onValue(starCountRef, (snapshot) => {
     const data = snapshot.val()
     console.log(data)
   })
-  console.log(postID)
-  // set(ref(db, 'rooms/' + postID), {
-  //   ID: 'ㅋㅋ',
-  // })
 }
 
-const auth = getAuth()
+// 방 정보 추가
+export async function AddRoomData(datas, resetFunc, initialState) {
+  try {
+    onValue(
+      ref(db, 'rooms/'),
+      async (snapshot) => {
+        const postNumber = snapshot.val().length
+        const amenities = datas.AMENITIES
+
+        await set(ref(db, 'rooms/' + postNumber), {
+          id: String(datas.ID),
+          title: String(datas.TITLE),
+          price: Number(datas.PRICE),
+          description: String(datas.DESCSRIPTION),
+          location: String(datas.LOCATION),
+          rating: Number(datas.RATING),
+          geoLocation: {
+            lat: Number(datas.GEOLOCATION_LAT),
+            lng: Number(datas.GEOLOCATION_LNG),
+          },
+          reservation: {
+            start: Number(datas.RESERVATION_START),
+            end: Number(datas.RESERVATION_END),
+          },
+          amenities: {
+            ...amenities,
+          },
+          thumbnail: String(datas.THUMBNAIL),
+        })
+      },
+      { onlyOnce: true },
+    )
+  } catch (err) {
+    alert(err)
+  }
+}
+
+export async function AddUserData(uid, name, phoneNumber) {
+  await set(ref(db, 'users/' + uid), {
+    name: name,
+    phoneNumber: phoneNumber,
+    profileImage: '',
+  })
+}
+
+// 이메일 로그인
 export const loginEmail = (email, password) => {
-  return signInWithEmailAndPassword(auth, email, password)
+  return signInWithEmailAndPassword(getAuth(), email, password)
 }
 
-//Google 로그인
+// Google 로그인
 const provider = new GoogleAuthProvider()
 export const loginGoogle = () => {
-  return signInWithPopup(auth, provider)
+  return signInWithPopup(getAuth(), provider)
+}
+
+// 회원가입
+export const CreateUser = async (email, password) => {
+  try {
+    const { user } = await createUserWithEmailAndPassword(getAuth(), email, password)
+    return user
+  } catch ({ code, message }) {
+    alert(errorMessage[code])
+  }
 }
