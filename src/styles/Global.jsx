@@ -102,11 +102,15 @@ const style = css`
   button {
     cursor: pointer;
   }
-
 `
 
 const GlobalStyle = () => {
-  return <Global styles={(reset, style)} />
+  return (
+    <>
+      <Global styles={style} />
+      <Global styles={reset} />
+    </>
+  )
 }
 
 export default GlobalStyle
