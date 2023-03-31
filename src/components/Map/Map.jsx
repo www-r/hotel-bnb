@@ -5,8 +5,8 @@ import { RoomsContext } from '@/contexts/RoomsProvider'
 import RoomItem from '@/components/Room/RoomItem/RoomItem'
 
 const containerStyle = {
-  width: '1200px',
-  height: '900px',
+  width: '100vw',
+  height: '100vh',
 }
 
 const centers = {
