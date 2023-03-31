@@ -1,14 +1,15 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app'
-
 import { getDatabase, get, onValue, ref, set, push, update } from 'firebase/database'
-
 import {
   getAuth,
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   signInWithPopup,
+  onAuthStateChanged,
+  reauthenticateWithCredential,
+  // getASecureRandomPassword,
 } from 'firebase/auth'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -33,6 +34,11 @@ const starCountRef = ref(db, 'rooms/')
 export const getData = onValue(ref(db, 'rooms/'), (snapshot) => {
   const data = snapshot.val()
   console.log('getData', data)
+  return data
+})
+export const getUsersData = onValue(ref(db, 'users/'), (snapshot) => {
+  const data = snapshot.val()
+  console.log('getUsersData', data)
   return data
 })
 
@@ -111,3 +117,43 @@ export const CreateUser = async (email, password) => {
     alert(errorMessage[code])
   }
 }
+
+const auth = getAuth()
+const user = auth.currentUser
+// const newPassword = getASecureRandomPassword()
+
+// 로그인한 사용자의 정보 가져오기
+export const getMyPersonalInfo = onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/firebase.User
+    const uid = user.uid
+    // ...
+  } else {
+    // User is signed out
+    // ...
+  }
+})
+
+//사용자 재인증
+// TODO(you): prompt the user to re-provide their sign-in credentials
+const credential = promptForCredentials()
+
+export const reauthenticateUser = reauthenticateWithCredential(user, credential)
+  .then(() => {
+    // User re-authenticated.
+  })
+  .catch((error) => {
+    // An error ocurred
+    // ...
+  })
+
+//비밀번호 재설정
+export const changePasswords = updatePassword(user, newPassword)
+  .then(() => {
+    // Update successful.
+  })
+  .catch((error) => {
+    // An error ocurred
+    // ...
+  })
