@@ -6,6 +6,7 @@ import {
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
+  signInWithPopup,
 } from 'firebase/auth'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -58,7 +59,7 @@ export async function AddRoomData(datas, resetFunc, initialState) {
             end: Number(datas.RESERVATION_END),
           },
           amenities: {
-            ...amenities,
+            ...String(amenities),
           },
           thumbnail: String(datas.THUMBNAIL),
         })
@@ -75,6 +76,8 @@ export async function AddUserData(uid, name, phoneNumber) {
     name: name,
     phoneNumber: phoneNumber,
     profileImage: '',
+    reservations: {},
+    wishList: {},
   })
 }
 
