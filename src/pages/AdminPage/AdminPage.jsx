@@ -35,6 +35,7 @@ const AdminPage = () => {
 
   return (
     <S.Container>
+      <h2>객실 추가</h2>
       ID
       <input name="ID" value={values.ID} onChange={handleChange} />
       Title
