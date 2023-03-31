@@ -1,37 +1,23 @@
-/** @jsxImportSource @emotion/react */
-import { Global, css } from '@emotion/react'
+import styled from '@emotion/styled'
 
-const flexCenter = {
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-}
-const flexSpaceBetween = {
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-}
+export const Header = styled.header`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100000;
+  background-color: #fff;
+`
 
-function Container({ children }) {
-  return <div css={{ width: '1800px', height: '80px', ...flexSpaceBetween }}>{children}</div>
-}
+export const Container = styled.div`
+  position: relative;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
 
-export { Container }
-
-// export const RoomItemImg = styled.img`
-//   object-fit: cover;
-//   width: 100%;
-//   height: 100%;
-//   border-radius: 10px;
-// `
-// export const RoomItemText = styled.div`
-//   object-fit: cover;
-//   width: 100%;
-//   height: 100%;
-//   border-radius: 10px;
-// `
-
-// export const RoomItemTitle = styled.div`
-//   display: flex;
-//   justify-content: space-between;
-// `
+export const LogoContainer = styled.div`
+  position: absolute;
+  left: 30px;
+`
