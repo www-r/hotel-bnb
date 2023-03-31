@@ -5,7 +5,7 @@ import ProductDetailPage from '@/pages/RoomDetailPage/RoomDetailPage'
 import MainPage from '@/pages/MainPage/Mainpage'
 import WishListPage from '@/pages/WishListpage/WishListpage'
 import PersonalInfoPage from '@/pages/PersonalInfoPage/PersonalInfoPage'
-import ReservationHistory from '@/pages/ReservationHistory/ReservationHistory'
+import ReservationHistoryPage from '@/pages/ReservationHistoryPage/ReservationHistoryPage'
 import ErrorPage from '@/pages/ErrorPage/ErrorPage'
 import AdminPage from '../pages/AdminPage/AdminPage'
 import PaymentPage from '../pages/PaymentPage/PaymentPage'
@@ -19,7 +19,7 @@ const Router = () => {
       <Route path="/book/:id" element={<PaymentPage />} />
       <Route path="/wishlist" element={<WishListPage />} />
       <Route path="/personalInfo" element={<PersonalInfoPage />} />
-      <Route path="/account" element={<ReservationHistory />} />
+      <Route path="/account" element={<ReservationHistoryPage />} />
       <Route path="/admin" element={<AdminPage />} />
       <Route path="/notfound" element={<ErrorPage />} />
     </Routes>

@@ -1,8 +1,8 @@
 import React from 'react'
 import Header from '@/components/Common/Header/Header'
-import * as S from '@/pages/ReservationHistory/ReservationHistory.style'
+import * as S from '@/pages/ReservationHistoryPage/ReservationHistoryPage.style'
 
-const ReservationHistory = () => {
+const ReservationHistoryPage = () => {
   return (
     <>
       <Header></Header>
@@ -57,4 +57,4 @@ const ReservationHistory = () => {
   )
 }
 
-export default ReservationHistory
+export default ReservationHistoryPage
