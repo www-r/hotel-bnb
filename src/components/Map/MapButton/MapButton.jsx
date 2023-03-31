@@ -1,13 +1,14 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import { BsFillMapFill } from 'react-icons/bs'
 import * as S from '@/components/Map/MapButton/MapButton.style'
 import { useNavigate } from 'react-router-dom'
 
-const MapButton = () => {
+const MapButton = ({ movePage }) => {
+  console.log(movePage)
   const navigate = useNavigate()
 
   const handleNavigateToMap = () => {
-    navigate('/map')
+    navigate(movePage)
   }
 
   return (
