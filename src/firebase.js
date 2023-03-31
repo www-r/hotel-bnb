@@ -1,7 +1,12 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app'
 import { getDatabase, get, onValue, ref, set } from 'firebase/database'
-import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from 'firebase/auth'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -20,10 +25,12 @@ export const app = initializeApp(firebaseConfig)
 export const db = getDatabase(app)
 
 // 데이터 읽기
+
 const starCountRef = ref(db, 'rooms/')
-const getData = onValue(starCountRef, (snapshot) => {
+export const getData = onValue(ref(db, 'rooms/'), (snapshot) => {
   const data = snapshot.val()
-  console.log(data)
+  console.log('getData', data)
+  return data
 })
 
 // 데이터 쓰기

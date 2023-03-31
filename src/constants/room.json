@@ -19,14 +19,23 @@
       }
     },
     {
-      "amenities": ["헤어드라이기", "수건", "와이파이", "무료주차", "낸방", "난방", "넷플릭스", "주방"],
+      "amenities": [
+        "헤어드라이기",
+        "수건",
+        "와이파이",
+        "무료주차",
+        "낸방",
+        "난방",
+        "넷플릭스",
+        "주방"
+      ],
       "description": "오늘하루 한가로운 한가(han ga)는 프라이빗한 나만의 공간 입니다. 유리블럭을 통해 집안으로 쏟아지는 따뜻한 햇살을 만끽하면서 한가롭고 프라이빗하게 힐링하세요.",
       "geoLocation": {
         "lat": 35.8305,
         "lng": 127.1146
       },
       "id": "jeonjusiwansanguhanga",
-      "img": "https://console.firebase.google.com/project/hotel-bnb-d9ca0/storage/hotel-bnb-d9ca0.appspot.com/files?hl=ko",
+      "img": "",
       "location": "전주시 완산구",
       "price": 232000,
       "rating": 4.93,
@@ -95,7 +104,16 @@
         "start": 4,
         "end": 4
       },
-      "amenities": ["헤어드라이기", "수건", "와이파이", "무료주차", "냉방", "난방", "넷플릭스", "주방"],
+      "amenities": [
+        "헤어드라이기",
+        "수건",
+        "와이파이",
+        "무료주차",
+        "냉방",
+        "난방",
+        "넷플릭스",
+        "주방"
+      ],
       "geoLocation": {
         "lat": 35.8484,
         "lng": 127.1525
@@ -113,11 +131,74 @@
         "start": 4,
         "end": 4
       },
-      "amenities": ["헤어드라이기", "수건", "와이파이", "무료주차", "냉방", "난방", "세탁기", "주방"],
+      "amenities": [
+        "헤어드라이기",
+        "수건",
+        "와이파이",
+        "무료주차",
+        "냉방",
+        "난방",
+        "세탁기",
+        "주방"
+      ],
       "geoLocation": {
         "lat": 33.4314,
         "lng": 126.3202
       }
+    },
+    {
+      "id": "anmyeoneuppensyeon",
+      "title": "안면읍 자연속 한적한 펜션의 송화",
+      "thumbnail": "https://firebasestorage.googleapis.com/v0/b/hotel-bnb-d9ca0.appspot.com/o/rooms%2Fanmyeoneuppensyeon%2F5bb38727-a300-4850-852d-687f28999690.jpeg?alt=media&token=a7d7017d-6fb3-4240-8928-ad937b0b7346",
+      "price": 454000,
+      "location": "충청남도 태안군",
+      "description": "안녕하세요. 저희는 다양한 휴식 공간을 연구하고 제공하는 Onda입니다. 이 곳에서 머무르실 모든 분들께서 편안하고 행복한 시간을 보내시길 바랍니다.",
+      "rating": 4.7,
+      "reservedDays": [20230401, 20230402, 20230403],
+      "maximumDays": 30,
+      "amenities": ["수건", "TV"],
+      "geoLocation": {
+        "lat": 37.5400456,
+        "lng": 126.3308429
+      }
     }
+  ],
+  "users": [
+    {
+      "id": "aklsdjsfjejnfcxkl",
+      "name": "김영은",
+      "phoneNumber": "01012341234",
+      "reservations": [
+        {
+          "reservationId": "sdfhafkjjdkshfs",
+          "reservedDays": [20230401, 20230402, 20230403],
+          "roomId": "fksdfdskfn"
+        },
+        {},
+        {}
+      ],
+      "wishlist": [
+        {
+          "id": "anmyeoneuppensyeon",
+          "title": "안면읍 자연속 한적한 펜션의 송화",
+          "thumbnail": "https://firebasestorage.googleapis.com/v0/b/hotel-bnb-d9ca0.appspot.com/o/rooms%2Fanmyeoneuppensyeon%2F5bb38727-a300-4850-852d-687f28999690.jpeg?alt=media&token=a7d7017d-6fb3-4240-8928-ad937b0b7346",
+          "price": 454000,
+          "location": "충청남도 태안군",
+          "description": "안녕하세요. 저희는 다양한 휴식 공간을 연구하고 제공하는 Onda입니다. 이 곳에서 머무르실 모든 분들께서 편안하고 행복한 시간을 보내시길 바랍니다.",
+          "rating": 4.7,
+          "reservedDays": [20230401, 20230402, 20230403],
+          "maximumDays": 30,
+          "amenities": ["수건", "TV"],
+          "geoLocation": {
+            "lat": 37.5400456,
+            "lng": 126.3308429
+          }
+        },
+        {},
+        {}
+      ]
+    },
+    {},
+    {}
   ]
 }
