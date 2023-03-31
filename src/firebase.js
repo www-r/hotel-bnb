@@ -30,7 +30,7 @@ const starCountRef = ref(db, 'rooms/')
 function getData() {
   onValue(starCountRef, (snapshot) => {
     const data = snapshot.val()
-    console.log(data)
+    // console.log(data)
   })
 }
 
