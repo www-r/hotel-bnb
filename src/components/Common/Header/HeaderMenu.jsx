@@ -8,8 +8,6 @@ const HeaderMenu = () => {
   return (
     <>
       <S.MenuContainer
-        width="77px"
-        height="42px"
         onClick={() => {
           setIsClicked(!isClicked)
         }}

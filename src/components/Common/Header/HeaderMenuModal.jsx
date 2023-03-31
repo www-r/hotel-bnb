@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 import * as S from '@/components/Common/Header/HeaderMenuModal.style'
 import ModalLogin from '../Modal/ModalLogin'
 import { useNavigate } from 'react-router-dom'
+import ModalSignUp from '../Modal/ModalSignUp'
 
 const HeaderMenuModal = ({ isClicked }) => {
   const [showLogin, setShowLogin] = useState(false)
+  const [showSignUp, setShowSignUp] = useState(false)
 
   const navigate = useNavigate()
   return (
@@ -23,7 +25,9 @@ const HeaderMenuModal = ({ isClicked }) => {
         <S.ContentItem>결제 수단 관리</S.ContentItem>
         <S.ContentItem onClick={() => navigate(`/admin/`)}>Room 추가</S.ContentItem>
       </S.ContentList>
-      <ModalLogin open={showLogin} set={setShowLogin} />
+      <ModalLogin open={showLogin} closeFunc={setShowLogin} openSignUp={setShowSignUp} />
+      <ModalSignUp open={showSignUp} set={setShowSignUp} />
+      {console.log(showSignUp)}
     </S.ModalMenu>
   )
 }

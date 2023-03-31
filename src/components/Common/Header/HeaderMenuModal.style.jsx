@@ -3,12 +3,12 @@ import styled from '@emotion/styled'
 export const ModalMenu = styled.div`
   position: fixed;
   top: 70px;
-  right: 50px;
+  right: 30px;
   width: 240px;
-  // border: 1px solid black;
   border-radius: 10px;
   display: ${(props) => (props.isClicked ? 'block' : 'none')};
   box-shadow: 0 0 10px #ddd;
+  background-color: #fff;
 `
 
 export const ContentList = styled.ul`

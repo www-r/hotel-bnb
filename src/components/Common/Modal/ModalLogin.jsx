@@ -5,7 +5,7 @@ import { app, loginEmail, loginGoogle } from '../../../firebase'
 import { getAuth } from 'firebase/auth'
 
 const ModalLogin = (props) => {
-  const { open, set } = props
+  const { open, closeFunc, openSignUp } = props
   const [values, setValues] = useState({ ID: '', PW: '' })
 
   const handleChange = (e) => {
@@ -38,7 +38,7 @@ const ModalLogin = (props) => {
             top={25}
             left={20}
             onClick={() => {
-              set(false)
+              closeFunc(false)
             }}
           >
             <IconExit />
@@ -66,21 +66,23 @@ const ModalLogin = (props) => {
             <S.TextContainer>
               <S.BtnSubmit type="submit">로그인</S.BtnSubmit>
             </S.TextContainer>
+            <S.TextContainer>
+              <S.BtnSignUp
+                type="button"
+                onClick={() => {
+                  closeFunc(false)
+                  openSignUp(true)
+                }}
+              >
+                회원가입
+              </S.BtnSignUp>
+            </S.TextContainer>
           </S.LoginForm>
           <S.TextContainer>
             <S.ImageContainer>
               <GoogleFavicon />
             </S.ImageContainer>
             <S.BtnGoogleLogin onClick={googleLogin}>구글로 로그인하기</S.BtnGoogleLogin>
-          </S.TextContainer>
-          <S.TextContainer>
-            <S.BtnGoogleLogin
-              onClick={() => {
-                console.log(getAuth(app).currentUser)
-              }}
-            >
-              현재 유저 확인
-            </S.BtnGoogleLogin>
           </S.TextContainer>
         </S.ContentContainer>
       </S.LoginContainer>
