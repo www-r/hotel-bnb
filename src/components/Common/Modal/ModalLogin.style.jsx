@@ -41,7 +41,7 @@ export const ContentContainer = styled.div`
 
 export const TextContainer = styled.div`
   margin-top: 8px;
-  margin-bottom: 24px;
+  margin-bottom: 12px;
   font-size: 22px;
   position: relative;
 `
@@ -102,6 +102,8 @@ export const BtnSubmit = styled.button`
   font-size: 16px;
   font-weight: bold;
 `
+
+export const BtnSignUp = styled(BtnSubmit)``
 
 export const BtnGoogleLogin = styled(BtnSubmit)`
   background-color: #fff;
