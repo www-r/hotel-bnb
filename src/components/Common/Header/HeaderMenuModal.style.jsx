@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 export const ModalMenu = styled.div`
   position: fixed;
   top: 70px;
-  right: 50px;
+  right: 30px;
   width: 240px;
   border-radius: 10px;
   display: ${(props) => (props.isClicked ? 'block' : 'none')};
