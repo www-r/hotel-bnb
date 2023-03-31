@@ -1,9 +1,9 @@
 import styled from '@emotion/styled'
 
 const flexCenter = `
-display: flex;
-align-Items: center;
-Justify-Content: center;
+  display: flex;
+  align-Items: center;
+  Justify-Content: center;
 `
 
 export const MenuImage = styled.img`
@@ -13,8 +13,10 @@ export const MenuImage = styled.img`
 `
 
 export const MenuContainer = styled.div`
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
+  position: absolute;
+  right: 30px;
+  width: 77px;
+  height: 42px;
   color: #ddd;
   border: 1px solid;
   border-radius: 25px;
