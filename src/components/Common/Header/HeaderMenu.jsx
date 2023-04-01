@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { IconHeaderMenu, IconHeaderAuthor } from '@/assets/images'
 import * as S from './HeaderMenu.style'
 import HeaderMenuModal from './HeaderMenuModal'
+import { getAuth } from 'firebase/auth'
+import { UsersContexnt } from '../../../contexts/UsersProvider'
 
 const HeaderMenu = () => {
   const [isClicked, setIsClicked] = useState(false)
+  const userInfo = useContext(UsersContexnt)
   return (
     <>
       <S.MenuContainer
@@ -13,9 +16,13 @@ const HeaderMenu = () => {
         }}
       >
         <S.MenuImage src={IconHeaderMenu} width={'16px'} height={'16px'} />
-        <S.MenuImage src={IconHeaderAuthor} width={'30px'} height={'30px'} />
+        <S.MenuImage
+          src={getAuth().currentUser ? userInfo.users[3] : IconHeaderAuthor}
+          width={'30px'}
+          height={'30px'}
+        />
       </S.MenuContainer>
-      <HeaderMenuModal isClicked={isClicked} />
+      <HeaderMenuModal isClicked={isClicked} showModalFunc={setIsClicked} />
     </>
   )
 }
