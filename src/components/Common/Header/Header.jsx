@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import HeaderMenu from './HeaderMenu'
 import * as S from './Header.style'
 import { UsersContext } from '../../../contexts/UsersProvider'
