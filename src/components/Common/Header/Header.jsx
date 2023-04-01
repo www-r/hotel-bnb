@@ -1,16 +1,19 @@
-import { getAuth } from 'firebase/auth'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import HeaderMenu from './HeaderMenu'
 import * as S from './Header.style'
+import { getCurrentUser } from '../../../firebase'
 
 const Header = () => {
+  const [user, setUser] = useState(null)
+  useEffect(() => {
+    getCurrentUser(setUser)
+  }, [user])
   return (
     <S.Header>
       <S.Container>
         <S.LogoContainer
           onClick={() => {
-            const auth = getAuth()
-            console.log(auth.currentUser)
+            console.log(user)
           }}
         >
           로고
