@@ -7,6 +7,8 @@ import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   signInWithPopup,
+  onAuthStateChanged,
+  signOut,
 } from 'firebase/auth'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -71,13 +73,14 @@ export async function AddRoomData(datas, resetFunc, initialState) {
   }
 }
 
-export async function AddUserData(uid, name, phoneNumber) {
+export async function AddUserData(uid, email, name, phoneNumber, profileImageURL = '') {
   await set(ref(db, 'users/' + uid), {
-    name: name,
-    phoneNumber: phoneNumber,
-    profileImage: '',
-    reservations: {},
-    wishList: {},
+    email: String(email),
+    name: String(name),
+    phoneNumber: String(phoneNumber),
+    profileImageURL: profileImageURL,
+    // reservations: Array(''),
+    // wishLists: Array({}),
   })
 }
 
@@ -92,6 +95,17 @@ export const loginGoogle = () => {
   return signInWithPopup(getAuth(), provider)
 }
 
+export const logout = () => {
+  const auth = getAuth()
+  signOut(auth)
+    .then(() => {
+      console.log('true')
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+
 // 회원가입
 export const CreateUser = async (email, password) => {
   try {
@@ -100,4 +114,15 @@ export const CreateUser = async (email, password) => {
   } catch ({ code, message }) {
     alert(errorMessage[code])
   }
+}
+
+export const getCurrentUser = (setUser = null) => {
+  const auth = getAuth()
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      setUser(user)
+    } else {
+      setUser(null)
+    }
+  })
 }
