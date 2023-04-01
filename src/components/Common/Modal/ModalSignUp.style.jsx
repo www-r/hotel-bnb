@@ -35,10 +35,8 @@ export const TitleContainer = styled.div`
 
 export const BtnCloseModal = styled.button`
   position: absolute;
-  top: ${(props) => props.top}px;
-  left: ${(props) => props.left}px;
-  right: ${(props) => props.right}px;
-  bottom: ${(props) => props.bottom}px;
+  top: 25px;
+  left: 20px;
   background-color: inherit;
   cursor: pointer;
   border: none;
