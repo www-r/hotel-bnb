@@ -3,11 +3,11 @@ import { BsFillMapFill } from 'react-icons/bs'
 import * as S from '@/components/Map/MapButton/MapButton.style'
 import { useNavigate } from 'react-router-dom'
 
-const MapButton = () => {
+const MapButton = ({ movePage }) => {
   const navigate = useNavigate()
 
   const handleNavigateToMap = () => {
-    navigate('/map')
+    navigate(movePage)
   }
 
   return (
