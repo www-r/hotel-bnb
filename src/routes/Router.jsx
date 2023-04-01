@@ -4,7 +4,6 @@ import MapPage from '@/pages/MapPage/MapPage'
 import ProductDetailPage from '@/pages/RoomDetailPage/RoomDetailPage'
 import MainPage from '@/pages/MainPage/Mainpage'
 
-import ReservationDetailPage from '@/pages/ReservationDetailPage/ReservationDetailPage'
 import WishlistPage from '@/pages/Wishlistpage/Wishlistpage'
 
 import PersonalInfoPage from '@/pages/PersonalInfoPage/PersonalInfoPage'
