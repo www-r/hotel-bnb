@@ -33,12 +33,12 @@ export const db = getDatabase(app)
 const starCountRef = ref(db, 'rooms/')
 export const getData = onValue(ref(db, 'rooms/'), (snapshot) => {
   const data = snapshot.val()
-  console.log('getData', data)
+  // console.log('getData', data)
   return data
 })
 export const getUsersData = onValue(ref(db, 'users/'), (snapshot) => {
   const data = snapshot.val()
-  console.log('getUsersData', data)
+  // console.log('getUsersData', data)
   return data
 })
 
@@ -137,23 +137,23 @@ export const getMyPersonalInfo = onAuthStateChanged(auth, (user) => {
 
 //사용자 재인증
 // TODO(you): prompt the user to re-provide their sign-in credentials
-const credential = promptForCredentials()
+// const credential = promptForCredentials()
 
-export const reauthenticateUser = reauthenticateWithCredential(user, credential)
-  .then(() => {
-    // User re-authenticated.
-  })
-  .catch((error) => {
-    // An error ocurred
-    // ...
-  })
+// export const reauthenticateUser = reauthenticateWithCredential(user, credential)
+//   .then(() => {
+//     // User re-authenticated.
+//   })
+//   .catch((error) => {
+//     // An error ocurred
+//     // ...
+//   })
 
 //비밀번호 재설정
-export const changePasswords = updatePassword(user, newPassword)
-  .then(() => {
+// export const changePasswords = updatePassword(user, newPassword)
+//   .then(() => {
     // Update successful.
-  })
-  .catch((error) => {
+  // })
+  // .catch((error) => {
     // An error ocurred
     // ...
-  })
+  // })
