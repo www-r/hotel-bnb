@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { GoogleFavicon, IconExit } from '../../../assets/images'
 import * as S from './ModalLogin.style'
-import { app, loginEmail, loginGoogle } from '../../../firebase'
-import { getAuth } from 'firebase/auth'
+import { AddUserData, app, loginEmail, loginGoogle } from '../../../firebase'
 
 const ModalLogin = (props) => {
-  const { open, closeFunc, openSignUp } = props
+  const { open, closeFunc, openSignUp, showModalFunc } = props
   const [values, setValues] = useState({ ID: '', PW: '' })
 
   const handleChange = (e) => {
@@ -18,15 +17,19 @@ const ModalLogin = (props) => {
   const login = (e) => {
     e.preventDefault()
     loginEmail(values.ID, values.PW).then((result) => {
+      closeFunc(false)
+      showModalFunc(false)
       console.log(result)
-      // const user = result.user
     })
   }
 
   const googleLogin = () => {
     loginGoogle().then((result) => {
+      const user = result.user
+      AddUserData(user.uid, user.email, user.displayName, user.phoneNumber, user.photoURL)
+      closeFunc(false)
+      showModalFunc(false)
       console.log(result)
-      // const user = result.user
     })
   }
 
@@ -60,7 +63,13 @@ const ModalLogin = (props) => {
               <S.ParagraphDiv>
                 <p>비밀번호</p>
               </S.ParagraphDiv>
-              <S.InputIDPW type={'password'} name="PW" value={values.PW} onChange={handleChange} />
+              <S.InputIDPW
+                type={'password'}
+                name="PW"
+                value={values.PW}
+                onChange={handleChange}
+                autoComplete="on"
+              />
             </S.InputContainer>
             <S.SpanLoginConfirm></S.SpanLoginConfirm>
             <S.TextContainer>
@@ -70,6 +79,7 @@ const ModalLogin = (props) => {
               <S.BtnSignUp
                 type="button"
                 onClick={() => {
+                  // TODO: 유효성검사 추가
                   closeFunc(false)
                   openSignUp(true)
                 }}

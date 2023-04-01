@@ -10,6 +10,7 @@ export const MenuImage = styled.img`
   src: ${(props) => props.src};
   width: ${(props) => props.width};
   height: ${(props) => props.height};
+  border-radius: 25px;
 `
 
 export const MenuContainer = styled.div`

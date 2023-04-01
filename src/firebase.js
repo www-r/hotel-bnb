@@ -8,6 +8,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithPopup,
   onAuthStateChanged,
+  signOut,
   reauthenticateWithCredential,
   // getASecureRandomPassword,
 } from 'firebase/auth'
@@ -87,13 +88,14 @@ export async function AddRoomData(datas, resetFunc, initialState) {
   }
 }
 
-export async function AddUserData(uid, name, phoneNumber) {
+export async function AddUserData(uid, email, name, phoneNumber, profileImageURL = '') {
   await set(ref(db, 'users/' + uid), {
-    name: name,
-    phoneNumber: phoneNumber,
-    profileImage: '',
-    reservations: {},
-    wishList: {},
+    email: String(email),
+    name: String(name),
+    phoneNumber: String(phoneNumber),
+    profileImageURL: profileImageURL,
+    // reservations: Array(''),
+    // wishLists: Array({}),
   })
 }
 
@@ -108,6 +110,18 @@ export const loginGoogle = () => {
   return signInWithPopup(getAuth(), provider)
 }
 
+export const logout = () => {
+  const auth = getAuth()
+  signOut(auth)
+    .then(() => {
+      console.log('true')
+      alert('로그아웃 완료')
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+
 // 회원가입
 export const CreateUser = async (email, password) => {
   try {
@@ -118,22 +132,32 @@ export const CreateUser = async (email, password) => {
   }
 }
 
-const auth = getAuth()
-const user = auth.currentUser
+export const getCurrentUser = (setUser = null) => {
+  const auth = getAuth()
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      setUser(user)
+    } else {
+      setUser(null)
+    }
+  })
+}
+// const auth = getAuth()
+// const user = auth.currentUser
 // const newPassword = getASecureRandomPassword()
 
 // 로그인한 사용자의 정보 가져오기
-export const getMyPersonalInfo = onAuthStateChanged(auth, (user) => {
-  if (user) {
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/firebase.User
-    const uid = user.uid
-    // ...
-  } else {
-    // User is signed out
-    // ...
-  }
-})
+// export const getMyPersonalInfo = onAuthStateChanged(auth, (user) => {
+//   if (user) {
+//     // User is signed in, see docs for a list of available properties
+//     // https://firebase.google.com/docs/reference/js/firebase.User
+//     const uid = user.uid
+//     // ...
+//   } else {
+//     // User is signed out
+//     // ...
+//   }
+// })
 
 //사용자 재인증
 // TODO(you): prompt the user to re-provide their sign-in credentials
@@ -151,9 +175,9 @@ export const getMyPersonalInfo = onAuthStateChanged(auth, (user) => {
 //비밀번호 재설정
 // export const changePasswords = updatePassword(user, newPassword)
 //   .then(() => {
-    // Update successful.
-  // })
-  // .catch((error) => {
-    // An error ocurred
-    // ...
-  // })
+// Update successful.
+// })
+// .catch((error) => {
+// An error ocurred
+// ...
+// })
