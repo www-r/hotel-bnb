@@ -59,10 +59,66 @@ export const SignUpForm = styled.form``
 export const InputDiv = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 5px;
 `
 
 export const InputUserInfo = styled.input`
   font-size: 20px;
   width: 100%;
+  margin-bottom: 20px;
+  padding: 10px;
+`
+
+export const SubmitButton = styled.button`
+  border: 1px solid;
+  width: 100%;
+  border-radius: 8px;
+  padding: 14px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #800080;
+`
+export const InputContainer = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid;
+  ${(props) => (props.upper ? '' : `border-top: none;`)}
+  border-radius: ${(props) => (props.upper ? '8px 8px 0 0;' : props.lower ? '0 0 8px 8px;' : '')};
+  &:focus-within {
+    border: 2px solid;
+  }
+`
+
+export const ParagraphDiv = styled.div`
+  position: absolute;
+  top: 2px;
+  left: 12px;
+  right: 12px;
+  padding: 0 24px 0 0;
+  font-weight: bold;
+`
+
+export const InputIDPW = styled.input`
+  font-size: 20px;
+  padding: 36px 32px 12px 16px;
+  border-radius: 8px;
+  border: none;
+  &:focus {
+    outline: none;
+  }
+`
+export const SpanLoginConfirm = styled.span``
+
+export const BtnSubmit = styled.button`
+  background-color: #800080;
+  border: 1px solid;
+  width: 100%;
+  border-radius: 8px;
+  padding: 14px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 10px;
 `
