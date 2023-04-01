@@ -1,10 +1,20 @@
-import React from 'react'
-import Map from '@/components/Map/Map'
+import React, { useState, useContext } from 'react'
+import { RoomsContext } from '@/contexts/RoomsProvider'
+
+import MapList from '@/components/Map/MapList/MapList'
+import Header from '@/components/Common/Header/Header'
+import MapButton from '../../components/Map/MapButton/MapButton'
 
 const MapPage = () => {
+  const roomsCtx = useContext(RoomsContext)
+  const { rooms, loading, error } = roomsCtx
+  const [movePage, setMovePage] = useState('/')
+
   return (
     <>
-      <Map />
+      <Header />
+      <MapList rooms={rooms} />
+      <MapButton movePage={movePage} />
     </>
   )
 }
