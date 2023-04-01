@@ -93,7 +93,7 @@ export const BtnCloseModal = styled.button`
 export const SpanLoginConfirm = styled.span``
 
 export const BtnSubmit = styled.button`
-  background-color: purple;
+  background-color: #800080;
   border: 1px solid;
   width: 100%;
   border-radius: 8px;

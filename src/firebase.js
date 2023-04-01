@@ -132,16 +132,6 @@ export const CreateUser = async (email, password) => {
   }
 }
 
-export const getCurrentUser = (setUser = null) => {
-  const auth = getAuth()
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      setUser(user)
-    } else {
-      setUser(null)
-    }
-  })
-}
 // const auth = getAuth()
 // const user = auth.currentUser
 // const newPassword = getASecureRandomPassword()
