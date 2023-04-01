@@ -100,6 +100,7 @@ export const logout = () => {
   signOut(auth)
     .then(() => {
       console.log('true')
+      alert('로그아웃 완료')
     })
     .catch((err) => {
       console.log(err)
