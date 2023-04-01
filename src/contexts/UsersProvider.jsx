@@ -1,8 +1,9 @@
-import { createContext, useEffect, useState } from 'react'
-import { getCurrentUser } from '../firebase'
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
+import { createContext, useState } from 'react'
 import useGetData from '../hooks/useGetData'
 
 export const UsersContext = createContext({
+  email: '',
   name: '',
   phoneNumber: '',
   profileImageURL: '',
@@ -13,9 +14,13 @@ export const UsersContext = createContext({
 const UsersProvider = ({ children }) => {
   const [user, setUser] = useState(null)
 
-  useEffect(() => {
-    getCurrentUser(setUser)
-  }, [user])
+  onAuthStateChanged(getAuth(), (user) => {
+    if (user) {
+      setUser(user)
+    } else {
+      setUser(null)
+    }
+  })
 
   const { data: users, loading, error } = useGetData(`/users/${user?.uid}`)
   const usersContext = { users, loading, error }

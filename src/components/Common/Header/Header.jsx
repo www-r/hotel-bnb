@@ -1,13 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import HeaderMenu from './HeaderMenu'
 import * as S from './Header.style'
-import { getCurrentUser } from '../../../firebase'
+import { UsersContext } from '../../../contexts/UsersProvider'
 
 const Header = () => {
-  const [user, setUser] = useState(null)
-  useEffect(() => {
-    getCurrentUser(setUser)
-  }, [user])
+  const user = useContext(UsersContext)
   return (
     <S.Header>
       <S.Container>

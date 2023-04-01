@@ -4,7 +4,7 @@ import { IconExit } from '../../../assets/images'
 import { CreateUser, AddUserData } from '../../../firebase'
 
 const ModalSignUp = (props) => {
-  const { open, set } = props
+  const { open, set, showModalFunc } = props
   const [values, setValues] = useState({
     EMAIL: '',
     PW: '',
@@ -20,14 +20,24 @@ const ModalSignUp = (props) => {
     })
   }
 
+  const handleClick = (e) => {
+    const pTag = e.target.parentElement.parentElement
+    if (pTag.childNodes.length > 1) {
+      pTag.childNodes[1].focus()
+    }
+  }
+
   const signUp = async (e) => {
     e.preventDefault()
     let user
-    await CreateUser(values.EMAIL, values.PW).then((result) => {
-      user = result
-      console.log(result)
-    })
-    console.log(user)
+    await CreateUser(values.EMAIL, values.PW)
+      .then((result) => {
+        user = result
+        showModalFunc(false)
+      })
+      .catch((err) => {
+        alert(err)
+      })
     await AddUserData(user.uid, values.EMAIL, values.NAME, values.PHONENUMBER)
     set(false)
   }
@@ -47,30 +57,55 @@ const ModalSignUp = (props) => {
         </S.TitleContainer>
         <S.ContentContainer>
           <S.TextContainer>
-            <S.SignUpForm onSubmit={signUp}>
-              <S.InputDiv onChange={handleChange}>
-                아이디
-                <S.InputUserInfo name="EMAIL" defaultValue={values.EMAIL} />
-                비밀번호
-                <S.InputUserInfo
+            <S.SignUpForm onSubmit={signUp} onChange={handleChange} onClick={handleClick}>
+              <S.InputContainer upper={true}>
+                <S.ParagraphDiv>
+                  <p>아이디</p>
+                </S.ParagraphDiv>
+                <S.InputIDPW name="EMAIL" defaultValue={values.EMAIL} autoComplete="on" />
+              </S.InputContainer>
+              <S.InputContainer>
+                <S.ParagraphDiv>
+                  <p>비밀번호</p>
+                </S.ParagraphDiv>
+                <S.InputIDPW
                   type={'password'}
                   name="PW"
                   defaultValue={values.PW}
                   autoComplete="on"
                 />
-                비밀번화 확인
-                <S.InputUserInfo
+              </S.InputContainer>
+              <S.InputContainer>
+                <S.ParagraphDiv>
+                  <p>비밀번호 확인</p>
+                </S.ParagraphDiv>
+                <S.InputIDPW
                   type={'password'}
                   name="CONFIRMPW"
                   defaultValue={values.CONFIRMPW}
                   autoComplete="on"
                 />
-                이름
-                <S.InputUserInfo name="NAME" defaultValue={values.NAME} />
-                전화번호
-                <S.InputUserInfo name="PHONENUMBER" defaultValue={values.PHONENUMBER} />
-              </S.InputDiv>
-              <button type={'submit'}>가입하기</button>
+              </S.InputContainer>
+              <S.InputContainer>
+                <S.ParagraphDiv>
+                  <p>이름</p>
+                </S.ParagraphDiv>
+                <S.InputIDPW name="NAME" defaultValue={values.NAME} autoComplete="on" />
+              </S.InputContainer>
+              <S.InputContainer lower={true}>
+                <S.ParagraphDiv>
+                  <p>전화번호</p>
+                </S.ParagraphDiv>
+                <S.InputIDPW
+                  name="PHONENUMBER"
+                  defaultValue={values.PHONENUMBER}
+                  autoComplete="on"
+                />
+              </S.InputContainer>
+              <S.SpanLoginConfirm></S.SpanLoginConfirm>
+              <S.TextContainer>
+                <S.BtnSubmit type="submit">회원가입</S.BtnSubmit>
+              </S.TextContainer>
             </S.SignUpForm>
           </S.TextContainer>
         </S.ContentContainer>
