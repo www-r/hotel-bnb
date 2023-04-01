@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from 'react'
 import { getCurrentUser } from '../firebase'
 import useGetData from '../hooks/useGetData'
 
-export const UsersContexnt = createContext({
+export const UsersContext = createContext({
   name: '',
   phoneNumber: '',
   profileImageURL: '',
@@ -19,9 +19,8 @@ const UsersProvider = ({ children }) => {
 
   const { data: users, loading, error } = useGetData(`/users/${user?.uid}`)
   const usersContext = { users, loading, error }
-  console.log(usersContext)
 
-  return <UsersContexnt.Provider value={usersContext}>{children}</UsersContexnt.Provider>
+  return <UsersContext.Provider value={usersContext}>{children}</UsersContext.Provider>
 }
 
 export default UsersProvider

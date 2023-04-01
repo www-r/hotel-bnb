@@ -5,7 +5,13 @@ import { CreateUser, AddUserData } from '../../../firebase'
 
 const ModalSignUp = (props) => {
   const { open, set } = props
-  const [values, setValues] = useState({ EMAIL: '', PW: '', NAME: '', PHONENUMBER: '' })
+  const [values, setValues] = useState({
+    EMAIL: '',
+    PW: '',
+    CONFIRMPW: '',
+    NAME: '',
+    PHONENUMBER: '',
+  })
 
   const handleChange = (e) => {
     setValues({
@@ -31,8 +37,6 @@ const ModalSignUp = (props) => {
       <S.SignUpContainer>
         <S.TitleContainer height={70}>
           <S.BtnCloseModal
-            top={25}
-            left={20}
             onClick={() => {
               set(false)
             }}
@@ -44,26 +48,27 @@ const ModalSignUp = (props) => {
         <S.ContentContainer>
           <S.TextContainer>
             <S.SignUpForm onSubmit={signUp}>
-              <S.InputDiv>
+              <S.InputDiv onChange={handleChange}>
                 아이디
-                <S.InputUserInfo name="EMAIL" value={values.EMAIL} onChange={handleChange} />
+                <S.InputUserInfo name="EMAIL" defaultValue={values.EMAIL} />
                 비밀번호
                 <S.InputUserInfo
                   type={'password'}
                   name="PW"
-                  value={values.PW}
-                  onChange={handleChange}
+                  defaultValue={values.PW}
+                  autoComplete="on"
                 />
                 비밀번화 확인
-                <S.InputUserInfo />
-                이름
-                <S.InputUserInfo name="NAME" value={values.NAME} onChange={handleChange} />
-                전화번호
                 <S.InputUserInfo
-                  name="PHONENUMBER"
-                  value={values.PHONENUMBER}
-                  onChange={handleChange}
+                  type={'password'}
+                  name="CONFIRMPW"
+                  defaultValue={values.CONFIRMPW}
+                  autoComplete="on"
                 />
+                이름
+                <S.InputUserInfo name="NAME" defaultValue={values.NAME} />
+                전화번호
+                <S.InputUserInfo name="PHONENUMBER" defaultValue={values.PHONENUMBER} />
               </S.InputDiv>
               <button type={'submit'}>가입하기</button>
             </S.SignUpForm>

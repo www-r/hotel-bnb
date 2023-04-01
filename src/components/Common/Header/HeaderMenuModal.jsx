@@ -17,6 +17,7 @@ const HeaderMenuModal = ({ isClicked, showModalFunc }) => {
         <S.ContentItem
           onClick={() => {
             getAuth().currentUser ? logout() : setShowLogin(true)
+            getAuth().currentUser ? showModalFunc(false) : void 0
           }}
         >
           {getAuth().currentUser ? '로그아웃' : '로그인'}
