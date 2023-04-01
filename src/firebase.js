@@ -142,22 +142,22 @@ export const getCurrentUser = (setUser = null) => {
     }
   })
 }
-const auth = getAuth()
-const user = auth.currentUser
+// const auth = getAuth()
+// const user = auth.currentUser
 // const newPassword = getASecureRandomPassword()
 
 // 로그인한 사용자의 정보 가져오기
-export const getMyPersonalInfo = onAuthStateChanged(auth, (user) => {
-  if (user) {
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/firebase.User
-    const uid = user.uid
-    // ...
-  } else {
-    // User is signed out
-    // ...
-  }
-})
+// export const getMyPersonalInfo = onAuthStateChanged(auth, (user) => {
+//   if (user) {
+//     // User is signed in, see docs for a list of available properties
+//     // https://firebase.google.com/docs/reference/js/firebase.User
+//     const uid = user.uid
+//     // ...
+//   } else {
+//     // User is signed out
+//     // ...
+//   }
+// })
 
 //사용자 재인증
 // TODO(you): prompt the user to re-provide their sign-in credentials
