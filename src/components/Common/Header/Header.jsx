@@ -1,10 +1,8 @@
-import React, { useContext } from 'react'
 import HeaderMenu from './HeaderMenu'
 import * as S from './Header.style'
-import { UsersContext } from '../../../contexts/UsersProvider'
 
-const Header = () => {
-  const user = useContext(UsersContext)
+const Header = (props) => {
+  const { user, loading, error } = props
   return (
     <S.Header>
       <S.Container>
@@ -15,7 +13,7 @@ const Header = () => {
         >
           로고
         </S.LogoContainer>
-        <HeaderMenu />
+        <HeaderMenu user={user} />
       </S.Container>
     </S.Header>
   )
