@@ -1,13 +1,15 @@
 import React from 'react'
-
 import Router from '@/routes/Router'
 import RoomsProvider from './contexts/RoomsProvider'
+import UsersProvider from './contexts/UsersProvider'
 
 function App() {
   return (
-    <RoomsProvider>
-      <Router />
-    </RoomsProvider>
+    <UsersProvider>
+      <RoomsProvider>
+        <Router />
+      </RoomsProvider>
+    </UsersProvider>
   )
 }
 

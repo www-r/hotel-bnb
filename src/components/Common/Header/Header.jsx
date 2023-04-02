@@ -1,16 +1,16 @@
-import { getAuth } from 'firebase/auth'
-import React from 'react'
+import React, { useContext } from 'react'
 import HeaderMenu from './HeaderMenu'
 import * as S from './Header.style'
+import { UsersContext } from '../../../contexts/UsersProvider'
 
 const Header = () => {
+  const user = useContext(UsersContext)
   return (
     <S.Header>
       <S.Container>
         <S.LogoContainer
           onClick={() => {
-            const auth = getAuth()
-            console.log(auth.currentUser)
+            console.log(user)
           }}
         >
           로고
