@@ -9,5 +9,16 @@ import { ReactComponent as Heart } from '@/assets/images/Heart.svg'
 import { ReactComponent as IconExit } from './IconExit.svg'
 import { ReactComponent as GoogleFavicon } from './GoogleFavicon.svg'
 import { ReactComponent as ChevronRight } from '@/assets/images/ChevronRight.svg'
-export { IconHeaderMenu, IconHeaderAuthor, Heart, ChevronRight, Eye, PersonalInfoLock1, PersonalInfoLock2, IconExit, GoogleFavicon, }
-
+import { ReactComponent as List } from '@/assets/images/ChevronRight.svg'
+export {
+  IconHeaderMenu,
+  IconHeaderAuthor,
+  Heart,
+  ChevronRight,
+  Eye,
+  PersonalInfoLock1,
+  PersonalInfoLock2,
+  IconExit,
+  GoogleFavicon,
+  List,
+}
