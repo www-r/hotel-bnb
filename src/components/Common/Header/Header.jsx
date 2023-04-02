@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
 import HeaderMenu from './HeaderMenu'
 import * as S from './Header.style'
-import { UsersContext } from '../../../contexts/UsersProvider'
+import { UserContext } from '../../../contexts/UserProvider'
 
 const Header = () => {
-  const user = useContext(UsersContext)
+  const user = useContext(UserContext)
   return (
     <S.Header>
       <S.Container>
