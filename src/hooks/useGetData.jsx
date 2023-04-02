@@ -10,9 +10,10 @@ const useGetData = (url = '') => {
     try {
       setLoading(true)
       const res = await axiosFirebase.get(`${url}.json`)
+      // Object.values(res.data).flat()
       if (res.data) {
-        const rooms = Object.values(res.data).flat()
-        setData(rooms)
+        const items = res.data
+        setData(items)
       } else {
         setData(null)
       }
