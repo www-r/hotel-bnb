@@ -12,18 +12,18 @@ export const UsersContext = createContext({
 })
 
 const UsersProvider = ({ children }) => {
-  const [user, setUser] = useState(null)
+  const [currentUser, setCurrentUser] = useState(null)
 
-  onAuthStateChanged(getAuth(), (user) => {
-    if (user) {
-      setUser(user)
+  onAuthStateChanged(getAuth(), (currentUser) => {
+    if (currentUser) {
+      setCurrentUser(currentUser)
     } else {
-      setUser(null)
+      setCurrentUser(null)
     }
   })
 
-  const { data: users, loading, error } = useGetData(`/users/${user?.uid}`)
-  const usersContext = { users, loading, error }
+  const { data: user, loading, error } = useGetData(`/users/${currentUser?.uid}`)
+  const usersContext = { user, loading, error }
 
   return <UsersContext.Provider value={usersContext}>{children}</UsersContext.Provider>
 }
