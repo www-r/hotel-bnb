@@ -3,6 +3,9 @@ import * as S from './ModalSignUp.style'
 import { IconExit } from '../../../assets/images'
 import { CreateUser, AddUserData } from '../../../firebase'
 
+const RegexID = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i
+const RegexPW = /^(?=.*[a-zA-Z\d])[a-zA-Z\d]{8,}$/
+
 const ModalSignUp = (props) => {
   const { open, set, showModalFunc } = props
   const [values, setValues] = useState({
@@ -18,6 +21,9 @@ const ModalSignUp = (props) => {
       ...values,
       [e.target.name]: e.target.value,
     })
+    switch (e.target.name) {
+      case 'EMAIL':
+    }
   }
 
   const handleClick = (e) => {
@@ -29,17 +35,19 @@ const ModalSignUp = (props) => {
 
   const signUp = async (e) => {
     e.preventDefault()
-    let user
     await CreateUser(values.EMAIL, values.PW)
-      .then((result) => {
-        user = result
+      .then(async (result) => {
+        await AddUserData(result.uid, values.EMAIL, values.NAME, values.PHONENUMBER)
         showModalFunc(false)
+        set(false)
       })
       .catch((err) => {
         alert(err)
       })
-    await AddUserData(user.uid, values.EMAIL, values.NAME, values.PHONENUMBER)
-    set(false)
+      .finally(() => {
+        const inputEl = e.target.querySelectorAll('input')
+        Array.from(inputEl).forEach((el) => (el.value = ''))
+      })
   }
 
   return (
@@ -61,48 +69,40 @@ const ModalSignUp = (props) => {
               <S.InputContainer upper={true}>
                 <S.ParagraphDiv>
                   <p>아이디</p>
+                  <S.SpanSignupConfirm className="confirmEmail">
+                    이메일 양식에 맞춰주세요
+                  </S.SpanSignupConfirm>
                 </S.ParagraphDiv>
-                <S.InputIDPW name="EMAIL" defaultValue={values.EMAIL} autoComplete="on" />
+                <S.InputIDPW name="EMAIL" autoComplete="off" />
               </S.InputContainer>
               <S.InputContainer>
                 <S.ParagraphDiv>
                   <p>비밀번호</p>
                 </S.ParagraphDiv>
-                <S.InputIDPW
-                  type={'password'}
-                  name="PW"
-                  defaultValue={values.PW}
-                  autoComplete="on"
-                />
+                <S.InputIDPW type={'password'} name="PW" autoComplete="off" />
+                <S.SpanSignupConfirm></S.SpanSignupConfirm>
               </S.InputContainer>
               <S.InputContainer>
                 <S.ParagraphDiv>
                   <p>비밀번호 확인</p>
                 </S.ParagraphDiv>
-                <S.InputIDPW
-                  type={'password'}
-                  name="CONFIRMPW"
-                  defaultValue={values.CONFIRMPW}
-                  autoComplete="on"
-                />
+                <S.InputIDPW type={'password'} name="CONFIRMPW" autoComplete="off" />
+                <S.SpanSignupConfirm></S.SpanSignupConfirm>
               </S.InputContainer>
               <S.InputContainer>
                 <S.ParagraphDiv>
                   <p>이름</p>
                 </S.ParagraphDiv>
-                <S.InputIDPW name="NAME" defaultValue={values.NAME} autoComplete="on" />
+                <S.InputIDPW name="NAME" autoComplete="off" />
+                <S.SpanSignupConfirm></S.SpanSignupConfirm>
               </S.InputContainer>
               <S.InputContainer lower={true}>
                 <S.ParagraphDiv>
                   <p>전화번호</p>
                 </S.ParagraphDiv>
-                <S.InputIDPW
-                  name="PHONENUMBER"
-                  defaultValue={values.PHONENUMBER}
-                  autoComplete="on"
-                />
+                <S.InputIDPW type={'number'} name="PHONENUMBER" autoComplete="off" />
+                <S.SpanSignupConfirm></S.SpanSignupConfirm>
               </S.InputContainer>
-              <S.SpanLoginConfirm></S.SpanLoginConfirm>
               <S.TextContainer>
                 <S.BtnSubmit type="submit">회원가입</S.BtnSubmit>
               </S.TextContainer>
