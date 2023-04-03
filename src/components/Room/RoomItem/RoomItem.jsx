@@ -10,10 +10,6 @@ const RoomItem = ({ room }) => {
   const userCtx = useContext(UserContext)
   const [isClicked, setIsClicked] = useState(false)
 
-  const addToWishHandler = () => {
-    userCtx.addItemToWish(room)
-  }
-
   const navigate = useNavigate()
   const handleNavigateToRoomDetail = () => {
     navigate(`/room/${room.id}`, {
@@ -21,9 +17,10 @@ const RoomItem = ({ room }) => {
     })
   }
 
-  const handleClickWish = (e) => {
+  const handleToggleWish = (e) => {
     e.stopPropagation()
-    userCtx.addItemToWish(room)
+    !isClicked ? userCtx.addItemToWish(room) : userCtx.deleteItemToWish(room)
+    setIsClicked(!isClicked)
     setIsClicked(!isClicked)
   }
   return (
@@ -31,7 +28,7 @@ const RoomItem = ({ room }) => {
       <S.ImgContainer>
         <S.Img src={room.thumbnail} alt={room.id} />
       </S.ImgContainer>
-      <S.Icon onClick={handleClickWish}>
+      <S.Icon onClick={handleToggleWish}>
         <Heart fill={isClicked ? '#FF385C' : '#DDD'} />
       </S.Icon>
       <S.TextContainer>
