@@ -14,7 +14,13 @@ const HeaderMenu = ({ user }) => {
       >
         <S.MenuImage src={IconHeaderMenu} width={'16px'} height={'16px'} />
         <S.MenuImage
-          src={user ? (user[3] === '' ? IconHeaderAuthor : user[3]) : IconHeaderAuthor}
+          src={
+            user
+              ? user.profileImageURL === ''
+                ? IconHeaderAuthor
+                : user.profileImageURL
+              : IconHeaderAuthor
+          }
           width={'30px'}
           height={'30px'}
         />
