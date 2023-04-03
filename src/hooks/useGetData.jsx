@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { axiosFirebase } from '@/apis/axios'
 
 const useGetData = (url = '') => {
-  const [data, setData] = useState([])
+  const [data, setData] = useState({})
   const [error, setError] = useState(false)
   const [loading, setLoading] = useState(false)
 
@@ -10,12 +10,7 @@ const useGetData = (url = '') => {
     try {
       setLoading(true)
       const res = await axiosFirebase.get(`${url}.json`)
-      if (res.data) {
-        const rooms = Object.values(res.data).flat()
-        setData(rooms)
-      } else {
-        setData(null)
-      }
+      setData(res.data)
     } catch (err) {
       setError(true)
     } finally {

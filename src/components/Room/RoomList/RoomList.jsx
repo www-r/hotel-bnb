@@ -11,7 +11,7 @@ const RoomList = ({ rooms, loading, error }) => {
   return (
     <S.Main>
       <S.Container>
-        {rooms.map((room) => (
+        {Array.from(rooms).map((room) => (
           <RoomItem room={room} key={room.id} />
         ))}
       </S.Container>
