@@ -106,6 +106,8 @@ export const InputIDPW = styled.input`
   padding: 36px 32px 12px 16px;
   border-radius: 8px;
   border: none;
+  z-index: 100;
+  background-color: transparent;
   &:focus {
     outline: none;
   }
@@ -119,6 +121,7 @@ export const SpanSignupConfirm = styled.span`
   margin: auto 10px;
   color: #ff0000;
   font-weight: bold;
+  display: none;
 `
 
 export const BtnSubmit = styled.button`
