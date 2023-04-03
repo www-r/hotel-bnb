@@ -11,6 +11,7 @@ export const UserContext = createContext({
   reservations: [],
   wishLists: [],
   addItemToWish: (item) => {},
+  deleteItemToWish: (item) => {},
 })
 
 const initalWishState = []
@@ -19,6 +20,8 @@ const wishReducer = (state, action) => {
   switch (action.type) {
     case 'ADD_WISH':
       return [...state, action.payload]
+    case 'DELETE_WISH':
+      return state.filter((item) => item.id !== action.payload.id)
   }
 }
 
@@ -33,6 +36,10 @@ const UserProvider = ({ children }) => {
     dispatchWishAction({ type: 'ADD_WISH', payload: item })
   }
 
+  const deleteItemToWishHandler = (item) => {
+    dispatchWishAction({ type: 'DELETE_WISH', payload: item })
+  }
+
   const userContext = {
     email: user?.email,
     name: user?.name,
@@ -41,7 +48,10 @@ const UserProvider = ({ children }) => {
     reservations: [],
     wishLists: wishState,
     addItemToWish: addItemToWishHandler,
+    deleteItemToWish: deleteItemToWishHandler,
   }
+
+  console.log('wishState', wishState)
 
   usePostUserInfo(`${currentUser?.uid}`, userContext.wishLists)
 
