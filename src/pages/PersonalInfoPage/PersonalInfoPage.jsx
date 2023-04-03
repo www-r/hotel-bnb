@@ -1,21 +1,34 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useContext, useReducer } from 'react'
 import Footer from '@/components/Common/Footer'
+import Header from '@/components/Common/Header/Header'
 import * as S from './PersonalInfoPage.style'
 import { ChevronRight, Eye, PersonalInfoLock1, PersonalInfoLock2 } from '../../assets/images'
+import { axiosFirebase } from '@/apis/axios'
+import axios from 'axios'
+import { getUsersData, getPersonalInfo, deleteMyAccount } from '../../firebase'
+import { UserContext } from '@/contexts/UserProvider'
 
 const PersonalInfoPage = () => {
   const [isShown1, setIsShown1] = useState(false)
   const [isShown2, setIsShown2] = useState(false)
   const [isShown3, setIsShown3] = useState(false)
+  const userInfo = useContext(UserContext)
+  // {
+  //  email: '',
+  //  name: '',
+  //  phoneNumber: '',
+  //  profileImageURL: '',
+  //  reservations: [],
+  //  wishLists: [],
+  //}
 
-  const [isSubmitted1, setIsSubmitted1] = useState(false)
-  const [isSubmitted2, setIsSubmitted2] = useState(false)
-  const submitHandler = (e) => {
+  const handlePasswords = (e) => {
     e.preventDefault()
-    setIsSubmitted1(true) || setIsSubmitted2(true) || setIsSubmitted3(true)
+    console.log(e)
   }
   return (
     <>
+      <Header />
       <S.Container>
         <S.PageTitle>
           <div>
@@ -25,144 +38,126 @@ const PersonalInfoPage = () => {
           </div>
           <S.PageTitleTitle>개인정보</S.PageTitleTitle>
         </S.PageTitle>
+
         <S.MainContainer>
           <S.Main>
-            <S.ListItem onSubmit={submitHandler}>
+            <S.ListItem>
               <S.ListItemTitle>
                 <span>실명</span>
-                {!isShown1 ? (
-                  <S.ListItemBtn
-                    type="button"
-                    onClick={() => {
-                      setIsShown1(!isShown1)
-                    }}
-                  >
-                    수정
-                  </S.ListItemBtn>
-                ) : (
-                  <S.ListItemBtn
-                    type="button"
-                    onClick={() => {
-                      setIsShown1(!isShown1)
-                    }}
-                  >
-                    취소
-                  </S.ListItemBtn>
-                )}
               </S.ListItemTitle>
-
-              {isShown1 ? (
-                <S.ListItemContent>
-                  <p>허가증이나 여권 등 여행 서류에 기재되어 있는 이름을 말합니다.</p>
-
-                  <S.InputsContainer>
-                    <S.InputWrapper>
-                      <S.InputLabel span>성</S.InputLabel>
-                      <S.Input />
-                    </S.InputWrapper>
-                    <S.InputWrapper>
-                      <S.InputLabel>이름</S.InputLabel>
-                      <S.Input />
-                    </S.InputWrapper>
-                  </S.InputsContainer>
-
-                  <S.ContentBtn type="submit">저장</S.ContentBtn>
-                </S.ListItemContent>
-              ) : (
-                <S.ListItemContent>
-                  {/* 임시값 */}
-                  <p>김영은</p>
-                </S.ListItemContent>
-              )}
+              <S.ListItemContent>
+                <p>{userInfo.name}</p>
+              </S.ListItemContent>
             </S.ListItem>
 
-            <S.ListItem onSubmit={submitHandler}>
+            <S.ListItem>
               <S.ListItemTitle>
                 <span>이메일 주소</span>
-                {!isShown2 ? (
-                  <S.ListItemBtn
-                    onClick={() => {
-                      setIsShown2(!isShown2)
-                    }}
-                  >
-                    수정
-                  </S.ListItemBtn>
-                ) : (
-                  <S.ListItemBtn
-                    onClick={() => {
-                      setIsShown2(!isShown2)
-                    }}
-                  >
-                    취소
-                  </S.ListItemBtn>
-                )}
               </S.ListItemTitle>
-
-              {isShown2 ? (
-                <S.ListItemContent>
-                  <div>
-                    <p>언제든지 확인하실 수 있는 주소를 사용하세요</p>
-                    <S.InputWrapper>
-                      <S.InputLabel>이메일 주소</S.InputLabel>
-                      <S.Input />
-                    </S.InputWrapper>
-                  </div>
-                  <S.ContentBtn type="submit">저장</S.ContentBtn>
-                </S.ListItemContent>
-              ) : (
-                <S.ListItemContent>
-                  {/* 임시값 */}
-                  <p>inmein@naver.com</p>
-                </S.ListItemContent>
-              )}
+              <S.ListItemContent>
+                <p>{userInfo.email}</p>
+              </S.ListItemContent>
             </S.ListItem>
 
-            <S.ListItem onSubmit={submitHandler}>
+            <S.ListItem>
               <S.ListItemTitle>
-                <span>전화번호</span>
-                {!isShown3 ? (
+                <span>비밀번호</span>
+                {isShown1 ? (
                   <S.ListItemBtn
-                    onClick={() => {
-                      setIsShown3(!isShown3)
-                    }}
-                  >
-                    수정
-                  </S.ListItemBtn>
-                ) : (
-                  <S.ListItemBtn
-                    onClick={() => {
-                      setIsShown3(!isShown3)
+                    onClick={(e) => {
+                      e.preventDefault()
+                      setIsShown1(!isShown1)
                     }}
                   >
                     닫기
                   </S.ListItemBtn>
+                ) : (
+                  <S.ListItemBtn
+                    onClick={(e) => {
+                      e.preventDefault()
+                      setIsShown1(!isShown1)
+                    }}
+                  >
+                    수정
+                  </S.ListItemBtn>
                 )}
               </S.ListItemTitle>
-              {!isShown3 ? (
+              {isShown1 ? (
                 <S.ListItemContent>
-                  {/* 임시값 */}
-                  <p>010-7475-2318</p>
+                  <span>새로운 비밀번호</span>
+                  <form className="newPasswords" onSubmit={handlePasswords}>
+                    <input></input>
+                    <S.ListItemBtn type="submit">수정</S.ListItemBtn>
+                  </form>
                 </S.ListItemContent>
               ) : (
-                <S.ListItemContent>
-                  <p>알림, 미리 알림 및 로그인에 도움이 됩니다.</p>
-                  <div>
-                    <div>010-7475-2318</div>
-                    <S.ListItemBtn>수정</S.ListItemBtn>
-                  </div>
-                  <S.ContentBtn type="submit">다른 전화번호 추가</S.ContentBtn>
-                </S.ListItemContent>
+                <S.ListItemContent></S.ListItemContent>
               )}
             </S.ListItem>
-            {/* <S.ListItem>
+
+            <S.ListItem>
               <S.ListItemTitle>
-                <span>주소</span>
-                <S.ListItemBtn>수정</S.ListItemBtn>
+                <span>전화번호</span>
+
+                {isShown2 ? (
+                  <S.ListItemBtn
+                    onClick={(e) => {
+                      e.preventDefault()
+                      setIsShown2(!isShown2)
+                    }}
+                  >
+                    닫기
+                  </S.ListItemBtn>
+                ) : (
+                  <S.ListItemBtn
+                    onClick={(e) => {
+                      e.preventDefault()
+                      setIsShown2(!isShown2)
+                    }}
+                  >
+                    수정
+                  </S.ListItemBtn>
+                )}
               </S.ListItemTitle>
-              <S.ListItemContent>
-                <div></div>
-              </S.ListItemContent>
-            </S.ListItem> */}
+              <span>{userInfo.phoneNumber}</span>
+              {isShown2 ? (
+                <S.ListItemContent>
+                  <span>새로운 전화번호</span>
+                  <form className="newPhoneNumber">
+                    <input></input>
+                    <S.ListItemBtn type="submit">수정</S.ListItemBtn>
+                  </form>
+                </S.ListItemContent>
+              ) : (
+                <S.ListItemContent></S.ListItemContent>
+              )}
+            </S.ListItem>
+            <S.ListItem>
+              <S.ListItemTitle>
+                <span>계정 삭제</span>
+                <S.ListItemBtn
+                  onClick={(e) => {
+                    e.preventDefault()
+                    setIsShown3(!isShown3)
+                  }}
+                >
+                  삭제
+                </S.ListItemBtn>
+              </S.ListItemTitle>
+
+              {isShown3 ? (
+                <S.ListItemContent>
+                  <p>정말 삭제하겠습니까?</p>
+                  <p>
+                    <span>삭제하겠습니다</span>라고 똑같이 작성해주세요.
+                  </p>
+                  <input></input>
+                  <button>삭제</button>
+                </S.ListItemContent>
+              ) : (
+                <S.ListItemContent></S.ListItemContent>
+              )}
+            </S.ListItem>
           </S.Main>
 
           <S.Aside>

@@ -8,13 +8,14 @@ import {
   createUserWithEmailAndPassword,
   signInWithPopup,
   onAuthStateChanged,
-  signOut,
-  reauthenticateWithCredential,
-  // getASecureRandomPassword,
+  updatePassword,
+  // reauthenticateWithCredential,
+  // promptForCredentials,
 } from 'firebase/auth'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-
+import axios from 'axios'
+import { axiosFirebase } from '@/apis/axios'
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: 'AIzaSyC5vpfgD2AVS2m-mV2nGPg_cLEY_Zl_DsE',
@@ -34,12 +35,12 @@ export const db = getDatabase(app)
 const starCountRef = ref(db, 'rooms/')
 export const getData = onValue(ref(db, 'rooms/'), (snapshot) => {
   const data = snapshot.val()
-  // console.log('getData', data)
+  console.log('getData', data)
   return data
 })
 export const getUsersData = onValue(ref(db, 'users/'), (snapshot) => {
   const data = snapshot.val()
-  // console.log('getUsersData', data)
+  console.log('getUsersData', data)
   return data
 })
 
@@ -109,7 +110,6 @@ const provider = new GoogleAuthProvider()
 export const loginGoogle = () => {
   return signInWithPopup(getAuth(), provider)
 }
-
 export const logout = () => {
   const auth = getAuth()
   signOut(auth)
@@ -121,7 +121,6 @@ export const logout = () => {
       console.log(err)
     })
 }
-
 // 회원가입
 export const CreateUser = async (email, password) => {
   try {
@@ -132,23 +131,22 @@ export const CreateUser = async (email, password) => {
   }
 }
 
-// const auth = getAuth()
-// const user = auth.currentUser
+const auth = getAuth()
+const user = auth.currentUser
 // const newPassword = getASecureRandomPassword()
 
 // 로그인한 사용자의 정보 가져오기
-// export const getMyPersonalInfo = onAuthStateChanged(auth, (user) => {
-//   if (user) {
-//     // User is signed in, see docs for a list of available properties
-//     // https://firebase.google.com/docs/reference/js/firebase.User
-//     const uid = user.uid
-//     // ...
-//   } else {
-//     // User is signed out
-//     // ...
-//   }
-// })
-
+export const getPersonalInfo = async () => {
+  let res = await axios({
+    method: 'POST',
+    url: 'https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyC5vpfgD2AVS2m-mV2nGPg_cLEY_Zl_DsE',
+    data: {
+      idToken:
+        'eyJhbGciOiJSUzI1NiIsImtpZCI6Ijk3OWVkMTU1OTdhYjM1Zjc4MjljZTc0NDMwN2I3OTNiN2ViZWIyZjAiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vaG90ZWwtYm5iLWQ5Y2EwIiwiYXVkIjoiaG90ZWwtYm5iLWQ5Y2EwIiwiYXV0aF90aW1lIjoxNjgwMzQ4MTUzLCJ1c2VyX2lkIjoiaXN3eVBaNnlPWmZMeU8xd2l3Y0VWdlZaeTY3MyIsInN1YiI6Imlzd3lQWjZ5T1pmTHlPMXdpd2NFVnZWWnk2NzMiLCJpYXQiOjE2ODAzNDgxNTMsImV4cCI6MTY4MDM1MTc1MywiZW1haWwiOiJpbm1laW5AbmF2ZXIuY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImlubWVpbkBuYXZlci5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.JAFrltJbAx_ypLpBmU6sapbwO5oXIWAIGWIYx3ez2Xzx5D79LgDTxM4ljaSLjVxadTLfDv3yCT1ylP3q0zRNreIJ8QrYt0Mnq-ciYu0mhGrGDAOny7zSj-FYUGvtu-tJMOWAge16HAioNHSjdsVSHrpPW75qI2VP0nlu1XwKlCM7Vr9_TT8KMAi8_3Y_3RZObYYKk5GwAgwyxSHIlpk4TNtMMCA29bxngxITUsWIhIrDmEscE1-_k_Qu9bcWDQjbkhB6rZ0KL2z3x70DY2PWu0hl0Uo-CBWXDghXgdKC_DHpvlxoIhq8obAW3z33gQiHPfVYOQoztF-pBh_5nKLSnw',
+    },
+  })
+  console.log(res)
+}
 //사용자 재인증
 // TODO(you): prompt the user to re-provide their sign-in credentials
 // const credential = promptForCredentials()
@@ -162,12 +160,29 @@ export const CreateUser = async (email, password) => {
 //     // ...
 //   })
 
-//비밀번호 재설정
-// export const changePasswords = updatePassword(user, newPassword)
-//   .then(() => {
-// Update successful.
-// })
-// .catch((error) => {
-// An error ocurred
-// ...
-// })
+// //비밀번호 재설정
+let newPassword
+export const changePasswords = updatePassword(user, newPassword)
+  .then(() => {
+    // Update successful.
+  })
+  .catch((error) => {
+    // An error ocurred
+    // ...
+  })
+
+// 계정 삭제
+export const deleteMyAccount = async () => {
+  let res = await axios({
+    method: 'POST',
+    baseURL: 'https://identitytoolkit.googleapis.com/v1/accounts:',
+    url: 'delete?key=[API_KEY]',
+    data: {
+      idToken:
+        'eyJhbGciOiJSUzI1NiIsImtpZCI6Ijk3OWVkMTU1OTdhYjM1Zjc4MjljZTc0NDMwN2I3OTNiN2ViZWIyZjAiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vaG90ZWwtYm5iLWQ5Y2EwIiwiYXVkIjoiaG90ZWwtYm5iLWQ5Y2EwIiwiYXV0aF90aW1lIjoxNjgwMzQ4MTUzLCJ1c2VyX2lkIjoiaXN3eVBaNnlPWmZMeU8xd2l3Y0VWdlZaeTY3MyIsInN1YiI6Imlzd3lQWjZ5T1pmTHlPMXdpd2NFVnZWWnk2NzMiLCJpYXQiOjE2ODAzNDgxNTMsImV4cCI6MTY4MDM1MTc1MywiZW1haWwiOiJpbm1laW5AbmF2ZXIuY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImlubWVpbkBuYXZlci5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.JAFrltJbAx_ypLpBmU6sapbwO5oXIWAIGWIYx3ez2Xzx5D79LgDTxM4ljaSLjVxadTLfDv3yCT1ylP3q0zRNreIJ8QrYt0Mnq-ciYu0mhGrGDAOny7zSj-FYUGvtu-tJMOWAge16HAioNHSjdsVSHrpPW75qI2VP0nlu1XwKlCM7Vr9_TT8KMAi8_3Y_3RZObYYKk5GwAgwyxSHIlpk4TNtMMCA29bxngxITUsWIhIrDmEscE1-_k_Qu9bcWDQjbkhB6rZ0KL2z3x70DY2PWu0hl0Uo-CBWXDghXgdKC_DHpvlxoIhq8obAW3z33gQiHPfVYOQoztF-pBh_5nKLSnw',
+    },
+  })
+  console.log(res)
+}
+
+//  "https://<DATABASE_NAME>.firebaseio.com/users/ada/name.json?auth=<ID_TOKEN>"
