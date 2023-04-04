@@ -14,7 +14,7 @@ const RoomList = () => {
   return (
     <S.Main>
       <S.Container>
-        {Array.from(rooms).map((room) => (
+        {rooms.map((room) => (
           <RoomItem room={room} key={room.id} />
         ))}
       </S.Container>

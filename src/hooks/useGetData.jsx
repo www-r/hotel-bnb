@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { axiosFirebase } from '@/apis/axios'
 
 const useGetData = (url = '') => {
-  const [data, setData] = useState({})
+  const [data, setData] = useState([])
   const [error, setError] = useState(false)
   const [loading, setLoading] = useState(false)
 
