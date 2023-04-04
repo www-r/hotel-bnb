@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { GoogleMap, LoadScript, Marker, InfoWindow, OverlayView } from '@react-google-maps/api'
-import { RoomsContext } from '@/contexts/RoomsProvider'
+import { GoogleMap, LoadScript, InfoWindow } from '@react-google-maps/api'
 
-import { formatPrice } from '@/utils/format'
 import RoomItem from '@/components/Room/RoomItem/RoomItem'
+import UserProvider from '@/contexts/UserProvider'
+import MapItem from '../MapItem/MapItem'
 import * as S from '@/components/Map/Maplist/MapList.style'
 
 const containerStyle = {
@@ -17,6 +17,9 @@ const centers = {
 }
 
 const MapList = ({ rooms }) => {
+  const userCtx = useContext(UserProvider)
+  console.log(userCtx)
+
   const [selectedMarker, setSelectedMarker] = useState(null)
 
   return (
@@ -24,20 +27,13 @@ const MapList = ({ rooms }) => {
       <LoadScript googleMapsApiKey={import.meta.env.VITE_MAP_API_KEY}>
         <GoogleMap mapContainerStyle={containerStyle} center={centers} zoom={10}>
           {rooms.map((room) => (
-            <OverlayView
-              key={room.id}
-              position={room.geoLocation}
-              mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
-            >
-              <S.Button onClick={() => setSelectedMarker(room)}>
-                <h1>￦{formatPrice(room.price)}</h1>
-              </S.Button>
-            </OverlayView>
+            <MapItem room={room} key={room.id} setSelectedMarker={setSelectedMarker} />
           ))}
           {selectedMarker && (
             <InfoWindow
               position={selectedMarker.geoLocation}
               onCloseClick={() => setSelectedMarker(null)}
+              options={{ maxWidth: 320 }}
             >
               <RoomItem room={selectedMarker} setSelectedMarker={setSelectedMarker}>
                 <button onClick={() => setSelectedMarker(null)}>close</button>
