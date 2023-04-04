@@ -1,14 +1,12 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { IconHeaderMenu, IconHeaderAuthor } from '@/assets/images'
 import * as S from './HeaderMenu.style'
 import HeaderMenuModal from './HeaderMenuModal'
-import { UserContext } from '@/contexts/UserProvider'
-import { LoginContext } from '@/contexts/LoginProvider'
+import { UserContext } from '../../../contexts/UserProvider'
 
-const HeaderMenu = ({ user }) => {
+const HeaderMenu = () => {
   const [isClicked, setIsClicked] = useState(false)
-  const currentUser = useContext(LoginContext)
-  // console.log('loginCtx', currentUser)
+  const currentUser = useContext(UserContext)
   return (
     <>
       <S.MenuContainer
@@ -20,16 +18,16 @@ const HeaderMenu = ({ user }) => {
         <S.MenuImage
           src={
             currentUser
-              ? currentUser[3] === ''
+              ? currentUser.profileImageURL === ''
                 ? IconHeaderAuthor
-                : currentUser[3]
+                : currentUser.profileImageURL
               : IconHeaderAuthor
           }
           width={'30px'}
           height={'30px'}
         />
       </S.MenuContainer>
-      <HeaderMenuModal isClicked={isClicked} showModalFunc={setIsClicked} user={user} />
+      <HeaderMenuModal isClicked={isClicked} showModalFunc={setIsClicked} />
     </>
   )
 }
