@@ -98,6 +98,7 @@ export const ParagraphDiv = styled.div`
   right: 12px;
   padding: 0 24px 0 0;
   font-weight: bold;
+  display: flex;
 `
 
 export const InputIDPW = styled.input`
@@ -105,11 +106,23 @@ export const InputIDPW = styled.input`
   padding: 36px 32px 12px 16px;
   border-radius: 8px;
   border: none;
+  z-index: 100;
+  background-color: transparent;
   &:focus {
     outline: none;
   }
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 `
-export const SpanLoginConfirm = styled.span``
+export const SpanSignupConfirm = styled.span`
+  font-size: 14px;
+  margin: auto 10px;
+  color: #ff0000;
+  font-weight: bold;
+  display: none;
+`
 
 export const BtnSubmit = styled.button`
   background-color: #800080;

@@ -10,13 +10,7 @@ const useGetData = (url = '') => {
     try {
       setLoading(true)
       const res = await axiosFirebase.get(`${url}.json`)
-      // Object.values(res.data).flat()
-      if (res.data) {
-        const items = res.data
-        setData(items)
-      } else {
-        setData(null)
-      }
+      setData(res.data)
     } catch (err) {
       setError(true)
     } finally {
