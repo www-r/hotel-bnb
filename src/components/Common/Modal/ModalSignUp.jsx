@@ -48,12 +48,11 @@ const ModalSignUp = (props) => {
     e.preventDefault()
     const formEl = document.querySelector('#SignupForm')
     const spanEls = formEl.querySelectorAll('span')
-    const bSignup = Array.from(spanEls).some((el) => el.style.display === 'block')
+    const bSignup = Array.from(spanEls).some((el) => el.style.display !== 'none')
     if (bSignup === true) {
-      alert('양식 불일치')
+      alert('양식에 맞게 작성해주세요')
       return
     }
-
     await CreateUser(values.EMAIL, values.PW)
       .then(async (result) => {
         await AddUserData(result.uid, values.EMAIL, values.NAME, values.PHONENUMBER)
