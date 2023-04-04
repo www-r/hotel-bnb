@@ -15,7 +15,4 @@ export const Button = styled.button`
   transition: background-color var(--bd-d-m-c-q) 300ms,
     transform 300ms cubic-bezier(0, 0, 0.1, 1) 0s, box-shadow 300ms cubic-bezier(0, 0, 0.1, 1) 0s; */
 `
-export const Container = styled.div`
-  width: 320px;
-  height: 280px;
-`
+
