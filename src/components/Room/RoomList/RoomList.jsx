@@ -1,10 +1,14 @@
 import React, { useContext } from 'react'
 import RoomItem from '@/components/Room/RoomItem/RoomItem'
 import { RoomsContext } from '@/contexts/RoomsProvider'
+import { LoginContext } from '@/contexts/LoginProvider'
+
 import * as S from '@/components/Room/RoomList/RoomList.style'
 
 const RoomList = () => {
-  // console.log(loading)
+  const currentUser = useContext(LoginContext)
+  console.log('currentUser', currentUser)
+
   const roomsCtx = useContext(RoomsContext)
   const { rooms, loading, error } = roomsCtx
 
@@ -15,7 +19,7 @@ const RoomList = () => {
     <S.Main>
       <S.Container>
         {rooms.map((room) => (
-          <RoomItem room={room} key={room.id} />
+          <RoomItem room={room} key={room.id} currentUser={currentUser} />
         ))}
       </S.Container>
     </S.Main>
