@@ -1,8 +1,9 @@
 import HeaderMenu from './HeaderMenu'
 import * as S from './Header.style'
+import { UserContext } from '../../../contexts/UserProvider'
 
-const Header = (props) => {
-  const { user, loading, error } = props
+const Header = () => {
+  const user = useContext(UserContext)
   return (
     <S.Header>
       <S.Container>

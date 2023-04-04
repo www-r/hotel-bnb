@@ -2,9 +2,13 @@ import React, { useState } from 'react'
 import { IconHeaderMenu, IconHeaderAuthor } from '@/assets/images'
 import * as S from './HeaderMenu.style'
 import HeaderMenuModal from './HeaderMenuModal'
+import { UserContext } from '@/contexts/UserProvider'
+import { LoginContext } from '@/contexts/LoginProvider'
 
 const HeaderMenu = ({ user }) => {
   const [isClicked, setIsClicked] = useState(false)
+  const currentUser = useContext(LoginContext)
+  // console.log('loginCtx', currentUser)
   return (
     <>
       <S.MenuContainer
@@ -15,10 +19,10 @@ const HeaderMenu = ({ user }) => {
         <S.MenuImage src={IconHeaderMenu} width={'16px'} height={'16px'} />
         <S.MenuImage
           src={
-            user
-              ? user.profileImageURL === ''
+            currentUser
+              ? currentUser[3] === ''
                 ? IconHeaderAuthor
-                : user.profileImageURL
+                : currentUser[3]
               : IconHeaderAuthor
           }
           width={'30px'}

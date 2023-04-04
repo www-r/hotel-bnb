@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { AiFillStar } from 'react-icons/ai'
 import * as S from '@/components/Room/RoomItem/RoomItem.style'
 import { formatDate, formatPrice } from '@/utils/format'
 import { useNavigate } from 'react-router-dom'
 import { Heart } from '@/assets/images'
+import { UserContext } from '@/contexts/UserProvider'
 
 const RoomItem = ({ room }) => {
+  const userCtx = useContext(UserContext)
   const [isClicked, setIsClicked] = useState(false)
 
   const navigate = useNavigate()
@@ -14,8 +16,11 @@ const RoomItem = ({ room }) => {
       state: { ...room },
     })
   }
-  const handleClickHeart = (e) => {
+
+  const handleToggleWish = (e) => {
     e.stopPropagation()
+    !isClicked ? userCtx.addItemToWish(room) : userCtx.deleteItemToWish(room)
+    setIsClicked(!isClicked)
     setIsClicked(!isClicked)
   }
   return (
@@ -23,7 +28,7 @@ const RoomItem = ({ room }) => {
       <S.ImgContainer>
         <S.Img src={room.thumbnail} alt={room.id} />
       </S.ImgContainer>
-      <S.Icon onClick={handleClickHeart}>
+      <S.Icon onClick={handleToggleWish}>
         <Heart fill={isClicked ? '#FF385C' : '#DDD'} />
       </S.Icon>
       <S.TextContainer>

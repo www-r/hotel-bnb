@@ -25,8 +25,6 @@ const RoomsProvider = ({ children }) => {
   const { data: rooms, loading, error } = useGetData('/rooms')
   const roomsContext = { rooms, loading, error }
 
-  // useEffect(() => , [])
-
   return <RoomsContext.Provider value={roomsContext}>{children}</RoomsContext.Provider>
 }
 
