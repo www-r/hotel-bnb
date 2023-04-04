@@ -19,7 +19,6 @@ const ModalLogin = (props) => {
     loginEmail(values.ID, values.PW).then((result) => {
       closeFunc(false)
       showModalFunc(false)
-      console.log(result)
     })
   }
 
@@ -29,7 +28,6 @@ const ModalLogin = (props) => {
       AddUserData(user.uid, user.email, user.displayName, user.phoneNumber, user.photoURL)
       closeFunc(false)
       showModalFunc(false)
-      console.log(result)
     })
   }
 
