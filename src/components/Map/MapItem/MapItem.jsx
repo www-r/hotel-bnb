@@ -5,9 +5,12 @@ import { OverlayView } from '@react-google-maps/api'
 
 import * as S from '@/components/Map/MapItem/MapItem.style'
 import { UserContext } from '@/contexts/UserProvider'
+import { LoginContext } from '@/contexts/LoginProvider'
 
 const MapItem = ({ room, setSelectedMarker }) => {
   const userCtx = useContext(UserContext)
+  const currentUser = useContext(LoginContext)
+ 
   const isWish = userCtx.wishLists.some((item) => item.id === room.id)
 
   return (
