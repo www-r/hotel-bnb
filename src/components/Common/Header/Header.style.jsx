@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 
 export const Header = styled.header`
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   right: 0;
@@ -26,5 +26,5 @@ export const LogoContainer = styled.div`
 `
 
 export const TagItemsContatiner = styled(Container)`
-  padding: 10px;
+  overflow: hidden;
 `
