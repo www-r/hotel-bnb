@@ -4,10 +4,11 @@ import { Heart } from '@/assets/images'
 import { OverlayView } from '@react-google-maps/api'
 
 import * as S from '@/components/Map/MapItem/MapItem.style'
-import UserProvider from '../../../contexts/UserProvider'
+import { UserContext } from '@/contexts/UserProvider'
 
 const MapItem = ({ room, setSelectedMarker }) => {
-  //   const iswish = userCtx.wishLists((item) => item.id === room.id)
+  const userCtx = useContext(UserContext)
+  const isWish = userCtx.wishLists.some((item) => item.id === room.id)
 
   return (
     <OverlayView
@@ -17,7 +18,7 @@ const MapItem = ({ room, setSelectedMarker }) => {
     >
       <S.Button onClick={() => setSelectedMarker(room)}>
         <h1>￦{formatPrice(room.price)}</h1>
-        {<Heart fill={'var(--color-main)'} />}
+        {isWish && <Heart fill={'var(--color-main)'} />}
       </S.Button>
     </OverlayView>
   )
