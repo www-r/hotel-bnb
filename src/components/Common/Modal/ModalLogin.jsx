@@ -16,9 +16,10 @@ const ModalLogin = (props) => {
 
   const login = (e) => {
     e.preventDefault()
-    loginEmail(values.ID, values.PW).then((result) => {
+    loginEmail(values.ID, values.PW).then(() => {
       closeFunc(false)
       showModalFunc(false)
+      setValues({ ID: '', PW: '' })
     })
   }
 
