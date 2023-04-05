@@ -15,7 +15,7 @@ export const MenuImage = styled.img`
 
 export const MenuContainer = styled.div`
   position: absolute;
-  right: 30px;
+  right: 40px;
   width: 77px;
   height: 42px;
   color: #ddd;

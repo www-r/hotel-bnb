@@ -9,6 +9,7 @@ export const ModalMenu = styled.div`
   display: ${(props) => (props.isClicked ? 'block' : 'none')};
   box-shadow: 0 0 10px #ddd;
   background-color: #fff;
+  z-index: 100;
 `
 
 export const ContentList = styled.ul`
