@@ -5,9 +5,13 @@ import { formatDate, formatPrice } from '@/utils/format'
 import { useNavigate } from 'react-router-dom'
 import { Heart } from '@/assets/images'
 import { UserContext } from '@/contexts/UserProvider'
+import { LoginContext } from '@/contexts/LoginProvider'
+
 import usePostUserInfo from '@/hooks/usePostUserInfo'
 
-const RoomItem = ({ room, currentUser }) => {
+const RoomItem = ({ room }) => {
+  const currentUser = useContext(LoginContext)
+
   const userCtx = useContext(UserContext)
 
   const { postUserInfo } = usePostUserInfo()
