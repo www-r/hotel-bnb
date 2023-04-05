@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app'
-import { getDatabase, get, onValue, ref, set, push, update } from 'firebase/database'
+import { getDatabase, get, onValue, ref, set, push, update, child } from 'firebase/database'
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -99,6 +99,13 @@ export async function AddUserData(uid, email, name, phoneNumber, profileImageURL
     profileImageURL: profileImageURL,
     // reservations: Array(''),
     // wishLists: Array({}),
+  })
+}
+
+export async function AddWishListData(uid, room) {
+  // const key = push(ref(db, 'users/' + uid + '/wishLists')).key
+  await push(child(ref(db), 'users/' + uid + '/wishLists'), {
+    wishList: room,
   })
 }
 

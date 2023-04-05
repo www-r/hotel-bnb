@@ -1,16 +1,16 @@
-import React, { useContext } from 'react'
 import HeaderMenu from './HeaderMenu'
 import * as S from './Header.style'
 import { UserContext } from '../../../contexts/UserProvider'
+import { useContext } from 'react'
 
 const Header = () => {
-  const user = useContext(UserContext)
+  const userCtx = useContext(UserContext)
   return (
     <S.Header>
       <S.Container>
         <S.LogoContainer
           onClick={() => {
-            console.log(user)
+            console.log(userCtx)
           }}
         >
           로고
