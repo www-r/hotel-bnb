@@ -12,6 +12,10 @@ export const Button = styled.button`
   font-size: 14px;
   font-weight: 600;
 
+  & svg {
+    margin-left: 5px;
+  }
+
   /* transform: scale(1);
   transform-origin: 50% 50%;
   transition: background-color var(--bd-d-m-c-q) 300ms,
