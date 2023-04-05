@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import RoomItem from '@/components/Room/RoomItem/RoomItem'
-import { LoginContext } from '@/contexts/LoginProvider'
 
 import * as S from '@/components/Room/RoomList/RoomList.style'
 
@@ -12,7 +11,7 @@ const RoomList = ({ rooms }) => {
     <S.Main>
       <S.Container>
         {rooms.map((room) => (
-          <RoomItem room={room} key={room.id} currentUser={currentUser} />
+          <RoomItem room={room} key={room.id} />
         ))}
       </S.Container>
     </S.Main>
