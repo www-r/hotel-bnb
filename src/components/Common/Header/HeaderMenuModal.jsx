@@ -5,18 +5,17 @@ import { useNavigate } from 'react-router-dom'
 import ModalSignUp from '../Modal/ModalSignUp'
 import { logout } from '../../../firebase'
 import { UserContext } from '../../../contexts/UserProvider'
-import { LoginContext } from '../../../contexts/LoginProvider'
 
 const HeaderMenuModal = ({ isClicked, showModalFunc }) => {
   const [showLogin, setShowLogin] = useState(false)
   const [showSignUp, setShowSignUp] = useState(false)
-  const currentUser = useContext(LoginContext)
+  const userCtx = useContext(UserContext)
 
   const navigate = useNavigate()
   return (
     <S.ModalMenu isClicked={isClicked}>
       <S.ContentList>
-        {currentUser ? (
+        {userCtx.email ? (
           <>
             <S.ContentItem
               onClick={() => {

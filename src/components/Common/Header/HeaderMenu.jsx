@@ -3,11 +3,9 @@ import { IconHeaderMenu, IconHeaderAuthor } from '@/assets/images'
 import * as S from './HeaderMenu.style'
 import HeaderMenuModal from './HeaderMenuModal'
 import { UserContext } from '../../../contexts/UserProvider'
-import { LoginContext } from '../../../contexts/LoginProvider'
 
 const HeaderMenu = () => {
   const [isClicked, setIsClicked] = useState(false)
-  const currentUser = useContext(LoginContext)
   const user = useContext(UserContext)
   return (
     <>
@@ -19,7 +17,7 @@ const HeaderMenu = () => {
         <S.MenuImage src={IconHeaderMenu} width={'16px'} height={'16px'} />
         <S.MenuImage
           src={
-            currentUser
+            user.email
               ? user.profileImageURL === ''
                 ? IconHeaderAuthor
                 : user.profileImageURL
