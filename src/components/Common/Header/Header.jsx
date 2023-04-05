@@ -4,13 +4,13 @@ import { UserContext } from '../../../contexts/UserProvider'
 import { useContext } from 'react'
 
 const Header = () => {
-  const currentUser = useContext(UserContext)
+  const userCtx = useContext(UserContext)
   return (
     <S.Header>
       <S.Container>
         <S.LogoContainer
           onClick={() => {
-            console.log(currentUser)
+            console.log(userCtx)
           }}
         >
           로고

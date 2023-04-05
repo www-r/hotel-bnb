@@ -9,13 +9,13 @@ import { UserContext } from '../../../contexts/UserProvider'
 const HeaderMenuModal = ({ isClicked, showModalFunc }) => {
   const [showLogin, setShowLogin] = useState(false)
   const [showSignUp, setShowSignUp] = useState(false)
-  const currentUser = useContext(UserContext)
+  const userCtx = useContext(UserContext)
 
   const navigate = useNavigate()
   return (
     <S.ModalMenu isClicked={isClicked}>
       <S.ContentList>
-        {currentUser ? (
+        {userCtx.email ? (
           <>
             <S.ContentItem
               onClick={() => {
