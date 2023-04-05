@@ -13,3 +13,12 @@ export const Button = styled.button`
   color: #fff;
   font-weight: 600;
 `
+export const ButtonContent = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & svg {
+    margin-left: 5px;
+  }
+`
