@@ -5,9 +5,9 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 5px;
-  min-width: 60px;
+  min-width: 70px;
   height: 100%;
-  padding: 15px;
+  padding-top: 15px;
   color: #717171;
   opacity: 0.7;
   transition: opacity 300ms ease;

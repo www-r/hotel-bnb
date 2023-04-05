@@ -20,9 +20,9 @@ const Header = () => {
         <HeaderSearch />
         <HeaderMenu />
       </S.Container>
-      <S.Container>
+      <S.TagItemsContatiner>
         <HeaderTags />
-      </S.Container>
+      </S.TagItemsContatiner>
     </S.Header>
   )
 }
