@@ -17,9 +17,6 @@ const centers = {
 }
 
 const MapList = ({ rooms }) => {
-  const userCtx = useContext(UserProvider)
-  console.log(userCtx)
-
   const [selectedMarker, setSelectedMarker] = useState(null)
 
   return (
