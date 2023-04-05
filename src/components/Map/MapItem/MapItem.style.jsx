@@ -1,6 +1,8 @@
 import styled from '@emotion/styled'
 
 export const Button = styled.button`
+  display: flex;
+  align-items: center;
   background-color: #fff;
   color: #000;
   border-radius: 20px;
@@ -14,8 +16,4 @@ export const Button = styled.button`
   transform-origin: 50% 50%;
   transition: background-color var(--bd-d-m-c-q) 300ms,
     transform 300ms cubic-bezier(0, 0, 0.1, 1) 0s, box-shadow 300ms cubic-bezier(0, 0, 0.1, 1) 0s; */
-`
-export const Container = styled.div`
-  width: 320px;
-  height: 280px;
 `

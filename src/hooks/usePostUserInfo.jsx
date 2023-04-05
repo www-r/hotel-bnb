@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import { axiosFirebase } from '@/apis/axios'
 
-const usePostUserInfo = (uid, wishiLists) => {
-  // console.log('uid', uid)
-  // console.log('wishList', wishiLists)
+const usePostUserInfo = () => {
   const [data, setData] = useState([])
   const [error, setError] = useState(false)
   const [loading, setLoading] = useState(false)
 
-  const postUserInfo = async () => {
+  const postUserInfo = async (uid, wishLists) => {
+    // console.log('uid', uid)
+    // console.log('wishList', wishLists)
     try {
       setLoading(true)
-      const res = await axiosFirebase.patch(`/users/${uid}.json`, { wishiLists })
-      // console.log(res)
+      const res = await axiosFirebase.patch(`/users/${uid}.json`, { wishLists })
       // Object.values(res.data).flat()
       if (res.data) {
-        const items = res.data
+        const items = res.data.wishLists
         setData(items)
       } else {
         setData(null)
@@ -27,11 +26,7 @@ const usePostUserInfo = (uid, wishiLists) => {
     }
   }
 
-  useEffect(() => {
-    postUserInfo()
-  }, [uid, wishiLists])
-
-  return { data, loading, error }
+  return { data, loading, error, postUserInfo }
 }
 
 export default usePostUserInfo
