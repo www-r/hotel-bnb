@@ -10,6 +10,8 @@ import { ReactComponent as IconExit } from './IconExit.svg'
 import { ReactComponent as GoogleFavicon } from './GoogleFavicon.svg'
 import { ReactComponent as ChevronRight } from '@/assets/images/ChevronRight.svg'
 import { ReactComponent as List } from '@/assets/images/ChevronRight.svg'
+import { ReactComponent as IconHeaderSearch } from '@/assets/images/IconHeaderSearch.svg'
+
 export {
   IconHeaderMenu,
   IconHeaderAuthor,
@@ -21,4 +23,5 @@ export {
   IconExit,
   GoogleFavicon,
   List,
+  IconHeaderSearch,
 }
