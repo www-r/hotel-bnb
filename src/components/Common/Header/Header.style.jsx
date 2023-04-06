@@ -21,6 +21,7 @@ export const Container = styled.div`
 `
 
 export const LogoContainer = styled.div`
+  z-index: 1000;
   position: absolute;
   left: 30px;
 `
@@ -43,4 +44,13 @@ export const TagItemsContatiner = styled(Container)`
     flex-wrap: wrap;
     height: calc(var(--basic-height) * 4);
   }
+`
+
+export const TestDIV = styled.div`
+  position: fixed;
+  top: 0;
+  background-color: #fff;
+  z-index: -1;
+  height: 150px;
+  width: 100%;
 `
