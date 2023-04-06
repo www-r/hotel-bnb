@@ -2,3 +2,15 @@
   max-width: 1800px;
   margin: 0 auto;
 }
+
+.gm-style {
+  font-family: 'Pretendard';
+}
+
+.gm-style .gm-style-iw-c {
+  padding: 0 !important;
+}
+
+.gm-style .gm-style-iw-d {
+  overflow: visible !important;
+}
