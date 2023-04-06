@@ -6,7 +6,7 @@ import { UserContext } from '../../../contexts/UserProvider'
 
 const HeaderMenu = () => {
   const [isClicked, setIsClicked] = useState(false)
-  const user = useContext(UserContext)
+  const userCtx = useContext(UserContext)
   return (
     <>
       <S.MenuContainer
@@ -17,10 +17,10 @@ const HeaderMenu = () => {
         <S.MenuImage src={IconHeaderMenu} width={'16px'} height={'16px'} />
         <S.MenuImage
           src={
-            user.email
-              ? user.profileImageURL === ''
+            userCtx.email
+              ? userCtx.profileImageURL === ''
                 ? IconHeaderAuthor
-                : user.profileImageURL
+                : userCtx.profileImageURL
               : IconHeaderAuthor
           }
           width={'30px'}

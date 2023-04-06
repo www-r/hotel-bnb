@@ -1,6 +1,5 @@
 import React from 'react'
 import HeaderTagItem from './HeaderTagItem'
-import * as S from './HeaderTags.style'
 import { TagsData } from '../../../constants/tags'
 
 const HeaderTags = () => {
