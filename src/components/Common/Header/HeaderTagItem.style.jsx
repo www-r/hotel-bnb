@@ -5,15 +5,15 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 5px;
-  min-width: 70px;
-  height: 100%;
+  min-width: 75px;
+  height: 80px;
   padding-top: 15px;
   color: #717171;
   opacity: 0.7;
   transition: opacity 300ms ease;
   &:hover {
     opacity: 1;
-    border-bottom: 2px solid #ddd;
+    border-bottom: 3px solid #ddd;
   }
   cursor: pointer;
 `

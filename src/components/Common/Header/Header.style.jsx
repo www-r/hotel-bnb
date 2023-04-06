@@ -13,7 +13,7 @@ export const Container = styled.div`
   position: relative;
   height: 80px;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: nowrap;
   align-items: center;
   border-bottom: 1px solid #ccc;
   padding-left: 100px;
@@ -27,4 +27,20 @@ export const LogoContainer = styled.div`
 
 export const TagItemsContatiner = styled(Container)`
   overflow: hidden;
+  gap: 0 30px;
+  min-width: 625px;
+  --basic-height: 80px;
+
+  @media (max-width: 1800px) {
+    flex-wrap: wrap;
+    height: calc(var(--basic-height) * 2);
+  }
+  @media (max-width: 1063px) {
+    flex-wrap: wrap;
+    height: calc(var(--basic-height) * 3);
+  }
+  @media (max-width: 842px) {
+    flex-wrap: wrap;
+    height: calc(var(--basic-height) * 4);
+  }
 `

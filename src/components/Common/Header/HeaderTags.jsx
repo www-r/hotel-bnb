@@ -7,7 +7,7 @@ const HeaderTags = () => {
   return (
     <>
       {TagsData.map((tag) => (
-        <HeaderTagItem text={tag.text} img={tag.img} />
+        <HeaderTagItem key={tag.text} text={tag.text} img={tag.img} />
       ))}
     </>
   )
