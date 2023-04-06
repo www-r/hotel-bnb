@@ -42,6 +42,6 @@ export const Line = styled.span`
 export const ImageContainer = styled(Wrapper)`
   width: 32px;
   height: 32px;
-  background-color: #ff385c;
+  background-color: var(--color-main);
   border-radius: 25px;
 `
