@@ -5,9 +5,13 @@ import { formatDate, formatPrice } from '@/utils/format'
 import { useNavigate } from 'react-router-dom'
 import { Heart } from '@/assets/images'
 import { UserContext } from '@/contexts/UserProvider'
+import { LoginContext } from '@/contexts/LoginProvider'
+
 import usePostUserInfo from '@/hooks/usePostUserInfo'
 
-const RoomItem = ({ room, currentUser }) => {
+const RoomItem = ({ room }) => {
+  const currentUser = useContext(LoginContext)
+
   const userCtx = useContext(UserContext)
 
   const { postUserInfo } = usePostUserInfo()
@@ -44,7 +48,11 @@ const RoomItem = ({ room, currentUser }) => {
         <S.Img src={room.thumbnail} alt={room.id} />
       </S.ImgContainer>
       <S.Icon onClick={handleToggleWish}>
-        <Heart fill={currentUser && isWish ? 'var(--color-main)' : 'var(--color-light-grey)'} />
+        <Heart
+          fill={currentUser && isWish ? 'var(--color-main)' : 'var(--color-light-grey)'}
+          width={24}
+          height={24}
+        />
       </S.Icon>
       <S.TextContainer>
         <S.Title>

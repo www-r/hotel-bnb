@@ -104,6 +104,7 @@ const style = css`
   }
 
   button {
+    font: inherit;
     cursor: pointer;
   }
 `

@@ -4,19 +4,22 @@ import { UserContext } from '../../../contexts/UserProvider'
 import { useContext } from 'react'
 import HeaderSearch from './HeaderSearch'
 import HeaderTags from './HeaderTags'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
   const userCtx = useContext(UserContext)
   return (
     <S.Header>
       <S.Container>
-        <S.LogoContainer
-          onClick={() => {
-            console.log(userCtx)
-          }}
-        >
-          로고
-        </S.LogoContainer>
+        <Link to="/">
+          <S.LogoContainer
+            onClick={() => {
+              console.log(userCtx)
+            }}
+          >
+            로고
+          </S.LogoContainer>
+        </Link>
         <HeaderSearch />
         <HeaderMenu />
       </S.Container>
