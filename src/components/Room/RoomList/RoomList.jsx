@@ -4,9 +4,6 @@ import RoomItem from '@/components/Room/RoomItem/RoomItem'
 import * as S from '@/components/Room/RoomList/RoomList.style'
 
 const RoomList = ({ rooms }) => {
-  const currentUser = useContext(LoginContext)
-  console.log('currentUser', currentUser)
-
   return (
     <S.Main>
       <S.Container>
