@@ -11,3 +11,21 @@ export const Container = styled.div`
   width: 800px;
   height: 550px;
 `
+
+export const TitleContainer = styled.div`
+  margin-left: 35px;
+  margin-bottom: 10px;
+`
+
+export const Wrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 250px 250px;
+`
+
+export const LocationImage = styled.img`
+  width: 180px;
+  height: 225px;
+  margin: 0 auto;
+  cursor: pointer;
+`
