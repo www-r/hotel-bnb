@@ -37,8 +37,8 @@ const ModalSearch = ({ state, click }) => {
                 <IconHeaderSearch />
               </S.SearchIconContainer>
             </S.Content>
-            <ModalSearchByLocation show={state} />
-            <ModalSearchByDate show={state} />
+            <ModalSearchByLocation show={state} click={click} />
+            <ModalSearchByDate show={state} click={click} />
           </S.ContentWrapper>
         </S.ContentContainer>
       </S.SearchWrapper>
