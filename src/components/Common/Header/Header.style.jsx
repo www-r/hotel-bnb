@@ -46,11 +46,17 @@ export const TagItemsContatiner = styled(Container)`
   }
 `
 
-export const TestDIV = styled.div`
+export const SearchContainer = styled.div`
+  display: ${({ show }) => (show ? 'fixed' : 'none')};
   position: fixed;
   top: 0;
-  background-color: #fff;
-  z-index: -1;
-  height: 150px;
   width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+`
+
+export const SearchWrapper = styled.div`
+  width: 100%;
+  height: 150px;
+  background-color: #fff;
 `

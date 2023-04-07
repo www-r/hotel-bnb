@@ -2,9 +2,9 @@ import React from 'react'
 import * as S from './HeaderSearch.style'
 import { IconHeaderSearch } from '../../../assets/images'
 
-const HeaderSearch = () => {
+const HeaderSearch = ({ click }) => {
   return (
-    <S.Container>
+    <S.Container onClick={() => click(true)}>
       <S.Wrapper>어디든지</S.Wrapper>
       <S.Line></S.Line>
 

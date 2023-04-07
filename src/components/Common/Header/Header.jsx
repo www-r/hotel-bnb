@@ -1,12 +1,14 @@
 import HeaderMenu from './HeaderMenu'
 import * as S from './Header.style'
 import { UserContext } from '../../../contexts/UserProvider'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import HeaderSearch from './HeaderSearch'
 import HeaderTags from './HeaderTags'
+import ModalSearch from '../Modal/ModalSearch'
 
 const Header = () => {
   const userCtx = useContext(UserContext)
+  const [clickSearch, setClickSearch] = useState(false)
   return (
     <S.Header>
       <S.Container>
@@ -17,13 +19,13 @@ const Header = () => {
         >
           로고
         </S.LogoContainer>
-        <HeaderSearch />
+        <HeaderSearch click={setClickSearch} />
         <HeaderMenu />
       </S.Container>
       <S.TagItemsContatiner>
         <HeaderTags />
       </S.TagItemsContatiner>
-      <S.TestDIV></S.TestDIV>
+      <ModalSearch state={clickSearch} click={setClickSearch} />
     </S.Header>
   )
 }
