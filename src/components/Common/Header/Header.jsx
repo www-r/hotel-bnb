@@ -1,7 +1,7 @@
 import HeaderMenu from './HeaderMenu'
 import * as S from './Header.style'
 import { UserContext } from '../../../contexts/UserProvider'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import HeaderSearch from './HeaderSearch'
 import HeaderTags from './HeaderTags'
 import { Link } from 'react-router-dom'

@@ -14,6 +14,7 @@ export const MenuImage = styled.img`
 `
 
 export const MenuContainer = styled.div`
+  z-index: 1000;
   position: absolute;
   right: 40px;
   width: 77px;
