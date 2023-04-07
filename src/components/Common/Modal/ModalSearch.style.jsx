@@ -5,9 +5,11 @@ export const SearchContainer = styled.div`
   display: ${({ show }) => (show ? 'fixed' : 'none')};
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.3);
+  z-index: 100;
 `
 
 const boxShow = keyframes`
@@ -62,9 +64,11 @@ export const ContentWrapper = styled.div`
   grid-template-columns: 1.5fr 1px 1fr 1px 1fr;
   opacity: 0;
   animation: ${contentShow} 0.2s 0.2s linear normal forwards;
+  position: relative;
 `
 
 export const Content = styled.div`
+  position: relative;
   height: 100%;
   border-radius: 50px;
   padding: 14px 24px;
@@ -84,4 +88,17 @@ export const Line = styled.span`
   margin-top: 20px;
   margin-bottom: 20px;
   background-color: #ddd;
+`
+export const SearchIconContainer = styled.div`
+  position: absolute;
+  top: 0;
+  right: 15px;
+  transform: translate(0, 25%);
+  width: 48px;
+  height: 48px;
+  background-color: var(--color-main);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
 `
