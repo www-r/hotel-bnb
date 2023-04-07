@@ -5,6 +5,7 @@ import { useContext, useState } from 'react'
 import HeaderSearch from './HeaderSearch'
 import HeaderTags from './HeaderTags'
 import ModalSearch from '../Modal/ModalSearch'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
   const userCtx = useContext(UserContext)
@@ -12,13 +13,15 @@ const Header = () => {
   return (
     <S.Header>
       <S.Container>
-        <S.LogoContainer
-          onClick={() => {
-            console.log(userCtx)
-          }}
-        >
-          로고
-        </S.LogoContainer>
+        <Link to="/">
+          <S.LogoContainer
+            onClick={() => {
+              console.log(userCtx)
+            }}
+          >
+            로고
+          </S.LogoContainer>
+        </Link>
         <HeaderSearch click={setClickSearch} />
         <HeaderMenu />
       </S.Container>

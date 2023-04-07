@@ -9,8 +9,11 @@ import WishlistPage from '@/pages/Wishlistpage/Wishlistpage'
 import PersonalInfoPage from '@/pages/PersonalInfoPage/PersonalInfoPage'
 import ReservationHistoryPage from '@/pages/ReservationHistoryPage/ReservationHistoryPage'
 import ErrorPage from '@/pages/ErrorPage/ErrorPage'
-import AdminPage from '../pages/AdminPage/AdminPage'
-import PaymentPage from '../pages/PaymentPage/PaymentPage'
+import AdminPage from '@/pages/AdminPage/AdminPage'
+import PaymentPage from '@/pages/PaymentPage/PaymentPage'
+import PaymentSuccess from '@/components/Payment/PaymentSuccess'
+import PaymentWaiting from '@/components/Payment/PaymentWaiting'
+import PaymentFail from '@/components/Payment/PaymentFail'
 
 const Router = () => {
   return (
@@ -23,6 +26,9 @@ const Router = () => {
       <Route path="/personalInfo" element={<PersonalInfoPage />} />
       <Route path="/account" element={<ReservationHistoryPage />} />
       <Route path="/admin" element={<AdminPage />} />
+      <Route path="/paymentSuccess" element={<PaymentSuccess />} />
+      <Route path="/paymentWaiting" element={<PaymentWaiting />} />
+      <Route path="/paymentFail" element={<PaymentFail />} />
       <Route path="/notfound" element={<ErrorPage />} />
     </Routes>
   )

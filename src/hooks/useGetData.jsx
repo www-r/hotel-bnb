@@ -3,7 +3,7 @@ import { axiosFirebase } from '@/apis/axios'
 
 const useGetData = (url = '') => {
   const [data, setData] = useState([])
-  const [error, setError] = useState(false)
+  const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
 
   const fetchData = async () => {
@@ -12,7 +12,7 @@ const useGetData = (url = '') => {
       const res = await axiosFirebase.get(`${url}.json`)
       setData(res.data)
     } catch (err) {
-      setError(true)
+      setError(err.message)
     } finally {
       setLoading(false)
     }

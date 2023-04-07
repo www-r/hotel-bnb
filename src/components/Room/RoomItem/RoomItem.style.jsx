@@ -10,6 +10,10 @@ export const Icon = styled.span`
   position: absolute;
   top: 10px;
   right: 10px;
+
+  & svg:active {
+    transform: scale(1.2);
+  }
 `
 
 export const ImgContainer = styled.div`

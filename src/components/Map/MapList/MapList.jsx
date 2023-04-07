@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { GoogleMap, LoadScript, InfoWindow } from '@react-google-maps/api'
 
 import RoomItem from '@/components/Room/RoomItem/RoomItem'
@@ -11,7 +11,7 @@ const containerStyle = {
   height: '100vh',
 }
 
-const centers = {
+const center = {
   lat: 36.34,
   lng: 127.77,
 }
@@ -22,7 +22,7 @@ const MapList = ({ rooms }) => {
   return (
     <>
       <LoadScript googleMapsApiKey={import.meta.env.VITE_MAP_API_KEY}>
-        <GoogleMap mapContainerStyle={containerStyle} center={centers} zoom={10}>
+        <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={8}>
           {rooms.map((room) => (
             <MapItem room={room} key={room.id} setSelectedMarker={setSelectedMarker} />
           ))}
