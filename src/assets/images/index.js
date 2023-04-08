@@ -11,6 +11,11 @@ import { ReactComponent as GoogleFavicon } from './GoogleFavicon.svg'
 import { ReactComponent as ChevronRight } from '@/assets/images/ChevronRight.svg'
 import { ReactComponent as List } from '@/assets/images/ChevronRight.svg'
 import { ReactComponent as IconHeaderSearch } from '@/assets/images/IconHeaderSearch.svg'
+import { ReactComponent as IconPrevious } from '@/assets/images/IconPrevious.svg'
+import { ReactComponent as IconKakaoPay } from '@/assets/images/IconKakaoPay.svg'
+import { ReactComponent as IconNotice } from '@/assets/images/IconNotice.svg'
+
+import ImagePayButton from '@/assets/images/ImagePayButton.jpg'
 
 export {
   IconHeaderMenu,
@@ -24,4 +29,8 @@ export {
   GoogleFavicon,
   List,
   IconHeaderSearch,
+  IconPrevious,
+  IconKakaoPay,
+  ImagePayButton,
+  IconNotice,
 }
