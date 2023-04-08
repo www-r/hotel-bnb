@@ -20,12 +20,6 @@ export const Container = styled.div`
   padding-right: 100px;
 `
 
-export const LogoContainer = styled.div`
-  z-index: 1000;
-  position: absolute;
-  left: 30px;
-`
-
 export const TagItemsContatiner = styled(Container)`
   overflow: hidden;
   gap: 0 30px;
