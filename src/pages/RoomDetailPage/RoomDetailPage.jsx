@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import Header from '@/components/Common/Header/Header'
 import Footer from '@/components/Common/Footer'
 // import * as S from './RoomDetailpage.style' // @ 쓰면 에러남
-import './RoomDetailPage.css'
+// import './RoomDetailPage.css'
 import { DayPicker } from 'react-day-picker'
 import { addYears, addMonths, format, isAfter, isBefore, isValid, parse } from 'date-fns'
 import { ko } from 'date-fns/locale'
