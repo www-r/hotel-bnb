@@ -1,25 +1,14 @@
 import HeaderMenu from './HeaderMenu'
 import * as S from './Header.style'
-import { UserContext } from '../../../contexts/UserProvider'
-import { useContext, useState } from 'react'
 import HeaderSearch from './HeaderSearch'
 import HeaderTags from './HeaderTags'
-import { Link } from 'react-router-dom'
+import HeaderLogo from './HeaderLogo'
 
 const Header = () => {
-  const userCtx = useContext(UserContext)
   return (
     <S.Header>
       <S.Container>
-        <Link to="/">
-          <S.LogoContainer
-            onClick={() => {
-              console.log(userCtx)
-            }}
-          >
-            로고
-          </S.LogoContainer>
-        </Link>
+        <HeaderLogo />
         <HeaderSearch />
         <HeaderMenu />
       </S.Container>
