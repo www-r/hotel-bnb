@@ -1,6 +1,5 @@
 import React from 'react'
 import usePayReady from '@/hooks/usePayReady'
-import axios from 'axios'
 import { useLocation } from 'react-router-dom'
 
 const PaymentPage = () => {
@@ -26,6 +25,7 @@ const PaymentPage = () => {
 
   const handleClick = () => {
     postKaKaoPay(kakaoPayData)
+    localStorage.setItem(`paymentRoom`, JSON.stringify(room))
   }
 
   return (
