@@ -24,8 +24,8 @@ const RoomItem = ({ room }) => {
   }
 
   const isWish = useMemo(
-    () => userCtx?.userDetailInfo?.wishLists.some((item) => item.id === room.id),
-    [userCtx.userDetailInfo.wishLists],
+    () => userCtx?.wishLists.some((id) => id === room.id),
+    [userCtx?.wishLists],
   )
 
   const handleToggleWish = (e) => {
@@ -35,12 +35,12 @@ const RoomItem = ({ room }) => {
       return alert('로그인해주세요')
     }
 
-    !isWish ? userCtx.addItemToWish(room) : userCtx.deleteItemToWish(room)
+    !isWish ? userCtx.addItemToWish(room.id) : userCtx.deleteItemToWish(room.id)
   }
 
   useEffect(() => {
-    postUserInfo(currentUser?.uid, userCtx.userDetailInfo)
-  }, [userCtx.userDetailInfo.wishLists])
+    postUserInfo(currentUser?.uid, userCtx.wishLists)
+  }, [userCtx.wishLists])
 
   return (
     <S.Container onClick={handleNavigateToRoomDetail}>
