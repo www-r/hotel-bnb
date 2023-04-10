@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import * as S from '@/components/Common/Header/HeaderMenuModal.style'
 import ModalLogin from '../Modal/ModalLogin'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import ModalSignUp from '../Modal/ModalSignUp'
 import { logout } from '../../../firebase'
 import { UserContext } from '../../../contexts/UserProvider'
@@ -24,15 +24,23 @@ const HeaderMenuModal = ({ isClicked, showModalFunc }) => {
             >
               로그아웃
             </S.ContentItem>
-            <S.ContentItem>예약 내역</S.ContentItem>
-            <S.ContentItem>위시 리스트</S.ContentItem>
-            <S.ContentItem>개인 정보 수정</S.ContentItem>
-            <S.ContentItem>결제 수단 관리</S.ContentItem>
+
+            <Link to="/account">
+              <S.ContentItem>예약 내역 </S.ContentItem>
+            </Link>
+            <Link to="/wishlist">
+              <S.ContentItem>위시 리스트</S.ContentItem>
+            </Link>
+            <Link to="/personalInfo">
+              <S.ContentItem>개인 정보 수정</S.ContentItem>
+            </Link>
           </>
         ) : (
           <S.ContentItem onClick={() => setShowLogin(true)}>로그인</S.ContentItem>
-        )}
-        <S.ContentItem onClick={() => navigate(`/admin/`)}>Room 추가</S.ContentItem>
+        )}{' '}
+        <Link to="/admin">
+          <S.ContentItem>Room 추가</S.ContentItem>
+        </Link>
       </S.ContentList>
       <ModalLogin
         open={showLogin}
