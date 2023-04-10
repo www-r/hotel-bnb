@@ -37,12 +37,12 @@ export const db = getDatabase(app)
 const starCountRef = ref(db, 'rooms/')
 export const getData = onValue(ref(db, 'rooms/'), (snapshot) => {
   const data = snapshot.val()
-  console.log('getData', data)
+  // console.log('getData', data)
   return data
 })
 export const getUsersData = onValue(ref(db, 'users/'), (snapshot) => {
   const data = snapshot.val()
-  console.log('getUsersData', data)
+  // console.log('getUsersData', data)
   return data
 })
 
@@ -97,8 +97,8 @@ export async function AddUserData(uid, email, name, phoneNumber, profileImageURL
     name: String(name),
     phoneNumber: String(phoneNumber),
     profileImageURL: profileImageURL,
-    // reservations: Array(''),
-    // wishLists: Array({}),
+    reservations: [],
+    wishLists: [],
   })
 }
 
