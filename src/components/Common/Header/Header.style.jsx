@@ -18,15 +18,18 @@ export const Container = styled.div`
   border-bottom: 1px solid #ccc;
   padding-left: 100px;
   padding-right: 100px;
+  min-width: 743px;
 `
 
 export const TagItemsContatiner = styled(Container)`
   overflow: hidden;
+  display: block;
   gap: 0 30px;
-  min-width: 625px;
-  --basic-height: 80px;
+  /* min-width: px; */
+  /* min-width: 625px; */
+  /* --basic-height: 80px; */
 
-  @media (max-width: 1800px) {
+  /* @media (max-width: 1800px) {
     flex-wrap: wrap;
     height: calc(var(--basic-height) * 2);
   }
@@ -37,7 +40,7 @@ export const TagItemsContatiner = styled(Container)`
   @media (max-width: 842px) {
     flex-wrap: wrap;
     height: calc(var(--basic-height) * 4);
-  }
+  } */
 `
 
 export const SearchContainer = styled.div`
