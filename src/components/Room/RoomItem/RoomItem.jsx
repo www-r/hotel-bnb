@@ -23,10 +23,7 @@ const RoomItem = ({ room }) => {
     })
   }
 
-  const isWish = useMemo(
-    () => userCtx?.wishLists.some((id) => id === room.id),
-    [userCtx?.wishLists],
-  )
+  const isWish = useMemo(() => userCtx?.wishList.some((id) => id === room.id), [userCtx?.wishList])
 
   const handleToggleWish = (e) => {
     e.stopPropagation()
@@ -39,8 +36,8 @@ const RoomItem = ({ room }) => {
   }
 
   useEffect(() => {
-    postUserInfo(currentUser?.uid, userCtx.wishLists)
-  }, [userCtx.wishLists])
+    postUserInfo(currentUser?.uid, userCtx.wishList)
+  }, [userCtx.wishList])
 
   return (
     <S.Container onClick={handleNavigateToRoomDetail}>
