@@ -1,8 +1,14 @@
 import React from 'react'
 import * as S from './ModalSearchByDate.style'
+import Calendar from '../Calendar'
 
 const ModalSearchByDate = ({ show }) => {
-  return <S.Container show={show}>달력 추가예정</S.Container>
+  return (
+    <S.Container show={show}>
+      <S.TitleContainer>날짜로 검색하기</S.TitleContainer>
+      <Calendar />
+    </S.Container>
+  )
 }
 
 export default ModalSearchByDate
