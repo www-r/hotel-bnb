@@ -13,10 +13,7 @@ const props = {
 const PaymentWaiting = () => {
   console.log('.......render')
   const currentUser = useContext(LoginContext)
-  const userCtx = useContext(UserContext)
-
   const location = useLocation()
-  const { postUserInfo } = usePostUserInfo()
 
   const navigate = useNavigate()
   const { postKaKaoPayApproval, data } = usePayApproval()
@@ -24,8 +21,9 @@ const PaymentWaiting = () => {
   const pg_token = params.get('pg_token')
   const tid = JSON.parse(localStorage.getItem(`tid`))
   const room = JSON.parse(localStorage.getItem(`paymentRoom`))
-  // console.log(room)
+  const { postUserInfo } = usePostUserInfo()
 
+  // console.log(room)
   // console.log('tid', tid)
   // console.log('wait data', data)
   // console.log('pg_token', pg_token)
@@ -39,21 +37,27 @@ const PaymentWaiting = () => {
   }
 
   const reservation = {
-    title: room.title,
-    price: room.price,
-    reservationDays: '날짜',
+    id: room.id,
+    reservationDays: '오늘',
+  }
+
+  const addItemToReservation = async () => {
+    const prev = JSON.parse(localStorage.getItem(`${currentUser.uid}-reservation`))
+    const reservations = [...prev, reservation]
+    postUserInfo(currentUser?.uid, reservations)
   }
 
   useEffect(() => {
-    userCtx.addItemToReservation(reservation)
     postKaKaoPayApproval(kakaoPayData)
   }, [])
 
   useEffect(() => {
-    if (currentUser) {
-      postUserInfo(currentUser?.uid, userCtx.userDetailInfo)
-    }
-  }, [userCtx.userDetailInfo.reservations, currentUser])
+    if (currentUser) addItemToReservation(reservation)
+  }, [currentUser])
+
+  // useEffect(() => {
+  //   if (currentUser) postUserInfo(currentUser?.uid, userCtx.reservations)
+  // }, [userCtx.reservations, currentUser])
 
   useEffect(() => {
     if (data) {
