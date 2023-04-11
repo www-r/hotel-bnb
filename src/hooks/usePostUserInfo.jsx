@@ -6,15 +6,16 @@ const usePostUserInfo = () => {
   const [error, setError] = useState(false)
   const [loading, setLoading] = useState(false)
 
-  const postUserInfo = async (uid, wishLists) => {
-    // console.log('uid', uid)
-    // console.log('wishList', wishLists)
+  const postUserInfo = async (uid, info) => {
+    console.log('userDetailInfo', info)
+
     try {
       setLoading(true)
-      const res = await axiosFirebase.patch(`/users/${uid}.json`, { wishLists })
+      const key = info.some((el) => typeof el === 'object') ? 'reservations' : 'wishList'
+      const res = await axiosFirebase.patch(`/users/${uid}.json`, { [key]: info })
       // Object.values(res.data).flat()
       if (res.data) {
-        const items = res.data.wishLists
+        const items = res.data
         setData(items)
       } else {
         setData(null)

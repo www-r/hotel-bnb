@@ -4,20 +4,19 @@ import RoomList from '@/components/Room/RoomList/RoomList'
 import Header from '@/components/Common/Header/Header'
 import MapButton from '@/components/Map/MapButton/MapButton'
 import { RoomsContext } from '@/contexts/RoomsProvider'
+import { UserContext } from '@/contexts/UserProvider'
 
 const MainPage = () => {
   const [movePage, setMovePage] = useState('/map')
 
   const roomsCtx = useContext(RoomsContext)
-  const { rooms, loading, error } = roomsCtx
 
-  if (loading) return <div>loading...</div>
-  if (error) return <div>에러가 발생</div>
+  const { rooms, loading, error } = roomsCtx
 
   return (
     <>
       <Header />
-      <RoomList rooms={rooms} />
+      <RoomList rooms={rooms} loading={loading} error={error} />
       <MapButton movePage={movePage} />
     </>
   )

@@ -29,6 +29,7 @@ const PaymentPage = () => {
 
   const handleClick = () => {
     postKaKaoPay(kakaoPayData)
+    localStorage.setItem(`paymentRoom`, JSON.stringify(room))
   }
 
   return (
