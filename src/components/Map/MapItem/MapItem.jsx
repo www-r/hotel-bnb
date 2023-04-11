@@ -9,7 +9,7 @@ import { UserContext } from '@/contexts/UserProvider'
 const MapItem = ({ room, setSelectedMarker }) => {
   const userCtx = useContext(UserContext)
 
-  const isWish = userCtx.wishLists.some((item) => item.id === room.id)
+  const isWish = userCtx.wishList.some((id) => id === room.id)
 
   return (
     <OverlayViewF

@@ -21,7 +21,7 @@ export const MainContainer = styled.div``
 export const Main = styled.main`
   padding: 0 8px;
 `
-export const WishlistsContainer = styled.ul`
+export const wishListContainer = styled.ul`
   display: flex;
 `
 export const WishlistItem = styled.li`

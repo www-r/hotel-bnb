@@ -10,7 +10,7 @@ const props = {
 const PaymentFail = () => {
   return (
     <>
-      <PayRedirectPage {...props} />;
+      <PayRedirectPage {...props} />
     </>
   )
 }

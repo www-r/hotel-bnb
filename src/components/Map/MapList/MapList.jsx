@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { GoogleMap, LoadScript, InfoWindow } from '@react-google-maps/api'
 
 import RoomItem from '@/components/Room/RoomItem/RoomItem'
-import UserProvider from '@/contexts/UserProvider'
 import MapItem from '../MapItem/MapItem'
 import * as S from '@/components/Map/Maplist/MapList.style'
+import useClickOutside from '@/hooks/useClickOutside'
 
 const containerStyle = {
   width: '100vw',
@@ -17,6 +17,14 @@ const center = {
 }
 
 const MapList = ({ rooms }) => {
+  const ModalRef = useRef(null)
+
+  // useClickOutside(ModalRef, () => {
+  //   setSelectedMarker(null)
+  // })
+
+  console.log(ModalRef.current)
+
   const [selectedMarker, setSelectedMarker] = useState(null)
 
   return (
@@ -33,7 +41,9 @@ const MapList = ({ rooms }) => {
               options={{ maxWidth: 320 }}
             >
               <RoomItem room={selectedMarker} setSelectedMarker={setSelectedMarker}>
-                <button onClick={() => setSelectedMarker(null)}>close</button>
+                <button ref={ModalRef} onClick={() => setSelectedMarker(null)}>
+                  close
+                </button>
               </RoomItem>
             </InfoWindow>
           )}

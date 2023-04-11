@@ -7,47 +7,62 @@ export const UserContext = createContext({
   name: '',
   phoneNumber: '',
   profileImageURL: '',
-  reservations: [],
-  wishLists: [],
-  addItemToWish: (item) => {},
-  deleteItemToWish: (item) => {},
+  reservations: [
+    {
+      id: '',
+      reservationDays: 0,
+    },
+  ],
+  wishList: [],
+  addItemToWish: (roomId) => {},
+  deleteItemToWish: (roomId) => {},
 })
 
-const initalWishState = []
+const initialWishState = []
 
 const wishReducer = (state, action) => {
+  console.log('state', state, 'action', action)
   switch (action.type) {
     case 'ADD_WISH':
       return [...state, action.payload]
+
     case 'DELETE_WISH':
-      return state.filter((item) => item.id !== action.payload.id)
+      return state.filter((id) => id !== action.payload)
+
     case 'INIT_WISH':
       return action.payload
+
+    default:
+      return state
   }
 }
 
 const UserProvider = ({ children }) => {
   const currentUser = useContext(LoginContext)
-  const [wishState, dispatchWishAction] = useReducer(wishReducer, initalWishState)
-  // console.log('currentUser', currentUser)
+  const [wishState, dispatchWishAction] = useReducer(wishReducer, initialWishState)
+
   // 현재 로그인된 유저 정보 가져옴
   const { data: user } = useGetData(`/users/${currentUser?.uid}`)
 
   // 로그인된 유저의 wishList를 가져와 렌더
   useEffect(() => {
-    if (user?.wishLists) {
-      dispatchWishAction({ type: 'INIT_WISH', payload: user.wishLists })
+    if (user?.wishList) {
+      dispatchWishAction({ type: 'INIT_WISH', payload: user.wishList })
     }
-  }, [user?.wishLists])
+  }, [user?.wishListm])
 
-  // 업데이트 될때마다 firebase에 저장
+  useEffect(() => {
+    if (user?.reservations) {
+      localStorage.setItem(`${currentUser.uid}-reservation`, JSON.stringify(user.reservations))
+    }
+  }, [user?.reservations])
 
-  const addItemToWishHandler = (item) => {
-    dispatchWishAction({ type: 'ADD_WISH', payload: item })
+  const addItemToWishHandler = (roomId) => {
+    dispatchWishAction({ type: 'ADD_WISH', payload: roomId })
   }
 
-  const deleteItemToWishHandler = (item) => {
-    dispatchWishAction({ type: 'DELETE_WISH', payload: item })
+  const deleteItemToWishHandler = (roomId) => {
+    dispatchWishAction({ type: 'DELETE_WISH', payload: roomId })
   }
 
   const userContext = {
@@ -55,15 +70,11 @@ const UserProvider = ({ children }) => {
     name: user?.name,
     phoneNumber: user?.phoneNumber,
     profileImageURL: user?.profileImageURL,
-    reservations: [],
-    wishLists: wishState,
+    reservations: user?.reservations,
+    wishList: wishState,
     addItemToWish: addItemToWishHandler,
     deleteItemToWish: deleteItemToWishHandler,
   }
-
-  // console.log('wishState', wishState)
-
-  // usePostUserInfo(`${currentUser?.uid}`, userContext.wishLists)
 
   return <UserContext.Provider value={userContext}>{children}</UserContext.Provider>
 }
