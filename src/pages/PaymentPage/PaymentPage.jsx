@@ -1,15 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import usePayReady from '@/hooks/usePayReady'
 import { useLocation } from 'react-router-dom'
 import * as S from './PaymentPage.style'
 import HeaderLogo from '../../components/Common/Header/HeaderLogo'
 import Footer from '@/components/Common/Footer'
-import { IconKakaoPay, IconNotice, IconPrevious, ImagePayButton } from '../../assets/images'
+import {
+  IconKakaoPay,
+  IconNotice,
+  IconPrevious,
+  IconStar,
+  ImagePayButton,
+} from '../../assets/images'
+import { BiBadgeCheck } from 'react-icons/bi'
 
 const PaymentPage = () => {
   const location = useLocation()
   const room = location.state
   console.log('room', location.state)
+
+  const [value, setValue] = useState('')
 
   const { postKaKaoPay } = usePayReady()
 
@@ -28,8 +37,20 @@ const PaymentPage = () => {
   }
 
   const handleClick = () => {
-    postKaKaoPay(kakaoPayData)
-    localStorage.setItem(`paymentRoom`, JSON.stringify(room))
+    if (!value.text) {
+      return
+    } else if (confirm('예약 확정 하시겠습니까?')) {
+      postKaKaoPay(kakaoPayData)
+      localStorage.setItem(`paymentRoom`, JSON.stringify(room))
+    }
+  }
+
+  const handleChange = (e) => {
+    setValue({
+      ...value,
+      [e.target.name]: e.target.value,
+    })
+    console.log(value.text)
   }
 
   return (
@@ -83,6 +104,8 @@ const PaymentPage = () => {
               </S.RequiredInformDiv>
               <textarea
                 style={{ resize: 'vertical', width: '100%', padding: '10px', fontSize: '16px' }}
+                onChange={handleChange}
+                name="text"
               />
             </S.RequiredDiv>
             <S.RefundDiv style={{ wordBreak: 'keep-all' }}>
@@ -113,12 +136,59 @@ const PaymentPage = () => {
               또한, 개정된 이용 약관과 결제 서비스 약관 및 개인정보 처리방침에도 동의합니다.
             </S.NoticePaymentDiv>
             <S.SubmitButtonDiv>
-              <S.SubmitButton onClick={handleClick}>예약 하기</S.SubmitButton>
+              <S.SubmitButton state={value.text} onClick={handleClick}>
+                예약 하기
+              </S.SubmitButton>
             </S.SubmitButtonDiv>
           </S.BookInfoWrapper>
           {/* 결제 정보 */}
           <S.PriceInfoWrapper>
-            <S.PriceInfoContainer></S.PriceInfoContainer>
+            <S.PriceTitleContent>
+              <S.TitleImageContainer>
+                <S.TitleImage src={room.thumbnail} />
+              </S.TitleImageContainer>
+              <S.TitleInformContainer>
+                <S.PriceTitle>
+                  <h1>{room.tags ? room.tags : '없음'}</h1>
+                </S.PriceTitle>
+                <S.PriceRoomTitle>
+                  <BiBadgeCheck />
+                  <p>{room.title}</p>
+                </S.PriceRoomTitle>
+                <S.PriceRoomRate>
+                  <IconStar />
+                  <p>{room.rating} 후기(몇 개)</p>
+                </S.PriceRoomRate>
+              </S.TitleInformContainer>
+            </S.PriceTitleContent>
+            <S.PriceDetailDiv>
+              <S.PriceDetailTitle>요금 세부 정보</S.PriceDetailTitle>
+              <S.PriceDetialContent>
+                <S.BeforeCalc>₩{room.price.toLocaleString()} x 숙박일</S.BeforeCalc>
+                <S.AfterCalc>계산된 금액</S.AfterCalc>
+              </S.PriceDetialContent>
+              <S.PriceDetialContent>
+                <S.BeforeCalc>서비스 수수료</S.BeforeCalc>
+                <S.AfterCalc>계산된 금액의 7%</S.AfterCalc>
+              </S.PriceDetialContent>
+              <S.PriceDetialContent>
+                <S.BeforeCalc>세금</S.BeforeCalc>
+                <S.AfterCalc>계산된 금액의 2%</S.AfterCalc>
+              </S.PriceDetialContent>
+              <S.FinallyCalc>
+                <S.PriceDetialContent>
+                  <S.BeforeCalc>
+                    <strong>총 합계</strong>
+                  </S.BeforeCalc>
+                  <S.AfterCalc>
+                    <strong>위의 3가지를 모두 합친 금액</strong>
+                  </S.AfterCalc>
+                </S.PriceDetialContent>
+              </S.FinallyCalc>
+              <S.PriceNotice>
+                해외에서 결제가 처리되기 때문에 카드 발행사에서 추가 수수료를 부과할 수 있습니다.
+              </S.PriceNotice>
+            </S.PriceDetailDiv>
           </S.PriceInfoWrapper>
         </S.ContentContainer>
       </S.Container>
