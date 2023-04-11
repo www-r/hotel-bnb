@@ -20,17 +20,17 @@ const ModalSearch = ({ state, click }) => {
         </S.ContentContainer>
         <S.ContentContainer>
           <S.ContentWrapper show={state} onClick={handleClick}>
-            <S.Content onClick={() => click('Location')}>
+            <S.Content onClick={() => click('Location')} isFocused={state === 'Location'}>
               <p>여행지</p>
               <S.NoticeSpan>여행지 검색</S.NoticeSpan>
             </S.Content>
             <S.Line></S.Line>
-            <S.Content onClick={() => click('Date')}>
+            <S.Content onClick={() => click('Date')} isFocused={state === 'Date'}>
               <p>체크인</p>
               <S.NoticeSpan>날짜 추가</S.NoticeSpan>
             </S.Content>
             <S.Line></S.Line>
-            <S.Content onClick={() => click('Date')}>
+            <S.Content onClick={() => click('Date')} isFocused={state === 'Date'}>
               <p>체크아웃</p>
               <S.NoticeSpan>날짜 추가</S.NoticeSpan>
               <S.SearchIconContainer>

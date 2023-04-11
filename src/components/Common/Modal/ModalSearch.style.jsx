@@ -72,6 +72,7 @@ export const Content = styled.div`
   height: 100%;
   border-radius: 50px;
   padding: 14px 24px;
+  /* background-color: ${({ isFocused }) => (isFocused ? '#fff' : '#ebebeb')}; */
   &:hover {
     background-color: #ebebeb;
   }
