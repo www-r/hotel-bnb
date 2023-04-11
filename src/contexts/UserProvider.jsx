@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer, useEffect, useState } from 'react'
+import { createContext, useContext, useReducer, useEffect } from 'react'
 import useGetData from '@/hooks/useGetData'
 import { LoginContext } from '@/contexts/LoginProvider'
 
@@ -7,69 +7,62 @@ export const UserContext = createContext({
   name: '',
   phoneNumber: '',
   profileImageURL: '',
-  userDetailInfo: {
-    reservations: [],
-    wishLists: [],
-  },
-  addItemToWish: (item) => {},
-  deleteItemToWish: (item) => {},
-  addItemToReservation: (item) => {},
+  reservations: [
+    {
+      id: '',
+      reservationDays: 0,
+    },
+  ],
+  wishList: [],
+  addItemToWish: (roomId) => {},
+  deleteItemToWish: (roomId) => {},
 })
 
-const initalState = { reservations: [], wishLists: [] }
+const initialWishState = []
 
-const userDetailInfoReducer = (state, action) => {
+const wishReducer = (state, action) => {
   console.log('state', state, 'action', action)
   switch (action.type) {
     case 'ADD_WISH':
-      return { ...state, wishLists: [...state.wishLists, action.payload.wishLists] }
+      return [...state, action.payload]
+
     case 'DELETE_WISH':
-      return {
-        ...state,
-        wishLists: state.wishLists.filter((item) => item.id !== action.payload.wishLists.id),
-      }
+      return state.filter((id) => id !== action.payload)
+
     case 'INIT_WISH':
       return action.payload
-    case 'ADD_RESERVATION':
-      return { ...state, reservations: [...state.reservations, action.payload.reservations] }
+
+    default:
+      return state
   }
 }
 
 const UserProvider = ({ children }) => {
   const currentUser = useContext(LoginContext)
-  // const [reservationState, setReservationState] = useState({
-  //   title: null,
-  //   price: 0,
-  //   reservationDays: 0,
-  // })
-  const [userDetailState, dispatchUserDetailInfoAction] = useReducer(
-    userDetailInfoReducer,
-    initalState,
-  )
-  // console.log('currentUser', currentUser)
+  const [wishState, dispatchWishAction] = useReducer(wishReducer, initialWishState)
+
   // 현재 로그인된 유저 정보 가져옴
   const { data: user } = useGetData(`/users/${currentUser?.uid}`)
 
   // 로그인된 유저의 wishList를 가져와 렌더
   useEffect(() => {
-    if (user?.userDetailInfo?.wishLists) {
-      // console.log('userDetailInfo', user.userDetailInfo)
-      dispatchUserDetailInfoAction({ type: 'INIT_WISH', payload: user.userDetailInfo })
+    if (user?.wishList) {
+      dispatchWishAction({ type: 'INIT_WISH', payload: user.wishList })
     }
-  }, [user?.userDetailInfo?.wishLists])
+  }, [user?.wishListm])
 
-  // 업데이트 될때마다 firebase에 저장
+  useEffect(() => {
+    if (user?.reservations) {
+      localStorage.setItem(`${currentUser.uid}-reservation`, JSON.stringify(user.reservations))
+    }
+  }, [user?.reservations])
 
-  const addItemToWishHandler = (item) => {
-    dispatchUserDetailInfoAction({ type: 'ADD_WISH', payload: { wishLists: item } })
+  const addItemToWishHandler = (roomId) => {
+    dispatchWishAction({ type: 'ADD_WISH', payload: roomId })
   }
 
-  const deleteItemToWishHandler = (item) => {
-    dispatchUserDetailInfoAction({ type: 'DELETE_WISH', payload: { wishLists: item } })
-  }
-
-  const addItemToReservationHandler = (item) => {
-    dispatchUserDetailInfoAction({ type: 'ADD_RESERVATION', payload: { reservations: item } })
+  const deleteItemToWishHandler = (roomId) => {
+    dispatchWishAction({ type: 'DELETE_WISH', payload: roomId })
   }
 
   const userContext = {
@@ -77,16 +70,11 @@ const UserProvider = ({ children }) => {
     name: user?.name,
     phoneNumber: user?.phoneNumber,
     profileImageURL: user?.profileImageURL,
-    userDetailInfo: {
-      reservations: userDetailState.reservations,
-      wishLists: userDetailState.wishLists,
-    },
+    reservations: user?.reservations,
+    wishList: wishState,
     addItemToWish: addItemToWishHandler,
     deleteItemToWish: deleteItemToWishHandler,
-    addItemToReservation: addItemToReservationHandler,
   }
-
-  // usePostUserInfo(`${currentUser?.uid}`, userContext.wishLists)
 
   return <UserContext.Provider value={userContext}>{children}</UserContext.Provider>
 }
