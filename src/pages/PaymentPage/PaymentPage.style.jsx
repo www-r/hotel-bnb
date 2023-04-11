@@ -37,12 +37,12 @@ export const BookInfoWrapper = styled.div`
 export const PriceInfoWrapper = styled.div`
   position: sticky;
   top: 80px;
-  border: 1px solid;
   width: 41.666%;
   margin-left: 8.333%;
   height: 500px;
 `
 
+// 예약 정보 Wrapper
 export const BookTitleDiv = styled.div`
   font-size: 22px;
   margin-bottom: 20px;
@@ -133,4 +133,9 @@ export const SubmitButton = styled.button`
   background-color: var(--color-main);
   color: #fff;
   border-radius: 10px;
+`
+
+// 결제정보 Wrapper
+export const PriceTitleCont = styled.div`
+  /* border: 1px solid; */
 `

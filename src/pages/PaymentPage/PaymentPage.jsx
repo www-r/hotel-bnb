@@ -44,6 +44,7 @@ const PaymentPage = () => {
           <p>예약 하기</p>
         </S.TitleContainer>
         <S.ContentContainer>
+          {/* 예약 정보 */}
           <S.BookInfoWrapper>
             <S.BookTitleDiv>예약 정보</S.BookTitleDiv>
             <S.BookDateDiv>
@@ -114,7 +115,10 @@ const PaymentPage = () => {
               <S.SubmitButton onClick={handleClick}>예약 하기</S.SubmitButton>
             </S.SubmitButtonDiv>
           </S.BookInfoWrapper>
-          <S.PriceInfoWrapper></S.PriceInfoWrapper>
+          {/* 결제 정보 */}
+          <S.PriceInfoWrapper>
+            <S.PriceInfoContainer></S.PriceInfoContainer>
+          </S.PriceInfoWrapper>
         </S.ContentContainer>
       </S.Container>
       <Footer />
