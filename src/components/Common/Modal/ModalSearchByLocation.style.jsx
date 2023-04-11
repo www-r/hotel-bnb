@@ -13,8 +13,10 @@ export const Container = styled.div`
 `
 
 export const TitleContainer = styled.div`
-  margin-left: 35px;
   margin-bottom: 10px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
 `
 
 export const Wrapper = styled.div`
