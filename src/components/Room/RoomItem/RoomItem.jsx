@@ -46,7 +46,7 @@ const RoomItem = ({ room }) => {
       </S.ImgContainer>
       <S.Icon onClick={handleToggleWish}>
         <Heart
-          fill={currentUser && isWish ? 'var(--color-main)' : 'var(--color-light-grey)'}
+          fill={currentUser && isWish ? 'var(--color-heart)' : 'var(--color-light-grey)'}
           width={24}
           height={24}
         />

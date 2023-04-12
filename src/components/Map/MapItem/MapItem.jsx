@@ -19,7 +19,7 @@ const MapItem = ({ room, setSelectedMarker }) => {
     >
       <S.Button onClick={() => setSelectedMarker(room)}>
         <h1>￦{formatPrice(room.price)}</h1>
-        {isWish && <Heart fill={'var(--color-main)'} width={16} height={16} />}
+        {isWish && <Heart fill={'var(--color-heart)'} width={16} height={16} />}
       </S.Button>
     </OverlayViewF>
   )
