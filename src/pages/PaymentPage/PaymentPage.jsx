@@ -168,21 +168,21 @@ const PaymentPage = () => {
                 <S.AfterCalc>계산된 금액</S.AfterCalc>
               </S.PriceDetialContent>
               <S.PriceDetialContent>
-                <S.BeforeCalc>서비스 수수료</S.BeforeCalc>
-                <S.AfterCalc>계산된 금액의 7%</S.AfterCalc>
+                <p>서비스 수수료</p>
+                <p>계산된 금액의 7%</p>
               </S.PriceDetialContent>
               <S.PriceDetialContent>
-                <S.BeforeCalc>세금</S.BeforeCalc>
-                <S.AfterCalc>계산된 금액의 2%</S.AfterCalc>
+                <p>세금</p>
+                <p>계산된 금액의 2%</p>
               </S.PriceDetialContent>
               <S.FinallyCalc>
                 <S.PriceDetialContent>
-                  <S.BeforeCalc>
+                  <p>
                     <strong>총 합계</strong>
-                  </S.BeforeCalc>
-                  <S.AfterCalc>
+                  </p>
+                  <p>
                     <strong>위의 3가지를 모두 합친 금액</strong>
-                  </S.AfterCalc>
+                  </p>
                 </S.PriceDetialContent>
               </S.FinallyCalc>
               <S.PriceNotice>
