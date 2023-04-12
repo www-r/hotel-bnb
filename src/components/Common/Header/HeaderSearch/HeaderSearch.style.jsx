@@ -1,12 +1,9 @@
 import styled from '@emotion/styled'
 
 export const Container = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50vw;
-  transform: translate(-50%, -50%);
   width: 360px;
   height: 50px;
+  margin: 0 auto;
 
   display: grid;
   grid-template-columns: 1fr 1px 1fr 30px;

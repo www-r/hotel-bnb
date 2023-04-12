@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import * as S from './ModalSignUp.style'
-import { IconExit } from '../../../assets/images'
-import { CreateUser, AddUserData } from '../../../firebase'
+import * as S from './SignUp.style'
+import { IconExit } from '../../assets/images'
+import { CreateUser, AddUserData } from '../../firebase'
 
 const RegexID = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i
 const RegexPW = /^(?=.*[a-zA-Z\d])[a-zA-Z\d]{8,}$/

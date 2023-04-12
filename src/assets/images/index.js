@@ -14,6 +14,7 @@ import { ReactComponent as IconHeaderSearch } from '@/assets/images/IconHeaderSe
 import { ReactComponent as IconPrevious } from '@/assets/images/IconPrevious.svg'
 import { ReactComponent as IconKakaoPay } from '@/assets/images/IconKakaoPay.svg'
 import { ReactComponent as IconNotice } from '@/assets/images/IconNotice.svg'
+import { ReactComponent as IconStar } from '@/assets/images/IconStar.svg'
 
 import ImagePayButton from '@/assets/images/ImagePayButton.jpg'
 
@@ -33,4 +34,5 @@ export {
   IconKakaoPay,
   ImagePayButton,
   IconNotice,
+  IconStar,
 }

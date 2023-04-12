@@ -31,18 +31,20 @@ export const ContentContainer = styled.div`
 `
 
 export const BookInfoWrapper = styled.div`
-  /* border: 1px solid; */
   width: 50%;
 `
 export const PriceInfoWrapper = styled.div`
   position: sticky;
   top: 80px;
-  border: 1px solid;
   width: 41.666%;
   margin-left: 8.333%;
-  height: 500px;
+  padding: 24px;
+  height: 520px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
 `
 
+// 예약 정보 Wrapper
 export const BookTitleDiv = styled.div`
   font-size: 22px;
   margin-bottom: 20px;
@@ -130,7 +132,67 @@ export const SubmitButtonDiv = styled.div`
 export const SubmitButton = styled.button`
   width: 140px;
   height: 60px;
-  background-color: var(--color-main);
+  background-color: ${({ state }) => (state ? 'var(--color-main)' : '#ddd')};
+  cursor: ${({ state }) => (state ? 'pointer' : 'not-allowed')};
   color: #fff;
   border-radius: 10px;
 `
+
+// export
+
+// 결제정보 Wrapper
+export const PriceTitleContent = styled.div`
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+`
+
+export const TitleImageContainer = styled.div``
+
+export const TitleImage = styled.img`
+  width: 124px;
+  height: 106px;
+  border-radius: 8px;
+`
+
+export const TitleInformContainer = styled.div`
+  position: relative;
+`
+
+export const PriceTitle = styled.div`
+  font-size: 12px;
+  color: #717171;
+`
+export const PriceRoomTitle = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #222;
+`
+
+export const PriceRoomRate = styled.div`
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 15px;
+
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+`
+
+export const PriceDetailDiv = styled(PaymentDiv)``
+export const PriceDetailTitle = styled(PaymentTitle)``
+export const PriceDetialContent = styled(RuleInformDiv)`
+  display: flex;
+  justify-content: space-between;
+`
+export const BeforeCalc = styled.div``
+export const AfterCalc = styled.div``
+
+export const FinallyCalc = styled(PaymentDiv)`
+  padding-top: 10px;
+  font-weight: bold;
+`
+export const PriceNotice = styled(PaymentDiv)``

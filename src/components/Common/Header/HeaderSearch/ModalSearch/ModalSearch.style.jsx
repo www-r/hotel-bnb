@@ -72,17 +72,27 @@ export const Content = styled.div`
   height: 100%;
   border-radius: 50px;
   padding: 14px 24px;
+  /* background-color: ${({ isFocused }) => (isFocused ? '#fff' : '#ebebeb')}; */
   &:hover {
     background-color: #ebebeb;
   }
   cursor: pointer;
 `
 
+export const NoticeInput = styled.input`
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-size: 14px;
+  color: #717171;
+  margin-left: 3px;
+`
 export const NoticeSpan = styled.span`
   font-size: 14px;
   color: #717171;
   margin-left: 3px;
 `
+
 export const Line = styled.span`
   width: 1px;
   margin-top: 20px;
@@ -101,4 +111,5 @@ export const SearchIconContainer = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 25px;
+  z-index: 100;
 `

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import * as S from './ModalSearchByLocation.style'
-import { RoomsContext } from '../../../contexts/RoomsProvider'
+import { RoomsContext } from '@/contexts/RoomsProvider'
 import { useNavigate } from 'react-router-dom'
 
 const ModalSearchByLocation = ({ show, click }) => {

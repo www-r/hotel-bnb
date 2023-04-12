@@ -9,5 +9,12 @@ export const Container = styled.div`
   border-radius: 15px;
   padding: 20px;
   width: 800px;
-  height: 550px;
+  height: 450px;
+`
+
+export const TitleContainer = styled.div`
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
 `

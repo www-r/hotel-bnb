@@ -8,13 +8,20 @@ import * as S from './SearchPage.style'
 const SearchPage = () => {
   const location = useLocation()
   const rooms = location.state.res
+  console.log(location.state)
 
   return (
     <>
       <Header />
       <S.PageContainer>
-        <RoomList rooms={rooms} />
-        <MapList rooms={rooms} />
+        {rooms.length !== 0 ? (
+          <>
+            <RoomList rooms={rooms} />
+            <MapList rooms={rooms} />
+          </>
+        ) : (
+          '검색된 방이 없습니다'
+        )}
       </S.PageContainer>
     </>
   )

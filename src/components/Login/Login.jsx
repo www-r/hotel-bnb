@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { GoogleFavicon, IconExit } from '../../../assets/images'
-import * as S from './ModalLogin.style'
-import { AddUserData, app, loginEmail, loginGoogle } from '../../../firebase'
+import { GoogleFavicon, IconExit } from '@/assets/images'
+import * as S from './Login.style'
+import { AddUserData, app, loginEmail, loginGoogle } from '../../firebase'
 
 const ModalLogin = (props) => {
   const { open, closeFunc, openSignUp, showModalFunc } = props
