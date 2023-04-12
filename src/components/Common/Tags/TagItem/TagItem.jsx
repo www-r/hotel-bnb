@@ -1,5 +1,5 @@
 import React from 'react'
-import * as S from './HeaderTagItem.style'
+import * as S from './TagItem.style'
 
 const HeaderTagItem = ({ text, img }) => {
   return (

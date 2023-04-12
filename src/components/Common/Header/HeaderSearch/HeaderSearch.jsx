@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import * as S from './HeaderSearch.style'
-import { IconHeaderSearch } from '../../../assets/images'
-import ModalSearch from '../Modal/ModalSearch'
+import { IconHeaderSearch } from '../../../../assets/images'
+import ModalSearch from './ModalSearch/ModalSearch'
 
 const HeaderSearch = () => {
   const [showModal, setShowModal] = useState('')

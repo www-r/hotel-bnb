@@ -1,14 +1,14 @@
-import HeaderMenu from './HeaderMenu'
+import HeaderMenu from './HeaderMenu/HeaderMenu'
 import * as S from './Header.style'
-import HeaderSearch from './HeaderSearch'
-import HeaderTags from './HeaderTags'
-import HeaderLogo from './HeaderLogo'
+import HeaderSearch from '@/components/Common/Header/HeaderSearch/HeaderSearch'
+import HeaderTags from '@/components/Common/Tags/TagList'
+import Logo from '@/components/Common/Logo'
 
 const Header = () => {
   return (
     <S.Header>
       <S.Container>
-        <HeaderLogo />
+        <Logo />
         <HeaderSearch />
         <HeaderMenu />
       </S.Container>

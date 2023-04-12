@@ -1,6 +1,6 @@
 import React from 'react'
 import * as S from './ModalSearchByDate.style'
-import Calendar from '../Calendar'
+import Calendar from '@/components/Common/Calendar'
 
 const ModalSearchByDate = ({ show }) => {
   return (

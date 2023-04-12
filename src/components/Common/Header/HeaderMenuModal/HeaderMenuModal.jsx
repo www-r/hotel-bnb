@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react'
-import * as S from '@/components/Common/Header/HeaderMenuModal.style'
-import ModalLogin from '../Modal/ModalLogin'
+import * as S from './HeaderMenuModal.style'
+import ModalLogin from '@/components/Login/Login'
 import { useNavigate, Link } from 'react-router-dom'
-import ModalSignUp from '../Modal/ModalSignUp'
-import { logout } from '../../../firebase'
-import { UserContext } from '../../../contexts/UserProvider'
+import ModalSignUp from '@/components/Signup/Signup'
+import { logout } from '../../../../firebase'
+import { UserContext } from '@/contexts/UserProvider'
 
 const HeaderMenuModal = ({ isClicked, showModalFunc }) => {
   const [showLogin, setShowLogin] = useState(false)

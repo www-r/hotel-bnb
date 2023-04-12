@@ -1,5 +1,5 @@
 import React from 'react'
-import HeaderTagItem from './HeaderTagItem'
+import HeaderTagItem from './TagItem/TagItem'
 import { TagsData } from '../../../constants/tags'
 import Slider from 'react-slick'
 import styled from 'styled-components'
@@ -19,12 +19,11 @@ const HeaderTags = () => {
 }
 
 const settings = {
-  dots: false,
+  className: 'center',
   infinite: false,
-  speed: 500,
+  centerPadding: '60px',
   slidesToShow: 10,
-  slidesToScroll: 6,
-  // variableWidth: true,
+  swipeToSlide: true,
 }
 
 const StyledSlider = styled(Slider)``

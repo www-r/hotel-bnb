@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react'
 import { IconHeaderMenu, IconHeaderAuthor } from '@/assets/images'
 import * as S from './HeaderMenu.style'
-import HeaderMenuModal from './HeaderMenuModal'
-import { UserContext } from '../../../contexts/UserProvider'
+import HeaderMenuModal from '@/components/Common/Header/HeaderMenuModal/HeaderMenuModal'
+import { UserContext } from '@/contexts/UserProvider'
 
 const HeaderMenu = () => {
   const [isClicked, setIsClicked] = useState(false)

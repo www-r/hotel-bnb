@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import usePayReady from '@/hooks/usePayReady'
 import { useLocation } from 'react-router-dom'
 import * as S from './PaymentPage.style'
-import HeaderLogo from '../../components/Common/Header/HeaderLogo'
+import Logo from '../../components/Common/Logo'
 import Footer from '@/components/Common/Footer'
 import {
   IconKakaoPay,
@@ -57,7 +57,7 @@ const PaymentPage = () => {
     <>
       <S.Container>
         <S.Header>
-          <HeaderLogo />
+          <Logo />
         </S.Header>
         <S.TitleContainer>
           <S.PreviousButton>
