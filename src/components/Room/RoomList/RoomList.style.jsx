@@ -5,7 +5,7 @@ export const Main = styled.main`
 `
 
 export const Container = styled.section`
-  max-width: 1760px;
+  min-width: 760px;
   margin: 0 auto;
   display: grid;
   gap: 40px;
