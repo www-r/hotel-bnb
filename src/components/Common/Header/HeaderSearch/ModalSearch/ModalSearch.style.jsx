@@ -91,6 +91,7 @@ export const NoticeSpan = styled.span`
   font-size: 14px;
   color: #717171;
   margin-left: 3px;
+  font-weight: ${({ bold }) => (bold ? 'bold' : 'normal')};
 `
 
 export const Line = styled.span`

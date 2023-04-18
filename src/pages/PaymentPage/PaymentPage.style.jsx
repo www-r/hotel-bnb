@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 
 export const Container = styled.div`
-  width: 1280px;
+  min-width: 743px;
   margin: 0 auto;
   padding: 0 80px;
 `
@@ -39,7 +39,7 @@ export const PriceInfoWrapper = styled.div`
   width: 41.666%;
   margin-left: 8.333%;
   padding: 24px;
-  height: 520px;
+  height: 40%;
   border: 1px solid #ddd;
   border-radius: 12px;
 `
@@ -155,9 +155,7 @@ export const TitleImage = styled.img`
   border-radius: 8px;
 `
 
-export const TitleInformContainer = styled.div`
-  position: relative;
-`
+export const TitleInformContainer = styled.div``
 
 export const PriceTitle = styled.div`
   font-size: 12px;
@@ -169,13 +167,11 @@ export const PriceRoomTitle = styled.div`
   gap: 10px;
   font-size: 14px;
   color: #222;
+  margin-bottom: 50px;
 `
 
 export const PriceRoomRate = styled.div`
-  position: absolute;
-  bottom: 0;
   margin-bottom: 15px;
-
   display: flex;
   align-items: center;
   gap: 5px;

@@ -87,11 +87,12 @@ const style = css`
     --font-bold: 800;
 
     /** Color */
-    --color-main: #ff385c;
+    --color-main: #4266db;
     --color-footer-grey: #f7f7f7;
     --color-light-grey: #ddd;
     --color-white: #fff;
     --color-black: #222;
+    --color-heart: #ff385c;
 
     /** Border */
     --border-button-radius: 26px;

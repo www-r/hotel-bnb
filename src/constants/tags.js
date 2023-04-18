@@ -38,7 +38,7 @@ export const TagsData = [
   ,
   {
     img: '/src/assets/images/TagIcons/Camping.jpg',
-    text: '캠핑',
+    text: '야영',
   },
   {
     img: '/src/assets/images/TagIcons/Ryokan.jpg',
