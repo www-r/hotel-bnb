@@ -18,3 +18,8 @@ export const TitleContainer = styled.div`
   font-size: 20px;
   font-weight: bold;
 `
+
+export const NightDayConatiner = styled.div`
+  text-align: center;
+  font-weight: bold;
+`
