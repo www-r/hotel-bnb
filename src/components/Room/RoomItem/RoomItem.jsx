@@ -41,9 +41,7 @@ const RoomItem = ({ room }) => {
 
   return (
     <S.Container onClick={handleNavigateToRoomDetail}>
-      <S.ImgContainer>
-        <S.Img src={room.thumbnail} alt={room.id} />
-      </S.ImgContainer>
+      <S.ImgContainer img={room.thumbnail} />
       <S.Icon onClick={handleToggleWish}>
         <Heart
           fill={currentUser && isWish ? 'var(--color-heart)' : 'var(--color-light-grey)'}

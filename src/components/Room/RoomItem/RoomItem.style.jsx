@@ -22,6 +22,9 @@ export const ImgContainer = styled.div`
   overflow: hidden;
   margin-bottom: 10px;
   border-radius: var(--border-container-radius);
+  background-image: url(${({ img }) => img});
+  background-size: 500px 350px;
+  background-position: center;
 `
 
 export const Img = styled.img`
