@@ -4,43 +4,38 @@ import * as S from '@/components/Room/RoomItem/RoomItem.style'
 import { formatDate, formatPrice } from '@/utils/format'
 import { useNavigate } from 'react-router-dom'
 import { Heart } from '@/assets/images'
-import { UserContext } from '@/contexts/UserProvider'
 import { LoginContext } from '@/contexts/LoginProvider'
-
-import usePostUserInfo from '@/hooks/usePostUserInfo'
+import { useWishStore } from '../../../store/wishStore'
 
 const RoomItem = ({ room }) => {
   const currentUser = useContext(LoginContext)
-
-  const userCtx = useContext(UserContext)
-
-  const { postUserInfo } = usePostUserInfo()
+  const [isWish, setIsWish] = useState()
+  const { addWish, deleteWish, wishlist } = useWishStore()
 
   const navigate = useNavigate()
-  const handleNavigateToRoomDetail = () => {
+  const handleMoveRoomDetail = () => {
     navigate(`/room/${room.id}`, {
       state: { ...room },
     })
   }
 
-  const isWish = useMemo(() => userCtx?.wishList.some((id) => id === room.id), [userCtx?.wishList])
+  useEffect(() => {
+    setIsWish(wishlist.some((id) => id === room.id))
+  }, [])
 
   const handleToggleWish = (e) => {
+    setIsWish((prev) => !prev)
     e.stopPropagation()
 
     if (!currentUser) {
       return alert('로그인해주세요')
     }
 
-    !isWish ? userCtx.addItemToWish(room.id) : userCtx.deleteItemToWish(room.id)
+    !isWish ? addWish(room.id) : deleteWish(room.id)
   }
 
-  useEffect(() => {
-    postUserInfo(currentUser?.uid, userCtx.wishList)
-  }, [userCtx.wishList])
-
   return (
-    <S.Container onClick={handleNavigateToRoomDetail}>
+    <S.Container onClick={handleMoveRoomDetail}>
       <S.ImgContainer img={room.thumbnail} />
       <S.Icon onClick={handleToggleWish}>
         <Heart
