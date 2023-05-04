@@ -13,16 +13,18 @@ const SearchPage = () => {
   return (
     <>
       <Header />
-      <S.PageContainer>
-        {rooms.length !== 0 ? (
-          <>
+      {rooms.length !== 0 ? (
+        <S.PageContainer>
+          <S.RoomListWrapper>
             <RoomList rooms={rooms} />
+          </S.RoomListWrapper>
+          <S.MapListWrapper>
             <MapList rooms={rooms} />
-          </>
-        ) : (
-          '검색된 방이 없습니다'
-        )}
-      </S.PageContainer>
+          </S.MapListWrapper>
+        </S.PageContainer>
+      ) : (
+        '검색된 방이 없습니다'
+      )}
     </>
   )
 }
