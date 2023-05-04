@@ -7,7 +7,7 @@ import * as S from '@/components/Map/Maplist/MapList.style'
 import useClickOutside from '@/hooks/useClickOutside'
 
 const containerStyle = {
-  width: '100vw',
+  width: '100%',
   height: '100vh',
 }
 
@@ -17,14 +17,6 @@ const center = {
 }
 
 const MapList = ({ rooms }) => {
-  const ModalRef = useRef(null)
-
-  // useClickOutside(ModalRef, () => {
-  //   setSelectedMarker(null)
-  // })
-
-  console.log(ModalRef.current)
-
   const [selectedMarker, setSelectedMarker] = useState(null)
 
   return (
@@ -41,9 +33,7 @@ const MapList = ({ rooms }) => {
               options={{ maxWidth: 320 }}
             >
               <RoomItem room={selectedMarker} setSelectedMarker={setSelectedMarker}>
-                <button ref={ModalRef} onClick={() => setSelectedMarker(null)}>
-                  close
-                </button>
+                <button onClick={() => setSelectedMarker(null)}>close</button>
               </RoomItem>
             </InfoWindow>
           )}

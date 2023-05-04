@@ -3,7 +3,6 @@ import styled from '@emotion/styled'
 export const Container = styled.div`
   position: relative;
   width: 100%;
-  height: 100%;
 `
 
 export const Icon = styled.span`
@@ -22,6 +21,9 @@ export const ImgContainer = styled.div`
   overflow: hidden;
   margin-bottom: 10px;
   border-radius: var(--border-container-radius);
+  background-image: url(${({ img }) => img});
+  background-size: 500px 350px;
+  background-position: center;
 `
 
 export const Img = styled.img`
