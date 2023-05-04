@@ -13,7 +13,7 @@ export const Container = styled.div`
 `
 
 export const LoginContainer = styled.div`
-  width: 568px;
+  width: 468px;
   height: 682px;
 
   position: absolute;
@@ -41,7 +41,7 @@ export const ContentContainer = styled.div`
 
 export const TextContainer = styled.div`
   margin-top: 8px;
-  margin-bottom: 12px;
+  margin-bottom: 22px;
   font-size: 22px;
   position: relative;
 `
@@ -55,6 +55,7 @@ export const InputContainer = styled.div`
   border: 1px solid;
   ${(props) => (props.upper ? '' : `border-top: none;`)}
   border-radius: ${(props) => (props.upper ? '8px 8px 0 0;' : '0 0 8px 8px')};
+  /* ${(props) => (props.upper ? '' : 'margin-bottom:60px')}; */
   &:focus-within {
     border: 2px solid;
   }
@@ -89,8 +90,18 @@ export const BtnCloseModal = styled.button`
   cursor: pointer;
   border: none;
 `
+export const ConfirmContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 15px;
+`
 
-export const SpanLoginConfirm = styled.span``
+export const SpanLoginConfirm = styled.span`
+  padding-top: 15px;
+  font-weight: 600;
+  color: #ff0000;
+`
 
 export const BtnSubmit = styled.button`
   background-color: #800080;
@@ -115,4 +126,12 @@ export const ImageContainer = styled.div`
   position: absolute;
   top: 15px;
   left: 30px;
+`
+export const UnderLine = styled.div`
+  background-color: #ebebeb;
+  width: 100%;
+  height: 1px;
+  margin-top: 20px;
+  margin-bottom: 1.5rem;
+  /* margin: 20px; */
 `

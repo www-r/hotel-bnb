@@ -12,7 +12,7 @@ export const Conatiner = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
 `
 export const SignUpContainer = styled.div`
-  width: 568px;
+  width: 468px;
   height: 682px;
 
   position: absolute;
@@ -98,6 +98,7 @@ export const ParagraphDiv = styled.div`
   right: 12px;
   padding: 0 24px 0 0;
   font-weight: bold;
+  font-size: 16px;
   display: flex;
 `
 

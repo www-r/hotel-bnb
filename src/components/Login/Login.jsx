@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { GoogleFavicon, IconExit } from '@/assets/images'
 import * as S from './Login.style'
-import { AddUserData, app, loginEmail, loginGoogle } from '../../firebase'
+import { AddUserData, loginEmail, loginGoogle } from '../../firebase'
+import useToastMessage from '../../hooks/useToastMessage'
 
 const ModalLogin = (props) => {
   const { open, closeFunc, openSignUp, showModalFunc } = props
   const [values, setValues] = useState({ ID: '', PW: '' })
+  const spanConfirm = useRef()
 
   const handleChange = (e) => {
     setValues({
@@ -16,20 +18,30 @@ const ModalLogin = (props) => {
 
   const login = (e) => {
     e.preventDefault()
-    loginEmail(values.ID, values.PW).then(() => {
-      closeFunc(false)
-      showModalFunc(false)
-      setValues({ ID: '', PW: '' })
-    })
+    loginEmail(values.ID, values.PW)
+      .then((result) => {
+        closeFunc(false)
+        showModalFunc(false)
+        setValues({ ID: '', PW: '' })
+        useToastMessage('환영합니다')
+      })
+      .catch(() => {
+        spanConfirm.current.innerText = '아이디 혹은 비밀번호를 확인해주세요'
+      })
   }
 
   const googleLogin = () => {
-    loginGoogle().then((result) => {
-      const user = result.user
-      AddUserData(user.uid, user.email, user.displayName, user.phoneNumber, user.photoURL)
-      closeFunc(false)
-      showModalFunc(false)
-    })
+    loginGoogle()
+      .then((result) => {
+        const user = result.user
+        AddUserData(user.uid, user.email, user.displayName, user.phoneNumber, user.photoURL)
+        closeFunc(false)
+        showModalFunc(false)
+        useToastMessage(`${user.displayName}님 환영합니다.`)
+      })
+      .catch(() => {
+        spanConfirm.current.innerText = '아이디 혹은 비밀번호를 확인해주세요'
+      })
   }
 
   return (
@@ -70,7 +82,10 @@ const ModalLogin = (props) => {
                 autoComplete="on"
               />
             </S.InputContainer>
-            <S.SpanLoginConfirm></S.SpanLoginConfirm>
+            <S.ConfirmContainer>
+              <S.SpanLoginConfirm ref={spanConfirm}></S.SpanLoginConfirm>
+            </S.ConfirmContainer>
+            <S.UnderLine></S.UnderLine>
             <S.TextContainer>
               <S.BtnSubmit type="submit">로그인</S.BtnSubmit>
             </S.TextContainer>

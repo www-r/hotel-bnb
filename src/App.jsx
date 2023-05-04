@@ -5,6 +5,7 @@ import UserProvider from './contexts/UserProvider'
 import LoginProvider from './contexts/LoginProvider'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
+import { ToastContainer } from 'react-toastify'
 
 const queryClient = new QueryClient()
 
@@ -16,6 +17,7 @@ function App() {
           <RoomsProvider>
             <Router />
             <ReactQueryDevtools />
+            <ToastContainer />
           </RoomsProvider>
         </UserProvider>
       </LoginProvider>

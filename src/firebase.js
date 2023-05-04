@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app'
-import { getDatabase, get, onValue, ref, set, push, update, child } from 'firebase/database'
+import { getDatabase, onValue, ref, set, push, child } from 'firebase/database'
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -8,17 +8,11 @@ import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   signInWithPopup,
-  onAuthStateChanged,
   updatePassword,
-  reauthenticateWithCredential,
-  // promptForCredentials,
   deleteUser,
 } from 'firebase/auth'
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-import axios from 'axios'
-import { axiosFirebase } from '@/apis/axios'
-// Your web app's Firebase configuration
+import useToastMessage from './hooks/useToastMessage'
+
 const firebaseConfig = {
   apiKey: 'AIzaSyC5vpfgD2AVS2m-mV2nGPg_cLEY_Zl_DsE',
   authDomain: 'hotel-bnb-d9ca0.firebaseapp.com',
@@ -124,7 +118,7 @@ export const logout = () => {
   signOut(auth)
     .then(() => {
       console.log('true')
-      alert('로그아웃 완료')
+      useToastMessage('로그아웃 완료')
     })
     .catch((err) => {
       console.log(err)
@@ -139,18 +133,6 @@ export const CreateUser = async (email, password) => {
     alert(errorMessage[code])
   }
 }
-
-//사용자 재인증
-//TODO(you): prompt the user to re-provide their sign-in credentials
-// const credential = promptForCredentials()
-// const user = getAuth().currentUser
-// export const reauthenticateUser = (user, credential) => {
-//   try {
-//     reauthenticateWithCredential(user, credential)
-//   } catch (error) {
-//     console.log(error)
-//   }
-// }
 
 //비밀번호 재설정
 export const changePassword = (user, newPassword) => {
@@ -170,17 +152,3 @@ export const deleteAccount = async () => {
     console.log(error)
   }
 }
-// export const deleteMyAccount = async () => {
-//   let res = await axios({
-//     method: 'POST',
-//     baseURL: 'https://identitytoolkit.googleapis.com/v1/accounts:',
-//     url: 'delete?key=[API_KEY]',
-//     data: {
-//       idToken:
-//         'eyJhbGciOiJSUzI1NiIsImtpZCI6Ijk3OWVkMTU1OTdhYjM1Zjc4MjljZTc0NDMwN2I3OTNiN2ViZWIyZjAiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vaG90ZWwtYm5iLWQ5Y2EwIiwiYXVkIjoiaG90ZWwtYm5iLWQ5Y2EwIiwiYXV0aF90aW1lIjoxNjgwMzQ4MTUzLCJ1c2VyX2lkIjoiaXN3eVBaNnlPWmZMeU8xd2l3Y0VWdlZaeTY3MyIsInN1YiI6Imlzd3lQWjZ5T1pmTHlPMXdpd2NFVnZWWnk2NzMiLCJpYXQiOjE2ODAzNDgxNTMsImV4cCI6MTY4MDM1MTc1MywiZW1haWwiOiJpbm1laW5AbmF2ZXIuY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImlubWVpbkBuYXZlci5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.JAFrltJbAx_ypLpBmU6sapbwO5oXIWAIGWIYx3ez2Xzx5D79LgDTxM4ljaSLjVxadTLfDv3yCT1ylP3q0zRNreIJ8QrYt0Mnq-ciYu0mhGrGDAOny7zSj-FYUGvtu-tJMOWAge16HAioNHSjdsVSHrpPW75qI2VP0nlu1XwKlCM7Vr9_TT8KMAi8_3Y_3RZObYYKk5GwAgwyxSHIlpk4TNtMMCA29bxngxITUsWIhIrDmEscE1-_k_Qu9bcWDQjbkhB6rZ0KL2z3x70DY2PWu0hl0Uo-CBWXDghXgdKC_DHpvlxoIhq8obAW3z33gQiHPfVYOQoztF-pBh_5nKLSnw',
-//     },
-//   })
-//   console.log(res)
-// }
-
-//  "https://<DATABASE_NAME>.firebaseio.com/users/ada/name.json?auth=<ID_TOKEN>"

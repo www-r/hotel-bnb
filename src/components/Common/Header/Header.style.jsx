@@ -13,7 +13,7 @@ export const Container = styled.div`
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #f2f2f2;
   padding-left: 100px;
   padding-right: 100px;
   min-width: 743px;
