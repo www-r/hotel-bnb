@@ -1,22 +1,23 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 
 import RoomList from '@/components/Room/RoomList/RoomList'
 import Header from '@/components/Common/Header/Header'
 import MapButton from '@/components/Map/MapButton/MapButton'
-import { RoomsContext } from '@/contexts/RoomsProvider'
-import { UserContext } from '@/contexts/UserProvider'
+import { useGetRooms } from '../../hooks/useGetRooms'
+import * as S from './MainPage.style'
 
 const MainPage = () => {
   const [movePage, setMovePage] = useState('/map')
 
-  const roomsCtx = useContext(RoomsContext)
-
-  const { rooms, loading, error } = roomsCtx
+  const { rooms } = useGetRooms()
+  console.log({ rooms })
 
   return (
     <>
       <Header />
-      <RoomList rooms={rooms} loading={loading} error={error} />
+      <S.RoomListWrapper>
+        <RoomList rooms={rooms} />
+      </S.RoomListWrapper>
       <MapButton movePage={movePage} />
     </>
   )

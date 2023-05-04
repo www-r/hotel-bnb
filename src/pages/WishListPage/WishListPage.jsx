@@ -1,16 +1,8 @@
 import React, { useEffect } from 'react'
-import { getData } from '@/firebase.js'
 import Footer from '@/components/Common/Footer'
 import * as S from './WishlistPage.style'
 
 const WishlistPage = () => {
-  useEffect(() => {
-    const wishRoomsData = getData()
-    console.log(wishRoomsData)
-    // wishRoomsData.map((wishRoomDataObj)=>{
-    //   wishRoomDataObj.id ===
-    // })
-  }, [])
   return (
     <>
       <S.Container>
