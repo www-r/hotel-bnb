@@ -1,9 +1,7 @@
 import styled from '@emotion/styled'
+import { DivisionLineRow } from '@/styles/common.style'
 
-export const DivisionLine = styled.div`
-  height: 1px;
-  width: 100%;
-  background-color: #ddd;
+export const DivisionLine = styled(DivisionLineRow)`
   margin: 32px 0;
 `
 export const Container = styled.div`
@@ -21,7 +19,7 @@ export const MainContainer = styled.div``
 export const Main = styled.main`
   padding: 0 8px;
 `
-export const wishListContainer = styled.ul`
+export const WishlistContainer = styled.ul`
   display: flex;
 `
 export const WishlistItem = styled.li`
