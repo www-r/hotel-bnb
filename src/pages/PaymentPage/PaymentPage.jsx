@@ -3,7 +3,7 @@ import usePayReady from '@/hooks/usePayReady'
 import { useLocation } from 'react-router-dom'
 import * as S from './PaymentPage.style'
 import Logo from '../../components/Common/Logo'
-import Footer from '@/components/Common/Footer'
+import Footer from '@/components/Common/Footer/Footer'
 import {
   IconKakaoPay,
   IconNotice,

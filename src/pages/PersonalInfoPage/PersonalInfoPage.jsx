@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext, useRef } from 'react'
-import Footer from '@/components/Common/Footer'
+import Footer from '@/components/Common/Footer/Footer'
 import Header from '@/components/Common/Header/Header'
 import * as S from './PersonalInfoPage.style'
 import { ChevronRight, Eye, PersonalInfoLock1, PersonalInfoLock2 } from '../../assets/images'

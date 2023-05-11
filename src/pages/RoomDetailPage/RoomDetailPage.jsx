@@ -1,19 +1,32 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
+// import { roomsRef, listAll } from '@/firebase.js'
+//components
 import Header from '@/components/Common/Header/Header'
-import Footer from '@/components/Common/Footer'
-// import * as S from './RoomDetailpage.style' // @ 쓰면 에러남
-// import './RoomDetailPage.css'
-import { DayPicker } from 'react-day-picker'
-import { addYears, addMonths, format, isAfter, isBefore, isValid, parse } from 'date-fns'
-import { ko } from 'date-fns/locale'
+import Footer from '@/components/Common/Footer/Footer'
 import 'react-day-picker/dist/style.css'
+import Calendar from '@/components/Common/Calendar/Calendar'
+import ReservationCard from '@/components/RoomDetail/ReservationCard'
+//images(icons)
+import { HeartIcon, ShareIcon, ChevronRight } from '@/assets/images/index.js'
+//style
+import * as S from './RoomDetailPage.style' // @ 쓰면 에러남
+// import './RoomDetailPage.css'
 
 const RoomDetailPage = () => {
   const location = useLocation()
-
   const room = location.state
   const navigate = useNavigate()
+  const getCheckInDate = (fromValue) => {
+    console.log(fromValue)
+    return fromValue
+  }
+  const getCheckOutDate = (toValue) => {
+    console.log(toValue)
+    return toValue
+  }
+  const checkInDate = getCheckInDate()
+  const checkOutDate = getCheckOutDate()
 
   const handleNavigateToPayMentPage = () => {
     navigate(`/book/${room.id}`, {
@@ -21,84 +34,40 @@ const RoomDetailPage = () => {
     })
   }
 
-  console.log(location.state)
-  const today = new Date() //오늘 날짜
-  const maximumDate = addYears(today, 2) //최대 렌더 날짜
-  const disabledDays = [
-    new Date(2022, 5, 20), //예약된 날짜
-    { from: addMonths(today, 2), to: addYears(today, 2) }, //오늘로부터 2개월 뒤부터는 선택 불가능
-  ]
-  const handleResetCalendar = () => {
-    setSelectedRange({ from: undefined, to: undefined })
-    setFromValue('')
-    setToValue('')
-  }
+  const handleStorageRoomImagesFolder = (roomId) => {
+    // const roomImages = storageRef(storage, 'rooms/' + roomId)
 
-  const [selectedRange, setSelectedRange] = useState()
-  const [fromValue, setFromValue] = useState('')
-  const [toValue, setToValue] = useState('')
-
-  const handleFromChange = (e) => {
-    setFromValue(e.target.value)
-    const date = parse(e.target.value, 'y-MM-dd', new Date())
-    if (!isValid(date)) {
-      return setSelectedRange({ from: undefined, to: undefined })
-    }
-    if (selectedRange?.to && isAfter(date, selectedRange.to)) {
-      setSelectedRange({ from: selectedRange.to, to: date })
-    } else {
-      setSelectedRange({ from: date, to: selectedRange?.to })
-    }
+    return
   }
-
-  const handleToChange = (e) => {
-    setToValue(e.target.value)
-    const date = parse(e.target.value, 'y-MM-dd', new Date())
-
-    if (!isValid(date)) {
-      return setSelectedRange({ from: selectedRange?.from, to: undefined })
-    }
-    if (selectedRange?.from && isBefore(date, selectedRange.from)) {
-      setSelectedRange({ from: date, to: selectedRange.from })
-    } else {
-      setSelectedRange({ from: selectedRange?.from, to: date })
-    }
-  }
-  const handleRangeSelect = (range) => {
-    setSelectedRange(range)
-    if (range?.from) {
-      setFromValue(format(range.from, 'y-MM-dd'))
-    } else {
-      setFromValue('')
-    }
-    if (range?.to) {
-      setToValue(format(range.to, 'y-MM-dd'))
-    } else {
-      setToValue('')
-    }
-  }
+  // console.log(listAll(roomsRef))
   return (
-    <>
-      <Header />
+    <S.Body>
+      {/* <Header /> */}
 
-      <div className="inner"></div>
       <button onClick={handleNavigateToPayMentPage}>예악하기</button>
-
-      <div className="inner">
-        <div className="title">
-          <h1 className="name">수영장이 있는 대나무 AC 통나무집 , 호수 근처의 바니하우 전망</h1>
-          <div className="name-desc">
-            <span>Cavinti, Calabarzon, 필리핀</span>
-            <div className="buttons">
-              <div className="button">
-                <span>공유하기</span>
-              </div>
-              <span>
-                <div className="button">저장</div>
-              </span>
+      <S.Inner>
+        <S.TitleSection>
+          <h1 className="title">{room.title}</h1>
+          <div className="title-desc">
+            <div className="title-desc--left">
+              <div className="rating">★{room.rating}</div>
+              <span>·</span>
+              <span>{room.location}</span>
+            </div>
+            <div className="title-desc--right">
+              <S.Buttons className="buttons">
+                <S.Button className="button">
+                  <ShareIcon />
+                  <span>공유하기</span>
+                </S.Button>
+                <S.Button className="button">
+                  <HeartIcon />
+                  <span>저장</span>
+                </S.Button>
+              </S.Buttons>
             </div>
           </div>
-        </div>
+        </S.TitleSection>
         <div className="images-container">
           <div className="image1"></div>
           <div className="images-wrapper">
@@ -110,58 +79,93 @@ const RoomDetailPage = () => {
             <div className="image5"></div>
           </div>
         </div>
-        <div className="main-description">
-          <main className="description">
-            <div className="description-item room-title">
-              <h2>Uncle Rod Private 님이 호스팅하는 농장 체험 숙소</h2>
-              <p>최대인원 4명 침대 1개 욕실 1개</p>
-            </div>
-            <div className="description-item tags">
-              <div className="tag"></div>
-              <div className="tag"></div>
-            </div>
-            <div className="description-item room-policy"></div>
-            <div className="description-item room-detail-text"></div>
-            <div className="description-item"></div>
-            <div className="description-item"></div>
-            <div className="description-item">
-              <div className="calendar-container">
-                <DayPicker
-                  locale={ko} //한국 날짜 기준
-                  mode="range" //날짜 범위선택형
-                  numberOfMonths={2} //달력 두개 렌더
-                  pagedNavigation
-                  //showOutsideDays //fixedWeeks 에 필요
-                  //fixedWeeks //달력 크기 고정
-                  today={today} //오늘 날짜
-                  fromMonth={today} // 렌더 시작 가능한 달(이번 달)
-                  toMonth={maximumDate} //렌더 가능한 마지막 달
-                  min={2} //최소 예약 기간(일)
-                  max={31} //최대 예약 기간(일)
-                  selected={selectedRange}
-                  onSelect={handleRangeSelect}
-                  disabled={disabledDays} //선택 불가능한 날짜
-                />
-                <input placeholder="From Date" value={fromValue} onChange={handleFromChange} />
-                <input placeholder="To Date" value={toValue} onChange={handleToChange} />
+        <S.DivisionLineRow />
+        <S.Main>
+          <div className="main-wrapper">
+            <div className="descriptions-wrapper">
+              <div className="description-item room--detail-explanation">
+                <h2>숙소 소개</h2>
+                <p>{room.description}</p>
               </div>
-              <button onClick={handleResetCalendar}>날짜 지우기</button>
-            </div>
-          </main>
-          <aside className="reservation">
-            <div className="reservation-card">
-              <div className="reservation-card-top">
-                <div className="price-per-day"></div>
+              <S.DivisionLineRow />
+              <div className="description-item room--summary">
+                <h2>숙박 장소</h2>
+                <ul>
+                  <li className="room--summary--item"></li>
+                </ul>
               </div>
-              <div className="reservation-card-middle"></div>
-              <div className="reservation-card-btm"></div>
+              <S.DivisionLineRow />
+              <div className="description-item room--amenities">
+                <h2>숙소 편의시설</h2>
+                <ul className="room--amenities-list">
+                  {room.amenities.map((item, index) => {
+                    return (
+                      <li className="room--amenity" key={index}>
+                        {item}
+                      </li>
+                    )
+                  })}
+                </ul>
+              </div>
+              <S.DivisionLineRow />
+              <div className="description-item room--calendar">
+                <h2>체크인 날짜를 선택해주세요</h2>
+                <p>여행 날짜를 입력하여 정확한 요금을 확인하세요.</p>
+                <div className="calendar-container">
+                  <Calendar
+                    getCheckInDate={getCheckInDate}
+                    getCheckOutDate={getCheckOutDate}
+                    roomReservedDays={room.reservedDays}
+                  />
+                </div>
+              </div>
             </div>
-          </aside>
-        </div>
-      </div>
+            <S.Aside className="reservation">
+              <ReservationCard roomPricePerDay={room.price} roomRating={room.rating} />
+            </S.Aside>
+          </div>
+          <S.DivisionLineRow />
+          <div className="description-item">
+            <h2>호스팅 지역</h2>
+          </div>
+          <S.DivisionLineRow />
+          <div className="description-item need-to-know-lists--container">
+            <h2>알아두어야 할 사항</h2>
+            <div className="need-to-know-lists-wrapper">
+              <div className="need-to-know--list">
+                <h3>숙소 이용규칙</h3>
+                <p>체크인 가능 시간: 오후 12:00 이후</p>
+                <p>체크아웃 시간: 오전 10:00 전까지</p>
+                <p>게스트 정원 {2}명</p>
+                <S.UnderlinedButton>
+                  더보기
+                  <ChevronRight />
+                </S.UnderlinedButton>
+              </div>
+              <div className="need-to-know--list">
+                <h3>안전 및 숙소</h3>
+                <p>일산화탄소 경보기</p>
+                <p>화재경보기</p>
+                <S.UnderlinedButton>
+                  더보기
+                  <ChevronRight />
+                </S.UnderlinedButton>
+              </div>
+              <div className="need-to-know--list">
+                <h3>환불 정책</h3>
+                <p>예약 이후에는 환불이 불가합니다.</p>
+                <S.UnderlinedButton>
+                  더보기
+                  <ChevronRight />
+                </S.UnderlinedButton>
+              </div>
+            </div>
+          </div>
+        </S.Main>
+      </S.Inner>
 
       <Footer />
-    </>
+    </S.Body>
   )
 }
 

@@ -6,6 +6,8 @@ export const LoginContext = createContext(null)
 const LoginProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null)
 
+  console.log({ currentUser })
+
   // get currentUser
   onAuthStateChanged(getAuth(), async (currentUser) => {
     if (currentUser) {
