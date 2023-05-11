@@ -1,8 +1,23 @@
-import React, { useEffect } from 'react'
-import Footer from '@/components/Common/Footer'
+import React, { useEffect, useContext } from 'react'
+import { getData } from '@/firebase.js'
+import { UserContext } from '@/contexts/UserProvider'
+//components
+import RoomList from '@/components/Room/RoomList/RoomList'
+import RoomItem from '@/components/Room/RoomItem/RoomItem'
+import Footer from '@/components/Common/Footer/Footer'
+//styles
 import * as S from './WishlistPage.style'
 
 const WishlistPage = () => {
+  // useEffect(() => {
+  //   const wishRoomsData = getData()
+  //   console.log(wishRoomsData)
+
+  // }, [])
+  const userCtx = useContext(UserContext)
+  const wishlist = userCtx.wishLists // []
+  // console.log(wishlist)
+
   return (
     <>
       <S.Container>
@@ -55,8 +70,10 @@ const WishlistPage = () => {
                 </div>
               </S.WishlistItem>
             </S.wishListContainer>
+
+            <RoomList rooms={wishlist} />
+            <S.Btn>더 보기</S.Btn>
           </S.Main>
-          <S.Btn>더 보기</S.Btn>
         </S.MainContainer>
       </S.Container>
       <Footer />
