@@ -18,6 +18,16 @@ import { ReactComponent as IconStar } from '@/assets/images/IconStar.svg'
 
 import ImagePayButton from '@/assets/images/ImagePayButton.jpg'
 
+//ReservationCard
+import { ReactComponent as FlagIcon } from '@/assets/images/FlagIcon.svg'
+import { ReactComponent as HeartIcon } from '@/assets/images/DetailPage/HeartIcon.svg'
+import { ReactComponent as ShareIcon } from '@/assets/images/DetailPage/ShareIcon.svg'
+
+//Footer
+import { ReactComponent as TwitterIcon } from '@/assets/images/FooterIcons/twitter.svg'
+import { ReactComponent as FacebookIcon } from '@/assets/images/FooterIcons/facebook.svg'
+import { ReactComponent as InstagramIcon } from '@/assets/images/FooterIcons/instagram.svg'
+import GithubIcon from '@/assets/images/FooterIcons/github-mark.png'
 export {
   IconHeaderMenu,
   IconHeaderAuthor,
@@ -35,4 +45,11 @@ export {
   ImagePayButton,
   IconNotice,
   IconStar,
+  FlagIcon,
+  HeartIcon,
+  ShareIcon,
+  TwitterIcon,
+  FacebookIcon,
+  InstagramIcon,
+  GithubIcon,
 }
