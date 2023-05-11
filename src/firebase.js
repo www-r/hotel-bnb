@@ -92,14 +92,14 @@ export async function AddUserData(uid, email, name, phoneNumber, profileImageURL
     phoneNumber: String(phoneNumber),
     profileImageURL: profileImageURL,
     reservations: [],
-    wishList: [],
+    wishlist: [],
   })
 }
 
-export async function AddWishListData(uid, room) {
-  // const key = push(ref(db, 'users/' + uid + '/wishList')).key
-  await push(child(ref(db), 'users/' + uid + '/wishList'), {
-    wishList: room,
+export async function AddWishlistData(uid, room) {
+  // const key = push(ref(db, 'users/' + uid + '/wishlist')).key
+  await push(child(ref(db), 'users/' + uid + '/wishlist'), {
+    wishlist: room,
   })
 }
 
