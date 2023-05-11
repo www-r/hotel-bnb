@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import * as S from './ModalSearchByDate.style'
-import Calendar from '@/components/Common/Calendar'
+import Calendar from '@/components/Common/Calendar/Calendar'
 import { getMonthDate, getNightAndDay } from '../../../../../../utils/format'
 
 const ModalSearchByDate = ({ show, checkIn, checkOut, setCheckIn, setCheckOut }) => {

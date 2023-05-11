@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext, useRef } from 'react'
-import Footer from '@/components/Common/Footer'
+import Footer from '@/components/Common/Footer/Footer'
 import Header from '@/components/Common/Header/Header'
 import * as S from './PersonalInfoPage.style'
 import { ChevronRight, Eye, PersonalInfoLock1, PersonalInfoLock2 } from '../../assets/images'
@@ -7,12 +7,13 @@ import { getAuth, deleteUser } from 'firebase/auth'
 import { getDatabase, ref, update } from 'firebase/database'
 import { changePassword } from '../../firebase'
 import { UserContext } from '@/contexts/UserProvider'
+import { LoginContext } from '@/contexts/LoginProvider'
 
 const PersonalInfoPage = () => {
   const [isShown1, setIsShown1] = useState(false)
   const [isShown2, setIsShown2] = useState(false)
-
-  const userInfo = useContext(UserContext)
+  const currentUser = useContext(LoginContext)
+  const userCtx = useContext(UserContext)
   const inputArr = useRef([])
 
   const handlePassword = async (e) => {
@@ -35,11 +36,13 @@ const PersonalInfoPage = () => {
     alert('전화번호 변경 완료')
   }
   const handleAccountDelete = async (e) => {
-    const user = getAuth().currentUser
     e.preventDefault()
+    const user = getAuth().currentUser
+    // console.log(user)
     await deleteUser(user)
     alert('삭제 성공!')
   }
+  console.log(currentUser)
   return (
     <>
       <Header />
@@ -60,7 +63,7 @@ const PersonalInfoPage = () => {
                 <span>실명</span>
               </S.ListItemTitle>
               <S.ListItemContent>
-                <p>{userInfo.name}</p>
+                <p>{userCtx.name}</p>
               </S.ListItemContent>
             </S.ListItem>
 
@@ -69,7 +72,7 @@ const PersonalInfoPage = () => {
                 <span>이메일 주소</span>
               </S.ListItemTitle>
               <S.ListItemContent>
-                <p>{userInfo.email}</p>
+                <p>{userCtx.email}</p>
               </S.ListItemContent>
             </S.ListItem>
 
@@ -133,7 +136,7 @@ const PersonalInfoPage = () => {
                   </S.ListItemBtn>
                 )}
               </S.ListItemTitle>
-              <span>{userInfo.phoneNumber}</span>
+              <span>{userCtx.phoneNumber}</span>
               {isShown2 ? (
                 <S.ListItemContent>
                   <span>새로운 전화번호</span>
