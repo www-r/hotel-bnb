@@ -13,7 +13,7 @@ export const UserContext = createContext({
       reservationDays: 0,
     },
   ],
-  wishList: [],
+  wishlist: [],
   addItemToWish: (roomId) => {},
   deleteItemToWish: (roomId) => {},
 })
@@ -44,12 +44,12 @@ const UserProvider = ({ children }) => {
   // 현재 로그인된 유저 정보 가져옴
   const { data: user } = useGetData(`/users/${currentUser?.uid}`)
 
-  // 로그인된 유저의 wishList를 가져와 렌더
+  // 로그인된 유저의 wishlist를 가져와 렌더
   useEffect(() => {
-    if (user?.wishList) {
-      dispatchWishAction({ type: 'INIT_WISH', payload: user.wishList })
+    if (user?.wishlist) {
+      dispatchWishAction({ type: 'INIT_WISH', payload: user.wishlist })
     }
-  }, [user?.wishListm])
+  }, [user?.wishlist])
 
   useEffect(() => {
     if (user?.reservations) {
@@ -71,7 +71,7 @@ const UserProvider = ({ children }) => {
     phoneNumber: user?.phoneNumber,
     profileImageURL: user?.profileImageURL,
     reservations: user?.reservations,
-    wishList: wishState,
+    wishlist: wishState,
     addItemToWish: addItemToWishHandler,
     deleteItemToWish: deleteItemToWishHandler,
   }
