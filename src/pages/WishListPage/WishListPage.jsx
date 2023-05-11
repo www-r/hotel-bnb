@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import Footer from '@/components/Common/Footer'
+import Footer from '@/components/Common/Footer/Footer'
 import * as S from './WishlistPage.style'
 
 const WishlistPage = () => {
