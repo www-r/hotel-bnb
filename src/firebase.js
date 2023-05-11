@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app'
-import { getDatabase, onValue, ref, set, push, child } from 'firebase/database'
+import { getDatabase, get, onValue, ref, set, push, update, child } from 'firebase/database'
 import {
   getAuth,
   signInWithEmailAndPassword,
