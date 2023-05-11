@@ -1,6 +1,8 @@
 import React from 'react'
 import { Global, css } from '@emotion/react'
+import { generateMedia } from 'styled-media-query'
 import '../assets/fonts/fonts.css'
+
 const reset = css`
   * {
     box-sizing: border-box;
@@ -82,7 +84,7 @@ const style = css`
     --box-shadow: 0 0 10px #ddd;
 
     /** Font */
-
+    --font-normal: 400;
     --font-semi-bold: 600;
     --font-bold: 800;
 
@@ -107,6 +109,7 @@ const style = css`
   button {
     font: inherit;
     cursor: pointer;
+    background-color: transparent;
   }
 `
 
