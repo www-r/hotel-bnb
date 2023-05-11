@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import { DayPicker } from 'react-day-picker'
 import { addYears, addMonths, format, isAfter, isBefore, isValid, parse } from 'date-fns'
 import { ko } from 'date-fns/locale'
+
 import * as S from './Calendar.style'
+
 import 'react-day-picker/dist/style.css'
 
 const Calendar = ({ getCheckInDate, getCheckOutDate }) => {
@@ -87,9 +89,11 @@ const Calendar = ({ getCheckInDate, getCheckOutDate }) => {
       />
       {/* <input placeholder="From Date" value={fromValue} onChange={handleFromChange} />
       <input placeholder="To Date" value={toValue} onChange={handleToChange} /> */}
+
       <S.Button onClick={handleResetCalendar}>
         <span>날짜 지우기</span>
       </S.Button>
+
     </div>
   )
 }

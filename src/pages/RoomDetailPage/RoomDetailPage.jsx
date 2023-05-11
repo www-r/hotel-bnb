@@ -19,7 +19,6 @@ const RoomDetailPage = () => {
   const navigate = useNavigate()
   const getCheckInDate = (fromValue) => {
     console.log(fromValue)
-    console.log('type', typeof fromValue)
     return fromValue
   }
   const getCheckOutDate = (toValue) => {

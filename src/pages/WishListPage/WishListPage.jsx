@@ -15,7 +15,7 @@ const WishlistPage = () => {
 
   // }, [])
   const userCtx = useContext(UserContext)
-  const wishlist = userCtx.wishLists // []
+  const wishlist = userCtx.wishlists // []
   // console.log(wishlist)
 
   return (
@@ -24,7 +24,7 @@ const WishlistPage = () => {
         <S.PageTitleTitle>위시리스트</S.PageTitleTitle>
         <S.MainContainer>
           <S.Main>
-            <S.wishListContainer>
+            <S.WishlistContainer>
               <S.WishlistItem>
                 <S.HotelImagesContainer div className="HotelImagesContainer">
                   <S.HotelImage src="../../../../images/room1" alt="hotel image1" />
@@ -69,7 +69,7 @@ const WishlistPage = () => {
                   <span></span>
                 </div>
               </S.WishlistItem>
-            </S.wishListContainer>
+            </S.WishlistContainer>
 
             <RoomList rooms={wishlist} />
             <S.Btn>더 보기</S.Btn>
