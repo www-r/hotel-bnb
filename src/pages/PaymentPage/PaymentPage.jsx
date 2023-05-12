@@ -157,7 +157,7 @@ const PaymentPage = () => {
                 </S.PriceRoomTitle>
                 <S.PriceRoomRate>
                   <IconStar />
-                  <p>{room.rating} 후기(몇 개)</p>
+                  {/* <p>{room.rating} 후기(몇 개)</p> */}
                 </S.PriceRoomRate>
               </S.TitleInformContainer>
             </S.PriceTitleContent>

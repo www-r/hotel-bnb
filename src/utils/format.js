@@ -1,15 +1,19 @@
-export const formatDate = (date) => {
-  let reservStart = new Date()
-  let reservEnd = new Date()
+export const formatDate = (reservedDays) => {
+  //reservedDays = ['2023-05-01', '2023-05-02',]
+  const reservedDates = reservedDays.map((item) => item.replace(/-/g, ','))
+  console.log(reservedDates)
 
-  reservStart = new Date(reservStart.setDate(reservStart.getDate() - date.start))
-  reservEnd = new Date(reservEnd.setDate(reservEnd.getDate() + date.end))
+  // let reservStart = new Date()
+  // let reservEnd = new Date()
 
-  return `${String(reservStart.getMonth() + 1).padStart(2, '0')}월 ${String(
-    reservStart.getDate(),
-  ).padStart(2, '0')}일 ~  ${String(reservEnd.getMonth() + 1).padStart(2, '0')}월 ${String(
-    reservEnd.getDate(),
-  )}일`
+  // reservStart = new Date(reservStart.setDate(reservStart.getDate() - date.start))
+  // reservEnd = new Date(reservEnd.setDate(reservEnd.getDate() + date.end))
+
+  // return `${String(reservStart.getMonth() + 1).padStart(2, '0')}월 ${String(
+  //   reservStart.getDate(),
+  // ).padStart(2, '0')}일 ~  ${String(reservEnd.getMonth() + 1).padStart(2, '0')}월 ${String(
+  //   reservEnd.getDate(),
+  // )}일`
 }
 
 export const formatPrice = (price) => {

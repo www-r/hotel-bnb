@@ -68,10 +68,10 @@ export async function AddRoomData(datas, resetFunc, initialState) {
             lat: Number(datas.GEOLOCATION_LAT),
             lng: Number(datas.GEOLOCATION_LNG),
           },
-          reservation: {
-            start: Number(datas.RESERVATION_START),
-            end: Number(datas.RESERVATION_END),
-          },
+          // reservation: {
+          //   start: Number(datas.RESERVATION_START),
+          //   end: Number(datas.RESERVATION_END),
+          // },
           amenities: {
             ...String(amenities),
           },

@@ -52,7 +52,7 @@ const RoomItem = ({ room }) => {
           </span>
         </S.Title>
         <div>{room.location}</div>
-        <div>{formatDate(room.reservation)}</div>
+        {/* <div>{formatDate(room.reservedDays)}</div> */}
         <div>￦ {formatPrice(room.price)} /박</div>
       </S.TextContainer>
     </S.Container>

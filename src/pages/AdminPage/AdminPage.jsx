@@ -11,9 +11,9 @@ const AdminPage = () => {
     PRICE: 0,
     LOCATION: '',
     DESCSRIPTION: '',
-    RATING: 0,
-    RESERVATION_START: 0,
-    RESERVATION_END: 0,
+    // RATING: 0,
+    // RESERVATION_START: 0,
+    // RESERVATION_END: 0,
     AMENITIES: '',
     GEOLOCATION_LAT: 0,
     GEOLOCATION_LNG: 0,
@@ -47,10 +47,10 @@ const AdminPage = () => {
       Description
       <input name="DESCSRIPTION" value={values.DESCSRIPTION} onChange={handleChange} />
       Rating
-      <input name="RATING" value={values.RATING} onChange={handleChange} />
+      {/* <input name="RATING" value={values.RATING} onChange={handleChange} />
       Reservation Start
       <input name="RESERVATION_START" value={values.RESERVATION_START} onChange={handleChange} />
-      Reservation End
+      Reservation End */}
       <input name="RESERVATION_END" value={values.RESERVATION_END} onChange={handleChange} />
       Amenities
       {/* <button
