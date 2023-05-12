@@ -2,14 +2,15 @@ import React, { useState } from 'react'
 import { createPortal } from 'react-dom'
 import { useLocation, useNavigate } from 'react-router-dom'
 // import { roomsRef, listAll } from '@/firebase.js'
-//components
 import Header from '@/components/Common/Header/Header'
-import Footer from '@/components/Common/Footer/Footer'
 import 'react-day-picker/dist/style.css'
 import Calendar from '@/components/Common/Calendar/Calendar'
+import MapList from '@/components/Map/MapList/MapList'
 import ReservationCard from '@/components/RoomDetail/ReservationCard'
+import Footer from '@/components/Common/Footer/Footer'
+
 import { HeartIcon, ShareIcon, ChevronRight } from '@/assets/images/index.js'
-//style
+
 import * as S from './RoomDetailPage.style' // @ 쓰면 에러남
 import RoomDetailModal from '../../components/RoomDetail/RoomDetailModal'
 // import './RoomDetailPage.css'
@@ -54,7 +55,7 @@ const RoomDetailPage = () => {
 
   return (
     <>
-      {/* <Header /> */}
+      <Header />
 
       <S.Inner>
         {/* <button onClick={handleNavigateToPayMentPage}>예악하기</button> */}
@@ -102,12 +103,12 @@ const RoomDetailPage = () => {
                   <p>{room.description}</p>
                 </div>
                 <S.DivisionLineRow />
-                <div className="description-item room--summary">
+                {/* <div className="description-item room--summary">
                   <h2>숙박 장소</h2>
                   <ul>
                     <li className="room--summary--item"></li>
                   </ul>
-                </div>
+                </div> */}
                 <S.DivisionLineRow />
                 <div className="description-item room--amenities">
                   <h2>숙소 편의시설</h2>
@@ -137,7 +138,7 @@ const RoomDetailPage = () => {
               <S.Aside className="reservation">
                 <ReservationCard
                   roomPricePerDay={room.price}
-                  rates = {rates}
+                  rates={rates}
                   roomRating={rating}
                   checkInDate={checkInDate}
                   checkOutDate={checkOutDate}
@@ -148,8 +149,9 @@ const RoomDetailPage = () => {
               </S.Aside>
             </div>
             <S.DivisionLineRow />
-            <div className="description-item">
+            <div className="description-item map-container">
               <h2>호스팅 지역</h2>
+              <MapList rooms={[room]} size={{ width: '100%', height: '600px' }} />
             </div>
             <S.DivisionLineRow />
             <div className="description-item need-to-know-lists--container">
