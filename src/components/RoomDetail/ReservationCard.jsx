@@ -8,12 +8,15 @@ const ReservationCard = (props) => {
   const checkOutDate = props.checkOutDate
   const roomPricePerDay = props.roomPricePerDay
   const roomRating = props.roomRating
+  const rates = props.rates
+  const handleReservationBtn = props.handleReservationBtn
+  const numberOfPeople = props.numberOfPeople
+  const setNumberOfPeople = props.setNumberOfPeople
   const checkInDateNumber = Number(checkInDate.replace(/-/g, ''))
   const checkOutDateNumber = Number(checkOutDate.replace(/-/g, ''))
   const roomDays = checkOutDateNumber - checkInDateNumber
   const roomTotalPrice = Number(roomPricePerDay) * (checkOutDate && roomDays)
-  const roomTax = Math.ceil(roomPricePerDay * 0.1)
-  const [numberOfPeople, setNumberOfPeople] = useState(1)
+  const roomTax = Math.ceil(roomPricePerDay * 0.07)
 
   return (
     <>
@@ -25,7 +28,7 @@ const ReservationCard = (props) => {
           <div className="star-rate">
             <div className="star-rate--number">★{roomRating}</div>
             <span>·</span>
-            <span className="star-rate--amount">별점 {3}개</span>
+            <span className="star-rate--amount">별점{rates.length}개</span>
           </div>
         </S.ReservationCardTitle>
         <S.ReservationCardInfo>
@@ -74,7 +77,9 @@ const ReservationCard = (props) => {
               </div>
             </div>
           </div>
-          <button className="reservation-button">예약하기</button>
+          <button className="reservation-button" onClick={handleReservationBtn}>
+            예약하기
+          </button>
           <p className="reservation-pre-message">예약 확정 전에는 요금이 청구되지 않습니다.</p>
         </S.ReservationCardInfo>
         <S.ReservationCardPrice>

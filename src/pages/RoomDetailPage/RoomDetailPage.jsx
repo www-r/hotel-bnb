@@ -13,20 +13,40 @@ import { HeartIcon, ShareIcon, ChevronRight } from '@/assets/images/index.js'
 import * as S from './RoomDetailPage.style' // @ 쓰면 에러남
 import RoomDetailModal from '../../components/RoomDetail/RoomDetailModal'
 // import './RoomDetailPage.css'
+import { AmenitiesData } from '../../constants/amenities'
 
 const RoomDetailPage = () => {
   const [modalOpened, setModalOpened] = useState(false)
   const [title, setTitle] = useState('')
   const location = useLocation()
   const room = location.state
+  const rates = room.rates
+  const calculateRating = (rates) => {
+    let sum = 0
+    for (let rate of rates) {
+      sum += rate
+    }
+    const average = sum / rates.length
+    return average
+  }
+  const rating = calculateRating(rates)
   const navigate = useNavigate()
-
   const [checkInDate, setCheckInDate] = useState('')
   const [checkOutDate, setCheckOutDate] = useState('')
+  const [numberOfPeople, setNumberOfPeople] = useState(1)
   const handleNavigateToPayMentPage = () => {
     navigate(`/book/${room.id}`, {
       state: room,
     })
+  }
+  const handleReservationBtn = () => {
+    if (!(checkInDate && checkOutDate)) {
+      alert('날짜를 선택해주세요')
+    } else if (numberOfPeople > room.maxNumber || numberOfPeople === 0) {
+      alert('인원을 다시 설정해주세요')
+    } else {
+      handleNavigateToPayMentPage()
+    }
   }
   const fixScrollEvent = () => {
     document.body.style.overflow = 'hidden'
@@ -44,7 +64,7 @@ const RoomDetailPage = () => {
             <h1 className="title">{room.title}</h1>
             <div className="title-desc">
               <div className="title-desc--left">
-                <div className="rating">★{room.rating}</div>
+                <div className="rating">★{rating}</div>
                 <span>·</span>
                 <span>{room.location}</span>
               </div>
@@ -91,15 +111,15 @@ const RoomDetailPage = () => {
                 <S.DivisionLineRow />
                 <div className="description-item room--amenities">
                   <h2>숙소 편의시설</h2>
-                  <ul className="room--amenities-list">
-                    {room.amenities.map((item, index) => {
+                  {/* <ul className="room--amenities-list">
+                    {AmenitiesData.filter((data) => {}).map(({ img, text }) => {
                       return (
-                        <li className="room--amenity" key={index}>
-                          {item}
+                        <li className="room--amenity" key={index} src={img}>
+                          {text}
                         </li>
                       )
                     })}
-                  </ul>
+                  </ul> */}
                 </div>
                 <S.DivisionLineRow />
                 <div className="description-item room--calendar">
@@ -117,9 +137,13 @@ const RoomDetailPage = () => {
               <S.Aside className="reservation">
                 <ReservationCard
                   roomPricePerDay={room.price}
-                  roomRating={room.rating}
+                  rates = {rates}
+                  roomRating={rating}
                   checkInDate={checkInDate}
                   checkOutDate={checkOutDate}
+                  numberOfPeople={numberOfPeople}
+                  setNumberOfPeople={setNumberOfPeople}
+                  handleReservationBtn={handleReservationBtn}
                 />
               </S.Aside>
             </div>
