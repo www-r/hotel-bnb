@@ -7,19 +7,23 @@ import * as S from './Calendar.style'
 
 import 'react-day-picker/dist/style.css'
 
-const Calendar = ({ setCheckInDate, setCheckOutDate , roomReservedDays}) => {
+const Calendar = ({ setCheckInDate, setCheckOutDate, roomReservedDays }) => {
   //달력
   const today = new Date() //오늘 날짜
   const maximumDate = addYears(today, 2) //최대 렌더 날짜
-  const reservedDatesArr = roomReservedDays.map(reservedDay => new Date(reservedDay))
+  const reservedDates = roomReservedDays.map(
+    (reservedDay) => new Date(reservedDay.replace(/-/g, ',')),
+  )
   const disabledDays = [
-    ...reservedDatesArr, //예약된 날짜들
+    ...reservedDates, //예약된 날짜들
     { from: addMonths(today, 2), to: addYears(today, 2) }, //오늘로부터 2개월 뒤부터는 선택 불가능
   ]
-  const [selectedRange, setSelectedRange] = useState()
 
+  const [selectedRange, setSelectedRange] = useState()
+  console.log(roomReservedDays)
+  console.log(roomReservedDays.map((item) => new Date(item)))
   const handleFromChange = (e) => {
-    console.log('checkIn:',e.target.value)
+    console.log('checkIn:', e.target.value)
     setFromValue(e.target.value)
     setCheckInDate(e.target.value)
     const date = parse(e.target.value, 'y-MM-dd', new Date())
@@ -66,7 +70,6 @@ const Calendar = ({ setCheckInDate, setCheckOutDate , roomReservedDays}) => {
     setCheckOutDate('')
   }
 
-
   return (
     <div>
       <DayPicker
@@ -83,7 +86,6 @@ const Calendar = ({ setCheckInDate, setCheckOutDate , roomReservedDays}) => {
         max={31} //최대 예약 기간(일)
         selected={selectedRange}
         onSelect={handleRangeSelect}
-     
         disabled={disabledDays} //선택 불가능한 날짜
       />
       {/* <input placeholder="From Date" value={fromValue} onChange={handleFromChange} />
@@ -92,7 +94,6 @@ const Calendar = ({ setCheckInDate, setCheckOutDate , roomReservedDays}) => {
       <S.Button onClick={handleResetCalendar}>
         <span>날짜 지우기</span>
       </S.Button>
-
     </div>
   )
 }
