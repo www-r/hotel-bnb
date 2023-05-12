@@ -16,37 +16,14 @@ export const TitleSection = styled.div`
       display: flex;
       gap: 8px;
     }
+    .buttons {
+      display: flex;
+    }
   }
-`
-
-export const Buttons = styled.div`
-  display: flex;
-`
-
-export const ImagesContainer = styled.div`
-  min-width: 1047.1px;
-  min-height: 547.6px;
-  display: flex;
-  background-color: red;
-  /* @media ${({ theme }) => theme.size.small} {
-    max-width: 664px;
-    max-height: 356px;
-  }
-  @media ${({ theme }) => theme.size.medium} {
-    min-width: 664.1px;
-    max-width: 1047px;
-    min-height: 356.1px;
-    max-height: 547.5px;
-  }
-  @media ${({ theme }) => theme.size.large} {
-    min-width: 1047.1px;
-    max-width: 1120px;
-    min-height: 547.6px;
-    max-height: 584px;
-  } */
 `
 
 export const Main = styled.main`
+  position: relative;
   .main-wrapper {
     display: flex;
   }
@@ -60,7 +37,6 @@ export const Main = styled.main`
       .room--summary--item {
         border-radius: var(--border-container-radius);
         border: var(--border);
-        box-sizing: border-box;
         height: 142.5px;
         min-width: 180px;
         max-width: 290px;
@@ -69,7 +45,6 @@ export const Main = styled.main`
     }
     .room--amenities {
       height: 418px;
-
       .room--amenities-list {
         display: flex;
         flex-wrap: wrap;
@@ -88,17 +63,22 @@ export const Main = styled.main`
     h3 {
       font-weight: var(--font-bold);
     }
+    .room--calendar {
+      min-width: 624px;
+    }
   }
   .need-to-know-lists--container {
     .need-to-know-lists-wrapper {
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      width: 100%;
       .need-to-know--list {
+        text-align: left;
         padding: 0 8px;
-        width: calc(100% / 3);
         height: 169px;
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        gap: 10px;
       }
     }
   }
