@@ -5,11 +5,11 @@ export const ReservationCard = styled.div`
   /* box-sizing: border-box; */
   position: sticky;
   top: 0;
-  right: 0;
+  left: 0;
   box-shadow: var(--box-shadow);
   border-radius: var(--border-container-radius);
   border: var(--border);
-  margin: 50px 0 50px 50px;
+  margin: 0 0 50px 0;
   padding: 24px;
   min-width: 296px;
   max-width: 355px;

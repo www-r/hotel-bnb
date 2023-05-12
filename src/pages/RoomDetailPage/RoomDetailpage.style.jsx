@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 export { Body, Inner, DivisionLineRow, Button, UnderlinedButton } from '@/styles/common.style'
 
 export const TitleSection = styled.div`
+  /* margin-top: 80px; */
   padding-top: 24px;
   .title {
     font-size: 26px;
@@ -27,13 +28,27 @@ export const Main = styled.main`
   .main-wrapper {
     display: flex;
   }
+  .description-item {
+    padding: 48px 0;
+    h2 {
+      font-size: 22px;
+      padding-bottom: 24px;
+    }
+    h3 {
+      font-weight: var(--font-bold);
+    }
+  }
   .descriptions-wrapper {
-    height: 1475.5px;
     .room--detail-explanation {
-      height: 261px;
+      min-height: 200px;
+      max-height: 500px;
+      p {
+        font-size: 18px;
+      }
     }
     .room--summary {
-      height: 288.5px;
+      min-height: 200px;
+      max-height: 288.5px;
       .room--summary--item {
         border-radius: var(--border-container-radius);
         border: var(--border);
@@ -44,7 +59,8 @@ export const Main = styled.main`
       }
     }
     .room--amenities {
-      height: 418px;
+      min-height: 200px;
+      max-height: 418px;
       .room--amenities-list {
         display: flex;
         flex-wrap: wrap;
@@ -53,18 +69,7 @@ export const Main = styled.main`
         }
       }
     }
-  }
-  .description-item {
-    padding: 48px 0;
-    h2 {
-      font-size: 22px;
-      padding-bottom: 24px;
-    }
-    h3 {
-      font-weight: var(--font-bold);
-    }
     .room--calendar {
-      min-width: 624px;
     }
   }
   .need-to-know-lists--container {
@@ -85,5 +90,6 @@ export const Main = styled.main`
 `
 export const Aside = styled.aside`
   position: relative;
-  height: 1475.5px;
+  max-height: 1475.5px;
+  padding: 48px 0 48px 48px;
 `
