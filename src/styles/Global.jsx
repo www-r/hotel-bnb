@@ -54,6 +54,9 @@ const reset = css`
     font-size: 100%;
     vertical-align: baseline;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     line-height: 1.43;
     color: #222;
