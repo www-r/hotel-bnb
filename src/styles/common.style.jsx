@@ -4,9 +4,10 @@ export const Body = styled.div`
   min-width: 743px;
 `
 export const Inner = styled.div`
-  display: grid;
-  place-content: center;
+  display: flex;
+  justify-content: center;
   padding: 0 80px;
+  margin: auto;
 `
 export const DivisionLineRow = styled.div`
   display: block;
