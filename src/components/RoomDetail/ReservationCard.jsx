@@ -16,8 +16,8 @@ const ReservationCard = (props) => {
   const checkOutDateNumber = Number(checkOutDate.replace(/-/g, ''))
   const roomDays = checkOutDateNumber - checkInDateNumber
   const roomTotalPrice = Number(roomPricePerDay) * (checkOutDate && roomDays)
-  const roomTax = Math.ceil(roomPricePerDay * 0.07)
-
+  const roomExtraFee = Math.ceil(roomPricePerDay * 0.07)
+  const roomTax = Math.ceil(roomPricePerDay * 0.02)
   return (
     <>
       <S.ReservationCard>
@@ -28,7 +28,7 @@ const ReservationCard = (props) => {
           <div className="star-rate">
             <div className="star-rate--number">★{roomRating}</div>
             <span>·</span>
-            <span className="star-rate--amount">별점{rates.length}개</span>
+            <span className="star-rate--amount">후기{rates.length}개</span>
           </div>
         </S.ReservationCardTitle>
         <S.ReservationCardInfo>
@@ -92,13 +92,17 @@ const ReservationCard = (props) => {
             </div>
             <div className="price--extra">
               <span>호텔비앤비 서비스 수수료</span>
+              <span>₩{roomExtraFee}</span>
+            </div>
+            <div className="price--tax">
+              <span>세금</span>
               <span>₩{roomTax}</span>
             </div>
           </div>
           <S.DivisionLineRow />
           <div className="reservation-price--total">
             <span>총 합계</span>
-            <span>₩{roomTotalPrice + roomTax}</span>
+            <span>₩{roomTotalPrice + roomExtraFee + roomTax}</span>
           </div>
         </S.ReservationCardPrice>
         <S.ReportRoomButton>
