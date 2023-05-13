@@ -1,8 +1,5 @@
 import styled from '@emotion/styled'
 
-export const Body = styled.div`
-  min-width: 743px;
-`
 export const Inner = styled.div`
   display: flex;
   justify-content: center;

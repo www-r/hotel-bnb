@@ -56,6 +56,7 @@ const reset = css`
   }
   html {
     scroll-behavior: smooth;
+    min-width: 744px;
   }
   body {
     line-height: 1.43;
