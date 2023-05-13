@@ -12,7 +12,7 @@ import Footer from '@/components/Common/Footer/Footer'
 import { HeartIcon, ShareIcon, ChevronRight } from '@/assets/images/index.js'
 
 import * as S from './RoomDetailPage.style' // @ 쓰면 에러남
-import RoomDetailModal from '../../components/RoomDetail/RoomDetailModal'
+import RoomDetailModal from '../../components/Common/Modal/RoomDetail/RoomDetailModal'
 // import './RoomDetailPage.css'
 import { AmenitiesData } from '../../constants/amenities'
 
@@ -55,64 +55,71 @@ const RoomDetailPage = () => {
 
   return (
     <>
+      {modalOpened && title === '숙소 이용규칙' && (
+        <RoomDetailModal title={title} maxNum={room.maxNumber} setModalOpened={setModalOpened} />
+      )}
+      {modalOpened && title === '안전 및 숙소' && (
+        <RoomDetailModal
+          title={title}
+          carbonMonoxideAlert={room.safety.carbonMonoxideAlert}
+          fireAlert={room.safety.fireAlert}
+          setModalOpened={setModalOpened}
+        />
+      )}
       <Header />
-
       <S.Inner>
-        {/* <button onClick={handleNavigateToPayMentPage}>예악하기</button> */}
-
-        <S.Body>
-          <S.TitleSection>
-            <h1 className="title">{room.title}</h1>
-            <div className="title-desc">
-              <div className="title-desc--left">
-                <div className="rating">★{rating}</div>
-                <span>·</span>
-                <span>{room.location}</span>
-              </div>
-              <div className="title-desc--right">
-                <div className="buttons">
-                  <S.Button>
-                    <ShareIcon />
-                    <span>공유하기</span>
-                  </S.Button>
-                  <S.Button>
-                    <HeartIcon />
-                    <span>저장</span>
-                  </S.Button>
+        <S.Main>
+          <div className="main-top">
+            <S.TitleSection>
+              <h1 className="title">{room.title}</h1>
+              <div className="title-desc">
+                <div className="title-desc--left">
+                  <div className="rating">★{rating}</div>
+                  <span>·</span>
+                  <span>{room.location}</span>
+                </div>
+                <div className="title-desc--right">
+                  <div className="buttons">
+                    <S.Button
+                      onClick={() => {
+                        console.log(location.pathname)
+                      }}
+                    >
+                      <ShareIcon />
+                      <span>공유하기</span>
+                    </S.Button>
+                    <S.Button>
+                      <HeartIcon />
+                      <span>저장</span>
+                    </S.Button>
+                  </div>
                 </div>
               </div>
-            </div>
-          </S.TitleSection>
-          <div className="images-container">
-            <div className="image1"></div>
-            <div className="images-wrapper">
-              <div className="image2"></div>
-              <div className="image3"></div>
-            </div>
-            <div className="images-wrapper">
-              <div className="image4"></div>
-              <div className="image5"></div>
-            </div>
+            </S.TitleSection>
+            <S.DivisionLineRow />
+            <S.ImagesSection>
+              <div className="images-container">
+                <div className="image image-thumbnail">d</div>
+                <div className="images-wrapper">
+                  <div className="image image-item">d</div>
+                  <div className="image image-item">d</div>
+                  <div className="image image-item">d</div>
+                  <div className="image image-item">d</div>
+                </div>
+              </div>
+            </S.ImagesSection>
           </div>
           <S.DivisionLineRow />
-          <S.Main>
-            <div className="main-wrapper">
-              <div className="descriptions-wrapper">
-                <div className="description-item room--detail-explanation">
-                  <h2>숙소 소개</h2>
-                  <p>{room.description}</p>
-                </div>
-                <S.DivisionLineRow />
-                {/* <div className="description-item room--summary">
-                  <h2>숙박 장소</h2>
-                  <ul>
-                    <li className="room--summary--item"></li>
-                  </ul>
-                </div> */}
-                <S.DivisionLineRow />
-                <div className="description-item room--amenities">
-                  <h2>숙소 편의시설</h2>
-                  {/* <ul className="room--amenities-list">
+          <div className="main-middle">
+            <S.MainSection>
+              <div className="description-item room--detail-explanation">
+                <h2>숙소 소개</h2>
+                <p>{room.description}</p>
+              </div>
+              <S.DivisionLineRow />
+              <div className="description-item room--amenities">
+                <h2>숙소 편의시설</h2>
+                {/* <ul className="room--amenities-list">
                     {AmenitiesData.filter((data) => {}).map(({ img, text }) => {
                       return (
                         <li className="room--amenity" key={index} src={img}>
@@ -121,42 +128,43 @@ const RoomDetailPage = () => {
                       )
                     })}
                   </ul> */}
-                </div>
-                <S.DivisionLineRow />
-                <div className="description-item room--calendar">
-                  <h2>체크인 날짜를 선택해주세요</h2>
-                  <p>여행 날짜를 입력하여 정확한 요금을 확인하세요.</p>
-                  <div className="calendar-container">
-                    <Calendar
-                      setCheckInDate={setCheckInDate}
-                      setCheckOutDate={setCheckOutDate}
-                      roomReservedDays={room.reservedDays}
-                    />
-                  </div>
+              </div>
+              <S.DivisionLineRow />
+              <div className="description-item room--calendar">
+                <h2>체크인 날짜를 선택해주세요</h2>
+                <p>여행 날짜를 입력하여 정확한 요금을 확인하세요.</p>
+                <div className="calendar-container">
+                  <Calendar
+                    setCheckInDate={setCheckInDate}
+                    setCheckOutDate={setCheckOutDate}
+                    roomReservedDays={room.reservedDays}
+                  />
                 </div>
               </div>
-              <S.Aside className="reservation">
-                <ReservationCard
-                  roomPricePerDay={room.price}
-                  rates={rates}
-                  roomRating={rating}
-                  checkInDate={checkInDate}
-                  checkOutDate={checkOutDate}
-                  numberOfPeople={numberOfPeople}
-                  setNumberOfPeople={setNumberOfPeople}
-                  handleReservationBtn={handleReservationBtn}
-                />
-              </S.Aside>
-            </div>
+              <S.DivisionLineRow />
+              <S.MapSection div className="description-item">
+                <h2>호스팅 지역</h2>
+                <MapList rooms={[room]} size={{ width: '100%', height: '400px' }} />
+              </S.MapSection>
+            </S.MainSection>
+            <S.AsideSection className="reservation">
+              <ReservationCard
+                roomPricePerDay={room.price}
+                rates={rates}
+                roomRating={rating}
+                checkInDate={checkInDate}
+                checkOutDate={checkOutDate}
+                numberOfPeople={numberOfPeople}
+                setNumberOfPeople={setNumberOfPeople}
+                handleReservationBtn={handleReservationBtn}
+              />
+            </S.AsideSection>
+          </div>
+          <div className="main-bottom">
             <S.DivisionLineRow />
-            <div className="description-item map-container">
-              <h2>호스팅 지역</h2>
-              <MapList rooms={[room]} size={{ width: '100%', height: '600px' }} />
-            </div>
-            <S.DivisionLineRow />
-            <div className="description-item need-to-know-lists--container">
+            <S.NeedToKnowSection className="description-item">
               <h2>알아두어야 할 사항</h2>
-              <div className="need-to-know-lists-wrapper">
+              <div className="need-to-know-lists">
                 <div className="need-to-know--list">
                   <h3>숙소 이용규칙</h3>
                   <p>체크인 가능 시간: 오후 12:00 이후</p>
@@ -166,22 +174,12 @@ const RoomDetailPage = () => {
                     onClick={() => {
                       setTitle('숙소 이용규칙')
                       setModalOpened(true)
-                      console.log(scrollY)
-
-                      // fixScrollEvent()
+                      fixScrollEvent()
                     }}
                   >
                     더보기
                     <ChevronRight />
                   </S.UnderlinedButton>
-                  {modalOpened && title === '숙소 이용규칙' && (
-                    <RoomDetailModal
-                      title={title}
-                      maxNum={room.maxNumber}
-                      setModalOpened={setModalOpened}
-                      scrollY={scrollY}
-                    />
-                  )}
                 </div>
                 <div className="need-to-know--list">
                   <h3>안전 및 숙소</h3>
@@ -209,23 +207,15 @@ const RoomDetailPage = () => {
                     더보기
                     <ChevronRight />
                   </S.UnderlinedButton>
-                  {modalOpened && title === '안전 및 숙소' && (
-                    <RoomDetailModal
-                      title={title}
-                      carbonMonoxideAlert={room.safety.carbonMonoxideAlert}
-                      fireAlert={room.safety.fireAlert}
-                      setModalOpened={setModalOpened}
-                    />
-                  )}
                 </div>
                 <div className="need-to-know--list">
                   <h3>환불 정책</h3>
                   <p>예약 이후에는 환불이 불가합니다.</p>
                 </div>
               </div>
-            </div>
-          </S.Main>
-        </S.Body>
+            </S.NeedToKnowSection>
+          </div>
+        </S.Main>
       </S.Inner>
       <Footer />
     </>
