@@ -11,7 +11,7 @@ const usePostUserInfo = () => {
 
     try {
       setLoading(true)
-      const key = info.some((el) => typeof el === 'object') ? 'reservations' : 'wishList'
+      const key = info.some((el) => typeof el === 'object') ? 'reservations' : 'wishlist'
       const res = await axiosFirebase.patch(`/users/${uid}.json`, { [key]: info })
       // Object.values(res.data).flat()
       if (res.data) {

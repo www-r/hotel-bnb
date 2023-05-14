@@ -1,9 +1,36 @@
 import styled from '@emotion/styled'
 
-export { Body, Inner, DivisionLineRow, Button, UnderlinedButton } from '@/styles/common.style'
+export { Inner, DivisionLineRow, Button, UnderlinedButton } from '@/styles/common.style'
 
+export const Main = styled.main`
+  max-width: 1120px;
+  position: relative;
+  .main-top {
+  }
+  .main-middle {
+    /* margin: 0 447px; */
+    min-height: 1475.5px;
+    display: flex;
+    position: relative;
+  }
+  .main-bottom {
+    height: 316px;
+  }
+  .description-item {
+    padding: 48px 0;
+    h2 {
+      font-size: 22px;
+      padding-bottom: 24px;
+    }
+    h3 {
+      font-weight: var(--font-bold);
+    }
+  }
+`
 export const TitleSection = styled.div`
-  padding-top: 24px;
+  /* margin-top: 80px; */
+  padding-top: 48px;
+  padding-bottom: 24px;
   .title {
     font-size: 26px;
   }
@@ -16,94 +43,82 @@ export const TitleSection = styled.div`
       display: flex;
       gap: 8px;
     }
-  }
-`
-
-export const Buttons = styled.div`
-  display: flex;
-`
-
-export const ImagesContainer = styled.div`
-  min-width: 1047.1px;
-  min-height: 547.6px;
-  display: flex;
-  background-color: red;
-  /* @media ${({ theme }) => theme.size.small} {
-    max-width: 664px;
-    max-height: 356px;
-  }
-  @media ${({ theme }) => theme.size.medium} {
-    min-width: 664.1px;
-    max-width: 1047px;
-    min-height: 356.1px;
-    max-height: 547.5px;
-  }
-  @media ${({ theme }) => theme.size.large} {
-    min-width: 1047.1px;
-    max-width: 1120px;
-    min-height: 547.6px;
-    max-height: 584px;
-  } */
-`
-
-export const Main = styled.main`
-  .main-wrapper {
-    display: flex;
-  }
-  .descriptions-wrapper {
-    height: 1475.5px;
-    .room--detail-explanation {
-      height: 261px;
-    }
-    .room--summary {
-      height: 288.5px;
-      .room--summary--item {
-        border-radius: var(--border-container-radius);
-        border: var(--border);
-        box-sizing: border-box;
-        height: 142.5px;
-        min-width: 180px;
-        max-width: 290px;
-        padding: 24px;
-      }
-    }
-    .room--amenities {
-      height: 418px;
-
-      .room--amenities-list {
-        display: flex;
-        flex-wrap: wrap;
-        .room--amenity {
-          width: 50%;
-        }
-      }
-    }
-  }
-  .description-item {
-    padding: 48px 0;
-    h2 {
-      font-size: 22px;
-      padding-bottom: 24px;
-    }
-    h3 {
-      font-weight: var(--font-bold);
-    }
-  }
-  .need-to-know-lists--container {
-    .need-to-know-lists-wrapper {
+    .buttons {
       display: flex;
-      .need-to-know--list {
-        padding: 0 8px;
-        width: calc(100% / 3);
-        height: 169px;
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
+    }
+  }
+`
+export const ImagesSection = styled.div`
+  margin: 48px 0;
+  width: 100%;
+  height: 450px;
+  .images-container {
+    /* width: 100%; */
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    .image {
+      border-radius: var(--border-container-radius);
+    }
+    .image-thumbnail {
+      border: 1px solid black;
+      margin: 5px;
+      background-color: red;
+    }
+    .images-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      .image-item {
+        margin: 5px;
+        background-color: blue;
       }
     }
   }
 `
-export const Aside = styled.aside`
+export const MainSection = styled.div`
   position: relative;
-  height: 1475.5px;
+  .room--detail-explanation {
+    min-height: 300px;
+    max-height: 500px;
+    p {
+      font-size: 18px;
+    }
+  }
+  .room--amenities {
+    min-height: 300px;
+    max-height: 418px;
+    .room--amenities-list {
+      display: flex;
+      flex-wrap: wrap;
+      .room--amenity {
+        width: 50%;
+      }
+    }
+  }
+  .room--calendar {
+    min-height: 300px;
+  }
+`
+export const AsideSection = styled.aside`
+  position: relative;
+  /* height: 100%; */
+  min-height: 1475.5px;
+  padding: 48px 0 48px 48px;
+`
+export const MapSection = styled.div``
+export const NeedToKnowSection = styled.div`
+  .need-to-know-lists {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+    .need-to-know--list {
+      text-align: left;
+      padding: 0 8px;
+      height: 169px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
 `

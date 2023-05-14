@@ -11,11 +11,11 @@ export const RoomsContext = createContext({
   id: null,
   location: null,
   price: 0,
-  rating: 0,
-  reservation: {
-    end: 0,
-    start: 0,
-  },
+  // rating: 0,
+  // reservation: {
+  //   end: 0,
+  //   start: 0,
+  // },
   reservedDays: [],
   thumbnail: null,
   title: null,

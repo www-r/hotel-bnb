@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app'
-import { getDatabase, onValue, ref, set, push, child } from 'firebase/database'
+import { getDatabase, get, onValue, ref, set, push, update, child } from 'firebase/database'
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -68,10 +68,10 @@ export async function AddRoomData(datas, resetFunc, initialState) {
             lat: Number(datas.GEOLOCATION_LAT),
             lng: Number(datas.GEOLOCATION_LNG),
           },
-          reservation: {
-            start: Number(datas.RESERVATION_START),
-            end: Number(datas.RESERVATION_END),
-          },
+          // reservation: {
+          //   start: Number(datas.RESERVATION_START),
+          //   end: Number(datas.RESERVATION_END),
+          // },
           amenities: {
             ...String(amenities),
           },
@@ -92,14 +92,14 @@ export async function AddUserData(uid, email, name, phoneNumber, profileImageURL
     phoneNumber: String(phoneNumber),
     profileImageURL: profileImageURL,
     reservations: [],
-    wishList: [],
+    wishlist: [],
   })
 }
 
-export async function AddWishListData(uid, room) {
-  // const key = push(ref(db, 'users/' + uid + '/wishList')).key
-  await push(child(ref(db), 'users/' + uid + '/wishList'), {
-    wishList: room,
+export async function AddWishlistData(uid, room) {
+  // const key = push(ref(db, 'users/' + uid + '/wishlist')).key
+  await push(child(ref(db), 'users/' + uid + '/wishlist'), {
+    wishlist: room,
   })
 }
 

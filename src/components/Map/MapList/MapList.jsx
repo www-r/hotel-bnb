@@ -16,13 +16,15 @@ const center = {
   lng: 127.77,
 }
 
-const MapList = ({ rooms }) => {
+const MapList = (props) => {
+  const rooms = props.rooms
+  const size = props?.size
   const [selectedMarker, setSelectedMarker] = useState(null)
 
   return (
     <>
       <LoadScript googleMapsApiKey={import.meta.env.VITE_MAP_API_KEY}>
-        <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={8}>
+        <GoogleMap mapContainerStyle={size ? size : containerStyle} center={center} zoom={8}>
           {rooms.map((room) => (
             <MapItem room={room} key={room.id} setSelectedMarker={setSelectedMarker} />
           ))}

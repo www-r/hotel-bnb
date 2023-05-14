@@ -1,23 +1,25 @@
 import styled from '@emotion/styled'
+import { DivisionLineRow } from '../../../styles/common.style'
 
-export const DivisionLine = styled.div`
+export const DivisionLine = styled(DivisionLineRow)`
   height: 1.5px;
-  width: 100%;
-  background-color: #ddd;
-  margin: 8px 0;
+  margin: 24px 0;
 `
 export const Footer = styled.footer`
-  border-top: 1px solid #ddd;
-  background-color: #f7f7f7;
+  word-break: keep-all;
+  margin-top: 48px;
+  border-top: var(--border);
+  padding: 0 80px;
+  background-color: var(--color-footer-grey);
   display: flex;
   flex-direction: column;
-  padding: 0 80px;
+  position: relative;
 `
 export const FooterTop = styled.div`
   display: grid;
+  gap: 10px;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  padding: 48px 0;
-  border-bottom: 1px solid #ddd;
+  padding-top: 48px;
 `
 export const FooterTopItem = styled.div`
   display: flex;
@@ -33,19 +35,28 @@ export const FooterTopItemText = styled.span`
 export const FooterBtm = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 24px 0;
+  padding-bottom: 48px;
 `
 export const FooterBtmWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  .footerIcons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    img {
+      width: 18px;
+    }
+  }
 `
 export const FooterInfo = styled.span`
   margin: 16px 10px 0 0;
   font-size: 14px;
 `
 export const FooterCopyrightText = styled.div`
-  font-size: 10px;
+  font-size: 14px;
   padding-bottom: 8px;
   color: #717171;
 `

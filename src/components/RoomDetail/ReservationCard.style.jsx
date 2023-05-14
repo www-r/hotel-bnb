@@ -5,11 +5,11 @@ export const ReservationCard = styled.div`
   /* box-sizing: border-box; */
   position: sticky;
   top: 0;
-  right: 0;
+  left: 0;
   box-shadow: var(--box-shadow);
   border-radius: var(--border-container-radius);
   border: var(--border);
-  margin: 50px 0 50px 50px;
+  margin: 0 0 50px 0;
   padding: 24px;
   min-width: 296px;
   max-width: 355px;
@@ -46,20 +46,22 @@ export const ReservationCardInfo = styled.div`
     border-radius: var(--border-container-radius);
     border: var(--border);
     .reservation-info--item {
+      padding: 10px 12px;
       display: flex;
       flex-direction: column;
       flex-wrap: wrap;
       flex-shrink: 0;
+      justify-content: space-evenly;
       .reservation-info--title {
         font-size: 12px;
         font-weight: var(--font-semi-bold);
       }
       .reservation-info--value {
         font-size: 14px;
+        font-weight: var(--font-bold);
       }
     }
     .reservation--date {
-      /* padding: 10px 12px 0; */
       border: 1.5px solid transparent;
       height: 56px;
       display: grid;
@@ -68,11 +70,7 @@ export const ReservationCardInfo = styled.div`
         border-radius: var(--border-container-radius);
         border: 1.5px solid var(--color-black);
       }
-      .check-in--date {
-        padding: 10px 0 0 12px;
-      }
       .check-out--date {
-        padding: 10px 12px 0 0;
         position: relative;
         &::before {
           content: '';
@@ -81,19 +79,45 @@ export const ReservationCardInfo = styled.div`
           background-color: var(--color-light-grey);
           position: absolute;
           top: 0;
+          left: 0;
         }
-        .label--check-out {
+        /* .label--check-out {
           margin-left: 12px;
         }
+        .value--check-out {
+          margin-left: 12px;
+        } */
       }
     }
     .reservation--number-of-people {
-      padding: 5px 12px 10px;
+      box-sizing: content-box;
       border: 1.5px solid transparent;
       height: 56px;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
       &:hover {
         border-radius: var(--border-container-radius);
         border: 1.5px solid var(--color-black);
+      }
+      .number-of-people--counter {
+        .buttons {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          button {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: var(--border);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &:hover {
+              background-color: var(--color-light-grey);
+            }
+          }
+        }
       }
     }
     &:hover {
@@ -107,6 +131,8 @@ export const ReservationCardInfo = styled.div`
     border-radius: var(--border-container-radius);
     background-color: var(--color-main);
     color: var(--color-white);
+    &:hover {
+    }
   }
   .reservation-pre-message {
     padding: 16px 0 0;

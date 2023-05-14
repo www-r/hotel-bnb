@@ -72,14 +72,14 @@ const PaymentPage = () => {
             <S.BookDateDiv>
               <S.DateDiv>
                 <h3>날짜</h3>
-                <p>4월~5월</p>
+                <p>{4}~{5}</p>
               </S.DateDiv>
               <S.EditButton>수정</S.EditButton>
             </S.BookDateDiv>
             <S.BookGuestDiv>
               <S.GuestDiv>
                 <h3>게스트</h3>
-                <p>게스트 1명</p>
+                <p>게스트 {1}명</p>
               </S.GuestDiv>
               <S.EditButton>수정</S.EditButton>
             </S.BookGuestDiv>
@@ -128,8 +128,8 @@ const PaymentPage = () => {
             </S.RuleDiv>
             <S.NoticePaymentDiv style={{ wordBreak: 'keep-all' }}>
               아래 버튼을 선택하면 호스트가 설정한 숙소 이용규칙, 게스트에게 적용되는 기본 규칙,
-              에어비앤비 재예약 및 환불 정책에 동의하며, 피해에 대한 책임이 본인에게 있을 경우
-              에어비앤비가 결제 수단으로 청구의 조치를 취할 수 있다는 사실에 동의하는 것입니다.
+              호텔비앤비 재예약 및 환불 정책에 동의하며, 피해에 대한 책임이 본인에게 있을 경우
+              호텔비앤비가 결제 수단으로 청구의 조치를 취할 수 있다는 사실에 동의하는 것입니다.
               호스트가 예약 요청을 수락하면 표시된 총액이 결제되는 데 동의합니다.
               <br />
               <br />
@@ -157,23 +157,25 @@ const PaymentPage = () => {
                 </S.PriceRoomTitle>
                 <S.PriceRoomRate>
                   <IconStar />
-                  <p>{room.rating} 후기(몇 개)</p>
+                  <p>
+                    {4.5} 점 · 후기 {4} 개
+                  </p>
                 </S.PriceRoomRate>
               </S.TitleInformContainer>
             </S.PriceTitleContent>
             <S.PriceDetailDiv>
               <S.PriceDetailTitle>요금 세부 정보</S.PriceDetailTitle>
               <S.PriceDetialContent>
-                <S.BeforeCalc>₩{room.price.toLocaleString()} x 숙박일</S.BeforeCalc>
-                <S.AfterCalc>계산된 금액</S.AfterCalc>
+                <S.BeforeCalc>₩{room.price.toLocaleString()} x {3}일</S.BeforeCalc>
+                <S.AfterCalc>{1234}</S.AfterCalc>
               </S.PriceDetialContent>
               <S.PriceDetialContent>
-                <p>서비스 수수료</p>
-                <p>계산된 금액의 7%</p>
+                <p>서비스 수수료(계산된 금액의 7%)</p>
+                <p>{1234}</p>
               </S.PriceDetialContent>
               <S.PriceDetialContent>
-                <p>세금</p>
-                <p>계산된 금액의 2%</p>
+                <p>세금(계산된 금액의 2%)</p>
+                <p>{123}</p>
               </S.PriceDetialContent>
               <S.FinallyCalc>
                 <S.PriceDetialContent>
@@ -181,7 +183,7 @@ const PaymentPage = () => {
                     <strong>총 합계</strong>
                   </p>
                   <p>
-                    <strong>위의 3가지를 모두 합친 금액</strong>
+                    <strong>{12334}</strong>
                   </p>
                 </S.PriceDetialContent>
               </S.FinallyCalc>

@@ -2,24 +2,29 @@ import React, { useState } from 'react'
 import { DayPicker } from 'react-day-picker'
 import { addYears, addMonths, format, isAfter, isBefore, isValid, parse } from 'date-fns'
 import { ko } from 'date-fns/locale'
+
+import * as S from './Calendar.style'
+
 import 'react-day-picker/dist/style.css'
 
-const Calendar = ({ getCheckInDate, getCheckOutDate }) => {
+const Calendar = ({ setCheckInDate, setCheckOutDate, roomReservedDays }) => {
   //달력
   const today = new Date() //오늘 날짜
   const maximumDate = addYears(today, 2) //최대 렌더 날짜
+  const reservedDates = roomReservedDays?.map(
+    (reservedDay) => new Date(reservedDay.replace(/-/g, ',')),
+  )
   const disabledDays = [
-    new Date(2022, 5, 20), //예약된 날짜
+    // ...reservedDates, //예약된 날짜들
     { from: addMonths(today, 2), to: addYears(today, 2) }, //오늘로부터 2개월 뒤부터는 선택 불가능
   ]
-
+  console.log('reservedDays:', reservedDates)
   const [selectedRange, setSelectedRange] = useState()
-  const [fromValue, setFromValue] = useState('')
-  const [toValue, setToValue] = useState('')
 
   const handleFromChange = (e) => {
+    console.log('checkIn:', e.target.value)
     setFromValue(e.target.value)
-    getCheckInDate(e.target.value)
+    setCheckInDate(e.target.value)
     const date = parse(e.target.value, 'y-MM-dd', new Date())
     if (!isValid(date)) {
       return setSelectedRange({ from: undefined, to: undefined })
@@ -32,8 +37,8 @@ const Calendar = ({ getCheckInDate, getCheckOutDate }) => {
   }
 
   const handleToChange = (e) => {
-    setToValue(e.target.value)
-    getCheckOutDate(e.target.value)
+    console.log('checkOut:', e.target.value)
+    setCheckOutDate(e.target.value)
     const date = parse(e.target.value, 'y-MM-dd', new Date())
 
     if (!isValid(date)) {
@@ -48,24 +53,22 @@ const Calendar = ({ getCheckInDate, getCheckOutDate }) => {
   const handleRangeSelect = (range) => {
     setSelectedRange(range)
     if (range?.from) {
-      setFromValue(format(range.from, 'y-MM-dd'))
+      setCheckInDate(format(range.from, 'y-MM-dd'))
     } else {
-      setFromValue('')
+      setCheckInDate('')
     }
     if (range?.to) {
-      setToValue(format(range.to, 'y-MM-dd'))
+      setCheckOutDate(format(range.to, 'y-MM-dd'))
     } else {
-      setToValue('')
+      setCheckOutDate('')
     }
   }
   const handleResetCalendar = () => {
     setSelectedRange({ from: undefined, to: undefined })
-    setFromValue('')
-    setToValue('')
+    setCheckInDate('')
+    setCheckOutDate('')
   }
 
-  console.log('fromValue:', fromValue)
-  console.log('toValue:', toValue)
   return (
     <div>
       <DayPicker
@@ -82,13 +85,14 @@ const Calendar = ({ getCheckInDate, getCheckOutDate }) => {
         max={31} //최대 예약 기간(일)
         selected={selectedRange}
         onSelect={handleRangeSelect}
-        disabled={disabledDays} //선택 불가능한 날짜
+        disabled={reservedDates ? [...reservedDates, ...disabledDays] : [...disabledDays]} //선택 불가능한 날짜
       />
       {/* <input placeholder="From Date" value={fromValue} onChange={handleFromChange} />
       <input placeholder="To Date" value={toValue} onChange={handleToChange} /> */}
-      <button onClick={handleResetCalendar}>
+
+      <S.Button onClick={handleResetCalendar}>
         <span>날짜 지우기</span>
-      </button>
+      </S.Button>
     </div>
   )
 }
