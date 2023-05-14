@@ -50,28 +50,28 @@ export const TitleSection = styled.div`
 `
 export const ImagesSection = styled.div`
   margin: 48px 0;
+  width: 100%;
+  height: 450px;
   .images-container {
-    height: 453.8px;
-    display: flex;
-    gap: 8px;
+    /* width: 100%; */
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    .image {
+      border-radius: var(--border-container-radius);
+    }
     .image-thumbnail {
-      max-width: 560px;
-      min-width: 332px;
-      max-height: 560px;
-      min-height: 332px;
+      border: 1px solid black;
+      margin: 5px;
       background-color: red;
     }
     .images-wrapper {
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
-      gap: 8px;
       .image-item {
-        max-width: 272px;
-        min-width: 158px;
-        max-height: 280px;
-        min-height: 166px;
-        background-color: red;
+        margin: 5px;
+        background-color: blue;
       }
     }
   }

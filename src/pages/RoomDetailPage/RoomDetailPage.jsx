@@ -99,12 +99,12 @@ const RoomDetailPage = () => {
             <S.DivisionLineRow />
             <S.ImagesSection>
               <div className="images-container">
-                <div className="image image-thumbnail">d</div>
+                <div className="image image-thumbnail"></div>
                 <div className="images-wrapper">
-                  <div className="image image-item">d</div>
-                  <div className="image image-item">d</div>
-                  <div className="image image-item">d</div>
-                  <div className="image image-item">d</div>
+                  <div className="image image-item"></div>
+                  <div className="image image-item"></div>
+                  <div className="image image-item"></div>
+                  <div className="image image-item"></div>
                 </div>
               </div>
             </S.ImagesSection>
