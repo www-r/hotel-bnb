@@ -86,7 +86,7 @@ const style = css`
   :root {
     /** Common */
     --box-shadow: 0 0 10px #ddd;
-
+    --modal-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.6);
     /** Font */
     --font-normal: 400;
     --font-semi-bold: 600;
