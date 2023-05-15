@@ -7,9 +7,13 @@ import { ReactComponent as ChevronRight } from '@/assets/images/Common/ChevronRi
 import IconHeaderMenu from './IconHeaderMenu.svg'
 import IconHeaderAuthor from './IconHeaderAuthor.svg'
 
+//Personal Info Page
 import { ReactComponent as Eye } from '@/assets/images/PersonalInfoPage/Eye.svg'
 import { ReactComponent as PersonalInfoLock1 } from '@/assets/images/PersonalInfoPage/Lock1.svg'
 import { ReactComponent as PersonalInfoLock2 } from '@/assets/images/PersonalInfoPage/Lock2.svg'
+
+//Reservation History Page
+import { ReactComponent as PaymentIcon } from '@/assets/images/ReservationHistoryPage/PaymentIcon.svg'
 
 import { ReactComponent as Heart } from '@/assets/images/Heart.svg'
 import { ReactComponent as GoogleFavicon } from './GoogleFavicon.svg'
@@ -31,7 +35,7 @@ import { ReactComponent as ShareIcon } from '@/assets/images/DetailPage/ShareIco
 import { ReactComponent as TwitterIcon } from '@/assets/images/FooterIcons/twitter.svg'
 import { ReactComponent as FacebookIcon } from '@/assets/images/FooterIcons/facebook.svg'
 import { ReactComponent as InstagramIcon } from '@/assets/images/FooterIcons/instagram.svg'
-import GithubIcon from '@/assets/images/FooterIcons/github-mark.png'
+import { ReactComponent as GithubIcon } from '@/assets/images/FooterIcons/github-mark.svg'
 export {
   CloseIcon,
   IconMinus,
@@ -43,6 +47,7 @@ export {
   Eye,
   PersonalInfoLock1,
   PersonalInfoLock2,
+  PaymentIcon,
   IconExit,
   GoogleFavicon,
   List,
