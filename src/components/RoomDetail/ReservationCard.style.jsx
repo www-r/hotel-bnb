@@ -4,8 +4,8 @@ export { DivisionLineRow, DivisionLineCol } from '../../styles/common.style'
 export const ReservationCard = styled.div`
   /* box-sizing: border-box; */
   position: sticky;
-  top: 0;
-  left: 0;
+  top: 100px;
+  right: 0;
   box-shadow: var(--box-shadow);
   border-radius: var(--border-container-radius);
   border: var(--border);
