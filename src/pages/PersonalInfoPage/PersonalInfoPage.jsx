@@ -49,9 +49,9 @@ const PersonalInfoPage = () => {
       <S.Container>
         <S.PageTitle>
           <div>
-            <a href="#">계정</a>
+            <a href="#"> 계정 </a>
             <ChevronRight />
-            <span>개인정보</span>
+            <span> 개인정보 </span>
           </div>
           <S.PageTitleTitle>개인정보</S.PageTitleTitle>
         </S.PageTitle>
@@ -59,26 +59,18 @@ const PersonalInfoPage = () => {
         <S.MainContainer>
           <S.Main>
             <S.ListItem>
-              <S.ListItemTitle>
-                <span>실명</span>
-              </S.ListItemTitle>
-              <S.ListItemContent>
-                <p>{userCtx.name}</p>
-              </S.ListItemContent>
+              <h3>이름</h3>
+              <S.ListItemContent>{userCtx.name}</S.ListItemContent>
             </S.ListItem>
-
+            <S.DivisionLineRow />
             <S.ListItem>
-              <S.ListItemTitle>
-                <span>이메일 주소</span>
-              </S.ListItemTitle>
-              <S.ListItemContent>
-                <p>{userCtx.email}</p>
-              </S.ListItemContent>
+              <h3>이메일 주소</h3>
+              <S.ListItemContent>{userCtx.email}</S.ListItemContent>
             </S.ListItem>
-
+            <S.DivisionLineRow />
             <S.ListItem>
-              <S.ListItemTitle>
-                <span>비밀번호</span>
+              <S.ListWrapper>
+                <h3>비밀번호</h3>
                 {isShown1 ? (
                   <S.ListItemBtn
                     onClick={(e) => {
@@ -98,24 +90,23 @@ const PersonalInfoPage = () => {
                     수정
                   </S.ListItemBtn>
                 )}
-              </S.ListItemTitle>
+              </S.ListWrapper>
               {isShown1 ? (
                 <S.ListItemContent>
-                  <span>새로운 비밀번호</span>
-                  <div className="newPassword">
+                  <S.InputLabel>새로운 비밀번호</S.InputLabel>
+                  <S.InputsContainer className="newPassword">
                     <input ref={(element) => (inputArr.current[0] = element)}></input>
                     <S.ListItemBtn onClick={handlePassword}>수정</S.ListItemBtn>
-                  </div>
+                  </S.InputsContainer>
                 </S.ListItemContent>
               ) : (
                 <S.ListItemContent></S.ListItemContent>
               )}
             </S.ListItem>
-
+            <S.DivisionLineRow />
             <S.ListItem>
-              <S.ListItemTitle>
-                <span>전화번호</span>
-
+              <S.ListWrapper>
+                <h3>전화번호</h3>
                 {isShown2 ? (
                   <S.ListItemBtn
                     onClick={(e) => {
@@ -135,57 +126,57 @@ const PersonalInfoPage = () => {
                     수정
                   </S.ListItemBtn>
                 )}
-              </S.ListItemTitle>
-              <span>{userCtx.phoneNumber}</span>
-              {isShown2 ? (
-                <S.ListItemContent>
-                  <span>새로운 전화번호</span>
-                  <form className="newPhoneNumber">
-                    <input ref={(element) => (inputArr.current[1] = element)}></input>
-                    <S.ListItemBtn type="submit" onClick={handlePhoneNumber}>
-                      수정
-                    </S.ListItemBtn>
-                  </form>
-                </S.ListItemContent>
-              ) : (
-                <S.ListItemContent></S.ListItemContent>
-              )}
+              </S.ListWrapper>
+              {/* <p>{userCtx.phoneNumber ? userCtx.phoneNumber : '없음'}</p> */}
+              <S.ListItemContent>
+                {userCtx.phoneNumber ? userCtx.phoneNumber : '없음'}
+                {isShown2 ? (
+                  <>
+                    <S.InputLabel>새로운 전화번호</S.InputLabel>
+                    <S.InputsContainer className="newPhoneNumber">
+                      <input ref={(element) => (inputArr.current[1] = element)} type="tel"></input>
+                      <S.ListItemBtn type="submit" onClick={handlePhoneNumber}>
+                        수정
+                      </S.ListItemBtn>
+                    </S.InputsContainer>
+                  </>
+                ) : (
+                  <></>
+                )}
+              </S.ListItemContent>
             </S.ListItem>
+            <S.DivisionLineRow />
             <S.ListItem>
-              <S.ListItemTitle>
-                <span>계정 삭제</span>
+              <S.ListWrapper>
+                <h3>계정 삭제</h3>
                 <S.ListItemBtn onClick={handleAccountDelete}>삭제</S.ListItemBtn>
-              </S.ListItemTitle>
+              </S.ListWrapper>
+              <S.ListItemContent>삭제 완료 후에는 복구 하실 수 없습니다.</S.ListItemContent>
             </S.ListItem>
+            <S.DivisionLineRow />
           </S.Main>
 
           <S.Aside>
             <S.AsideItem>
               <Eye />
-              <S.AsideItemQuestion>
-                여기에 내 개인정보가 표시되지 않는 이유가 무엇인가요?
-              </S.AsideItemQuestion>
-              <S.AsideItemP>
-                신분이 노출되지 않도록 일부 계정 정보가 숨김 처리되었습니다.
-              </S.AsideItemP>
+              <h3>여기에 내 개인정보가 표시되지 않는 이유가 무엇인가요?</h3>
+              <p>신분이 노출되지 않도록 일부 계정 정보가 숨김 처리되었습니다.</p>
             </S.AsideItem>
-            <S.DivisionLine />
+
             <S.AsideItem>
               <PersonalInfoLock1 />
-              <S.AsideItemQuestion>수정할 수 있는 세부 정보는 무엇인가요?</S.AsideItemQuestion>
-              <S.AsideItemP>
+              <h3>수정할 수 있는 세부 정보는 무엇인가요?</h3>
+              <p>
                 에어비앤비에서 본인 인증 시 사용하는 세부 정보는 변경할 수 없습니다. 연락처 정보와
                 일부 개인정보는 수정할 수 있지만, 다음번 예약 또는 숙소를 등록할 때 본인 인증 절차를
                 거쳐야 할 수도 있습니다.
-              </S.AsideItemP>
+              </p>
             </S.AsideItem>
-            <S.DivisionLine />
+
             <S.AsideItem>
               <PersonalInfoLock2 />
-              <S.AsideItemQuestion>다른 사람에게 어떤 정보가 공개되나요?</S.AsideItemQuestion>
-              <S.AsideItemP>
-                에어비앤비는 예약이 확정된 후에만 호스트 및 게스트의 연락처 정보를 공개합니다.
-              </S.AsideItemP>
+              <h3>다른 사람에게 어떤 정보가 공개되나요?</h3>
+              <p>에어비앤비는 예약이 확정된 후에만 호스트 및 게스트의 연락처 정보를 공개합니다.</p>
             </S.AsideItem>
           </S.Aside>
         </S.MainContainer>

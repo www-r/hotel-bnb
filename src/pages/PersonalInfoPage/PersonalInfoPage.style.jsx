@@ -1,45 +1,30 @@
 import styled from '@emotion/styled'
-export const DivisionLine = styled.div`
-  height: 1px;
-  width: 100%;
-  background-color: #ddd;
+import { DivisionLineRow } from '@/styles/common.style'
+export {
+  Container,
+  PageTitle,
+  PageTitleTitle,
+  MainContainer,
+  Main,
+  ListItem,
+  Aside,
+  AsideItem,
+} from '@/styles/common.style'
+export { DivisionLineRow } from '@/styles/common.style'
+
+export const DivisionLine = styled(DivisionLineRow)`
   margin: 32px 0;
 `
-export const Container = styled.div`
-  display: grid;
-  place-content: center;
-  margin: 48px 75px;
-  padding: 20px 24px;
-`
-export const PageTitle = styled.div`
-  margin: 40px 0;
-  width: 100%;
-`
-export const PageTitleTitle = styled.h2`
-  font-weight: 800;
-  font-size: 32px;
-  margin: 20px 0;
-`
-export const MainContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-`
-export const Main = styled.main`
-  padding: 0 8px;
-`
-export const ListItem = styled.form`
-  border-bottom: 1px solid #dddddd;
-  width: 595.33px;
-  padding: 24px 0;
-`
+
 export const ListItemBtn = styled.button`
   outline: none;
   text-decoration: underline;
-  font-size: 14px;
+  font-size: 16px;
   border: none;
   background-color: transparent;
+  padding: 0 5px;
 `
-export const ListItemTitle = styled.div`
+export const ListWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -48,19 +33,20 @@ export const ListItemTitle = styled.div`
 export const ListItemContent = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 10px;
+  margin: 10px 0;
 `
-export const InputsContainer = styled.div`
+export const InputsContainer = styled.form`
   display: flex;
+  gap: 5px;
 `
-export const InputWrapper = styled.div`
-  padding: 0 8px;
-  height: 56px;
-  position: relative;
-`
+// export const InputWrapper = styled.div`
+//   padding: 0 8px;
+//   height: 56px;
+//   position: relative;
+// `
 export const InputLabel = styled.span`
-  position: absolute;
-  left: 20px;
-  top: 15px;
+  font-weight: var(--font-semi-bold);
 `
 export const Input = styled.input`
   outline: none;
@@ -73,20 +59,4 @@ export const ContentBtn = styled.button`
   padding: 13px 23px;
   border: 1px solid;
   border-radius: 8px;
-`
-
-export const Aside = styled.aside`
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  width: 333.33px;
-  padding: 24px;
-  margin-left: 90px;
-`
-export const AsideItem = styled.div``
-
-export const AsideItemQuestion = styled.h3`
-  font-size: 20px;
-`
-export const AsideItemP = styled.p`
-  margin: 16px 0 0;
 `
