@@ -8,12 +8,28 @@ import { getUserInfo, useGetUserInfo } from '../../hooks/useGetUserInfo'
 import { LoginContext } from '../../contexts/LoginProvider'
 const ReservationHistoryPage = () => {
   const queryClient = useQueryClient()
-  const func = async () => {
-    const data = queryClient.getQueryData('uid')
-    const userInfo = await getUserInfo(data)
-    console.log(userInfo)
-  }
-  func()
+
+  const currentUser = useContext(LoginContext)
+
+  useEffect(() => {
+    const fetchUserInfo = async () => {
+      if (currentUser) {
+        const uid = queryClient.getQueryData('uid')
+        await queryClient.prefetchQuery('user', () => getUserInfo(uid), {
+          staleTime: Infinity,
+        })
+      }
+    }
+
+    fetchUserInfo()
+  }, [currentUser])
+
+  // const userInfo = getUserInfo(data)
+  // console.log(userInfo)
+
+  const user = queryClient.getQueryData('user')
+  console.log(user)
+
   return (
     <>
       <Header />

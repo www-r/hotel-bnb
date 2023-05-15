@@ -11,7 +11,6 @@ export const getUserInfo = async (uid) => {
 export const useGetUserInfo = (uid) => {
   const fallback = []
   const { data: userInfo = fallback } = useQuery(queryKeys.user, () => getUserInfo(uid), {
-    keepPreviousData: true,
     staleTime: Infinity,
   })
   console.log({ userInfo })

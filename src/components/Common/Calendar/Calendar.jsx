@@ -18,11 +18,11 @@ const Calendar = ({ setCheckInDate, setCheckOutDate, roomReservedDays }) => {
     // ...reservedDates, //예약된 날짜들
     { from: addMonths(today, 2), to: addYears(today, 2) }, //오늘로부터 2개월 뒤부터는 선택 불가능
   ]
-  console.log('reservedDays:', reservedDates)
+  // console.log('reservedDays:', reservedDates)
   const [selectedRange, setSelectedRange] = useState()
 
   const handleFromChange = (e) => {
-    console.log('checkIn:', e.target.value)
+    // console.log('checkIn:', e.target.value)
     setFromValue(e.target.value)
     setCheckInDate(e.target.value)
     const date = parse(e.target.value, 'y-MM-dd', new Date())
@@ -37,7 +37,7 @@ const Calendar = ({ setCheckInDate, setCheckOutDate, roomReservedDays }) => {
   }
 
   const handleToChange = (e) => {
-    console.log('checkOut:', e.target.value)
+    // console.log('checkOut:', e.target.value)
     setCheckOutDate(e.target.value)
     const date = parse(e.target.value, 'y-MM-dd', new Date())
 

@@ -28,17 +28,17 @@ export const db = getDatabase(app)
 
 // 데이터 읽기
 
-const starCountRef = ref(db, 'rooms/')
-export const getData = onValue(ref(db, 'rooms/'), (snapshot) => {
-  const data = snapshot.val()
-  console.log('getData', data)
-  return data
-})
-export const getUsersData = onValue(ref(db, 'users/'), (snapshot) => {
-  const data = snapshot.val()
-  console.log('getUsersData', data)
-  return data
-})
+// const starCountRef = ref(db, 'rooms/')
+// export const getData = onValue(ref(db, 'rooms/'), (snapshot) => {
+//   const data = snapshot.val()
+//   console.log('getData', data)
+//   return data
+// })
+// export const getUsersData = onValue(ref(db, 'users/'), (snapshot) => {
+//   const data = snapshot.val()
+//   console.log('getUsersData', data)
+//   return data
+// })
 
 // 데이터 쓰기
 // export function writeUserData() {

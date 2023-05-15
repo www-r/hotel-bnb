@@ -9,7 +9,7 @@ const Header = () => {
   const [scrollY, setScrollY] = useState(0)
   const [visible, setVisible] = useState(true)
 
-  console.log(scrollY)
+  // console.log(scrollY)
 
   useEffect(() => {
     const handleScroll = () => {
