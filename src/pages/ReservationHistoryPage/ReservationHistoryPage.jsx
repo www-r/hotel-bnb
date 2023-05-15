@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
+import { useQueryClient, useQuery } from 'react-query'
 import Header from '@/components/Common/Header/Header'
 import ReservedRoom from '@/components/Room/RoomItem/ReservedRoom'
 import * as S from '@/pages/ReservationHistoryPage/ReservationHistoryPage.style'
 import { ChevronRight, PaymentIcon } from '../../assets/images'
-
+import { getUserInfo, useGetUserInfo } from '../../hooks/useGetUserInfo'
+import { LoginContext } from '../../contexts/LoginProvider'
 const ReservationHistoryPage = () => {
+  const queryClient = useQueryClient()
+  const func = async () => {
+    const data = queryClient.getQueryData('uid')
+    const userInfo = await getUserInfo(data)
+    console.log(userInfo)
+  }
+  func()
   return (
     <>
       <Header />
@@ -35,5 +44,4 @@ const ReservationHistoryPage = () => {
     </>
   )
 }
-
 export default ReservationHistoryPage
