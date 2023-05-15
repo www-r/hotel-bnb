@@ -20,6 +20,8 @@ export const menu = styled.div`
   display: flex;
 `
 export const ListItem = styled(listItem)`
+  border: var(--border);
+  border-radius: var(--border-container-radius);
   margin: 0 0 80px;
 `
 export const Lists = styled.ul`
