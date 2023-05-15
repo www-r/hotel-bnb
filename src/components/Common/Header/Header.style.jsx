@@ -8,7 +8,6 @@ export const Header = styled.header`
 `
 
 export const Container = styled.div`
-  position: relative;
   height: 80px;
   display: flex;
   flex-wrap: nowrap;
@@ -22,6 +21,10 @@ export const TagItemsContatiner = styled(Container)`
   overflow: hidden;
   display: block;
   gap: 0 30px;
+  width: 100%;
+  position: fixed;
+  background-color: #fff;
+
   /* min-width: px; */
   /* min-width: 625px; */
   /* --basic-height: 80px; */

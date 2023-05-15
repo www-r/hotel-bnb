@@ -28,8 +28,7 @@ export const Main = styled.main`
   }
 `
 export const TitleSection = styled.div`
-  /* margin-top: 80px; */
-  padding-top: 48px;
+  padding-top: 100px;
   padding-bottom: 24px;
   .title {
     font-size: 26px;
