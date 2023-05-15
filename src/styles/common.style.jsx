@@ -6,6 +6,57 @@ export const Inner = styled.div`
   padding: 0 80px;
   margin: auto;
 `
+export const Container = styled.div`
+  display: grid;
+  place-content: center;
+  margin: 48px 75px;
+  padding: 20px 24px;
+`
+export const PageTitle = styled.div`
+  margin: 40px 0;
+  width: 100%;
+`
+export const PageTitleTitle = styled.h2`
+  font-weight: 800;
+  font-size: 32px;
+  margin: 20px 0;
+`
+export const MainContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+export const Main = styled.main`
+  padding: 0 8px;
+`
+export const ListItem = styled.form`
+  width: 595.33px;
+  padding: 24px 0;
+  h3 {
+    padding: 15px 0 5px;
+    font-size: 22px;
+    font-weight: 600px;
+  }
+`
+export const Aside = styled.aside`
+  margin-left: 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+`
+export const AsideItem = styled.div`
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  width: 333.33px;
+  padding: 24px;
+  height: fit-content;
+  h3 {
+    padding-top: 10px;
+    font-size: 20px;
+  }
+  p {
+    margin: 16px 0 0;
+  }
+`
 export const DivisionLineRow = styled.div`
   display: block;
   height: 1px;
