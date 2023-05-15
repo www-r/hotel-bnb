@@ -1,11 +1,11 @@
 import styled from '@emotion/styled'
-
+export { DivisionLineRow } from '@/styles/common.style'
 export const ModalMenu = styled.div`
   position: fixed;
   top: 70px;
   right: 30px;
   width: 240px;
-  border-radius: 10px;
+  border-radius: var(--border-container-radius);
   display: ${(props) => (props.isClicked ? 'block' : 'none')};
   box-shadow: 0 0 10px #ddd;
   background-color: #fff;
@@ -17,8 +17,6 @@ export const ContentList = styled.ul`
   flex-direction: column;
   justify-content: end;
   align-items: start;
-  padding-top: 10px;
-  padding-bottom: 10px;
 `
 
 export const ContentItem = styled.li`
@@ -26,10 +24,10 @@ export const ContentItem = styled.li`
   display: flex;
   width: 100%;
   align-items: center;
-  padding-left: 5px;
+  padding: 10px 20px;
   cursor: pointer;
   &:hover {
     background-color: #f6f6f6;
   }
-  font-weight: bold;
+  font-weight: var(--font-semi-bold);
 `

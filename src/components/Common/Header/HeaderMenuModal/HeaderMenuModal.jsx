@@ -24,7 +24,6 @@ const HeaderMenuModal = ({ isClicked, showModalFunc }) => {
             >
               로그아웃
             </S.ContentItem>
-
             <Link to="/account" style={{ width: '100%' }}>
               <S.ContentItem>예약 내역</S.ContentItem>
             </Link>
@@ -37,7 +36,7 @@ const HeaderMenuModal = ({ isClicked, showModalFunc }) => {
           </>
         ) : (
           <S.ContentItem onClick={() => setShowLogin(true)}>로그인</S.ContentItem>
-        )}{' '}
+        )}
         <Link to="/admin" style={{ width: '100%' }}>
           <S.ContentItem>Room 추가</S.ContentItem>
         </Link>

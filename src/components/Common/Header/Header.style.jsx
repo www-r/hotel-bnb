@@ -14,8 +14,7 @@ export const Container = styled.div`
   flex-wrap: nowrap;
   align-items: center;
   border-bottom: 1px solid #f2f2f2;
-  padding-left: 100px;
-  padding-right: 100px;
+  padding: 0 80px;
   min-width: 743px;
 `
 
