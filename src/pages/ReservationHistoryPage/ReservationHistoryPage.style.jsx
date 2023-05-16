@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import {
   ListItem as listItem,
+  Main as main,
   Aside as aside,
   AsideItem as asideItem,
 } from '../../styles/common.style'
@@ -10,18 +11,28 @@ export {
   PageTitle,
   PageTitleTitle,
   MainContainer,
-  Main,
   // ListItem,
   // Aside,
   // AsideItem,
 } from '@/styles/common.style'
 
-export const menu = styled.div`
-  display: flex;
+export const Main = styled(main)`
+  padding: 0;
+  min-width: 600px;
+  h2 {
+    font-size: 22px;
+    font-weight: var(--font-semi-bold);
+    margin: 30px 0 10px;
+  }
+  p {
+    font-size: 16px;
+    padding: 5px 0;
+  }
+  .lists {
+    margin-top: 24px;
+  }
 `
 export const ListItem = styled(listItem)`
-  border: var(--border);
-  border-radius: var(--border-container-radius);
   margin: 0 0 80px;
 `
 export const Lists = styled.ul`

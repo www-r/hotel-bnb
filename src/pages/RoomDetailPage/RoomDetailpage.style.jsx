@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-
+import { Image as image } from '@/styles/common.style'
 export { Inner, DivisionLineRow, Button, UnderlinedButton } from '@/styles/common.style'
 
 export const Main = styled.main`
@@ -56,24 +56,22 @@ export const ImagesSection = styled.div`
     height: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    .image {
-      border-radius: var(--border-container-radius);
-    }
-    .image-thumbnail {
-      border: 1px solid black;
-      margin: 5px;
-      background-color: red;
-    }
     .images-wrapper {
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
-      .image-item {
-        margin: 5px;
-        background-color: blue;
-      }
     }
   }
+`
+const Image = styled(image)`
+  border-radius: var(--border-container-radius);
+  margin: 5px;
+`
+export const ImageThumbnail = styled(Image)`
+  background-position: center;
+`
+export const ImageDetail = styled(Image)`
+  background-color: blue;
 `
 export const MainSection = styled.div`
   position: relative;

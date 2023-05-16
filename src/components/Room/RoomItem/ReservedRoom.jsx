@@ -1,35 +1,53 @@
 import React, { useState } from 'react'
+import { useGetRooms } from '@/hooks/useGetRooms'
 import * as S from './ReservedRoom.style'
-const ReservedRoomItem = () => {
+
+const ReservedRoomItem = (props) => {
+  console.log('props:', props)
+  const reservationId = props?.reservationId
+  const roomId = props?.roomId
+  const dates = props?.dates
+  const price = props?.price
+  // const rate = props?.rate
+  // const { rooms } = useGetRooms()
+  const rooms = props?.rooms
+  const foundRoom = rooms && rooms?.find((room) => room.id === roomId)
+  console.log('foundRoom:', foundRoom)
+  const thumbnail = foundRoom.thumbnail
+  const location = foundRoom.location
   return (
     <S.Item>
-      <div className="thumbnail"></div>
-      <div className="info-wrapper">
-        <div>
-          <div className="room--info">
-            <h2 className="room--name">{'이름'}</h2>
-            <p className="room--location">
-              <span>위치 : </span>
-            </p>
+      <S.Thumbnail thumbnail={thumbnail} />
+      <S.InfoWrapper>
+        <p className="reservation--id">{reservationId}</p>
+        <S.DivisionLineRow />
+        <S.InfoItemBold>{location}</S.InfoItemBold>
+        <S.DivisionLineRow />
+        <div className="reservation--info">
+          <div className="reservation--period">
+            <div>
+              <span>체크인</span>
+              <S.InfoItemBold>{dates[0]}</S.InfoItemBold>
+            </div>
+            <div>
+              <span>체크아웃</span>
+              <S.InfoItemBold>{dates[dates.length - 1]}</S.InfoItemBold>
+            </div>
           </div>
-          <div className="reservation--info">
-            <p className="reservation-period">
-              <span>기간 : </span> {'예약 기간'}
-            </p>
-            <p className="reservation-price">
-              <span>총 가격 : </span> <span>{'예약 금액'}</span>
-            </p>
+          <S.DivisionLineRow />
+          ★☆
+          <div className="reservation--price">
+            <span>총 가격</span>
+            <S.InfoItemBold>₩{price}</S.InfoItemBold>
           </div>
         </div>
-        <S.DivisionLineRow />
+
+        {/* <S.DivisionLineRow />
         <div className="room--rate">
           <span>별점 </span>
-          <p>{false ? 4.5 : <button> 평가하기 </button>}</p>
-        </div>
-      </div>
-      <S.PriceModal>
-        <p>총 가격 = 방 가격 * 숙박일 + 수수료 + 세금</p>
-      </S.PriceModal>
+          <p>{rate || <button> 평가하기 </button>}</p>
+        </div> */}
+      </S.InfoWrapper>
     </S.Item>
   )
 }

@@ -10,7 +10,7 @@ const MainPage = () => {
   const [movePage, setMovePage] = useState('/map')
 
   const { rooms } = useGetRooms()
-  console.log({ rooms })
+  console.log(rooms)
 
   return (
     <>

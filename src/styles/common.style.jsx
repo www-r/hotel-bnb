@@ -29,7 +29,7 @@ export const Main = styled.main`
   padding: 0 8px;
 `
 export const ListItem = styled.form`
-  width: 595.33px;
+  width: 600px;
   padding: 24px 0;
   h3 {
     padding: 15px 0 5px;
@@ -44,7 +44,7 @@ export const Aside = styled.aside`
   gap: 24px;
 `
 export const AsideItem = styled.div`
-  border: 1px solid #ddd;
+  border: var(--border);
   border-radius: 12px;
   width: 333.33px;
   padding: 24px;
@@ -68,6 +68,10 @@ export const DivisionLineCol = styled.div`
   width: 1px;
   height: 100%;
   background-color: var(--color-light-grey);
+`
+export const Image = styled.div`
+  background-image: url(${({ thumbnail }) => thumbnail});
+  background-repeat: no-repeat;
 `
 export const Button = styled.button`
   border-radius: 8px;

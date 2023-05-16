@@ -12,12 +12,17 @@ const ReservationCard = (props) => {
   const handleReservationBtn = props.handleReservationBtn
   const numberOfPeople = props.numberOfPeople
   const setNumberOfPeople = props.setNumberOfPeople
+  const bringPaymentData = props.bringPaymentData
   const checkInDateNumber = Number(checkInDate.replace(/-/g, ''))
   const checkOutDateNumber = Number(checkOutDate.replace(/-/g, ''))
   const roomDays = checkOutDateNumber - checkInDateNumber
   const roomTotalPrice = Number(roomPricePerDay) * (checkOutDate && roomDays)
-  const roomExtraFee = Math.ceil(roomPricePerDay * 0.07)
-  const roomTax = Math.ceil(roomPricePerDay * 0.02)
+  const roomExtraFee = Math.ceil(roomTotalPrice && roomTotalPrice * 0.07)
+  const roomTax = Math.ceil(roomTotalPrice && roomTotalPrice * 0.02)
+
+  const liftPaymentData = (data) => {
+    return bringPaymentData(data)
+  }
   return (
     <>
       <S.ReservationCard>
@@ -36,7 +41,7 @@ const ReservationCard = (props) => {
             <div
               className="reservation--date"
               onClick={() => {
-                scrollTo(0, 930)
+                scrollTo(0, 1300)
               }}
             >
               <div className="check-in--date  reservation-info--item">
@@ -77,7 +82,21 @@ const ReservationCard = (props) => {
               </div>
             </div>
           </div>
-          <button className="reservation-button" onClick={handleReservationBtn}>
+          <button
+            className="reservation-button"
+            onClick={() => {
+              handleReservationBtn({
+                checkInDate,
+                checkOutDate,
+                numberOfPeople,
+                roomDays,
+                roomTotalPrice,
+                roomExtraFee,
+                roomTax,
+                roomRating,
+              })
+            }}
+          >
             예약하기
           </button>
           <p className="reservation-pre-message">예약 확정 전에는 요금이 청구되지 않습니다.</p>
@@ -86,23 +105,23 @@ const ReservationCard = (props) => {
           <div className="reservation-price--calculate">
             <div className="price--basic">
               <span className="price-calculate--per-day">
-                ₩{roomPricePerDay} x {checkOutDate && roomDays}박
+                ₩{roomPricePerDay.toLocaleString()} x {checkOutDate && roomDays}박
               </span>
-              <span className="price-calculate--total">₩{roomTotalPrice}</span>
+              <span className="price-calculate--total">₩{roomTotalPrice.toLocaleString()}</span>
             </div>
             <div className="price--extra">
               <span>호텔비앤비 서비스 수수료</span>
-              <span>₩{roomExtraFee}</span>
+              <span>₩{roomExtraFee.toLocaleString()}</span>
             </div>
             <div className="price--tax">
               <span>세금</span>
-              <span>₩{roomTax}</span>
+              <span>₩{roomTax.toLocaleString()}</span>
             </div>
           </div>
           <S.DivisionLineRow />
           <div className="reservation-price--total">
             <span>총 합계</span>
-            <span>₩{roomTotalPrice + roomExtraFee + roomTax}</span>
+            <span>₩{(roomTotalPrice + roomExtraFee + roomTax).toLocaleString()}</span>
           </div>
         </S.ReservationCardPrice>
         <S.ReportRoomButton>

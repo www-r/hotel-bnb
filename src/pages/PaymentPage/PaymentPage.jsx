@@ -15,8 +15,18 @@ import { BiBadgeCheck } from 'react-icons/bi'
 
 const PaymentPage = () => {
   const location = useLocation()
-  const room = location.state
-  console.log('room', location.state)
+  const room = location.state.room
+  const {
+    checkInDate,
+    checkOutDate,
+    numberOfPeople,
+    roomDays,
+    roomTotalPrice,
+    roomExtraFee,
+    roomTax,
+    roomRating,
+  } = location.state.data
+  console.log('locationstate', location.state)
 
   const [value, setValue] = useState('')
 
@@ -68,20 +78,23 @@ const PaymentPage = () => {
         <S.ContentContainer>
           {/* 예약 정보 */}
           <S.BookInfoWrapper>
-            <S.BookTitleDiv>예약 정보</S.BookTitleDiv>
+            <div className='bookInfo-title-wrapper'>
+              <S.BookTitleDiv>예약 정보</S.BookTitleDiv>
+              <S.EditButton>수정</S.EditButton>
+            </div>
             <S.BookDateDiv>
               <S.DateDiv>
                 <h3>날짜</h3>
-                <p>{4}~{5}</p>
+                <p>
+                  {checkInDate} ~ {checkOutDate}
+                </p>
               </S.DateDiv>
-              <S.EditButton>수정</S.EditButton>
             </S.BookDateDiv>
             <S.BookGuestDiv>
               <S.GuestDiv>
                 <h3>게스트</h3>
-                <p>게스트 {1}명</p>
+                <p>게스트 {numberOfPeople}명</p>
               </S.GuestDiv>
-              <S.EditButton>수정</S.EditButton>
             </S.BookGuestDiv>
             <S.PaymentDiv>
               <S.PaymentTitle>
@@ -111,8 +124,8 @@ const PaymentPage = () => {
             <S.RefundDiv style={{ wordBreak: 'keep-all' }}>
               <S.RefundTitle>환불 정책</S.RefundTitle>
               <p>
-                <strong>5월 5일 전까지 무료로 취소하실 수 있습니다.</strong> 체크인 날짜인 6월 4일
-                전에 취소하면 부분 환불을 받으실 수 있습니다.
+                <strong>결제 이후에는 환불 받으실 수 없습니다.</strong> 체크인 날짜인 6월 4일
+                
               </p>
             </S.RefundDiv>
             <S.RuleDiv style={{ wordBreak: 'keep-all' }}>
@@ -158,34 +171,36 @@ const PaymentPage = () => {
                 <S.PriceRoomRate>
                   <IconStar />
                   <p>
-                    {4.5} 점 · 후기 {4} 개
+                    {roomRating} 점 · 후기 {room.rates.length} 개
                   </p>
                 </S.PriceRoomRate>
               </S.TitleInformContainer>
             </S.PriceTitleContent>
             <S.PriceDetailDiv>
               <S.PriceDetailTitle>요금 세부 정보</S.PriceDetailTitle>
-              <S.PriceDetialContent>
-                <S.BeforeCalc>₩{room.price.toLocaleString()} x {3}일</S.BeforeCalc>
-                <S.AfterCalc>{1234}</S.AfterCalc>
-              </S.PriceDetialContent>
-              <S.PriceDetialContent>
+              <S.PriceDetailContent>
+                <S.BeforeCalc>
+                  ₩{room.price.toLocaleString()} x {roomDays}일
+                </S.BeforeCalc>
+                <S.AfterCalc>{roomTotalPrice.toLocaleString()}</S.AfterCalc>
+              </S.PriceDetailContent>
+              <S.PriceDetailContent>
                 <p>서비스 수수료(계산된 금액의 7%)</p>
-                <p>{1234}</p>
-              </S.PriceDetialContent>
-              <S.PriceDetialContent>
+                <p>{roomExtraFee.toLocaleString()}</p>
+              </S.PriceDetailContent>
+              <S.PriceDetailContent>
                 <p>세금(계산된 금액의 2%)</p>
-                <p>{123}</p>
-              </S.PriceDetialContent>
+                <p>{roomTax.toLocaleString()}</p>
+              </S.PriceDetailContent>
               <S.FinallyCalc>
-                <S.PriceDetialContent>
+                <S.PriceDetailContent>
                   <p>
                     <strong>총 합계</strong>
                   </p>
                   <p>
-                    <strong>{12334}</strong>
+                    <strong>{(roomTotalPrice + roomExtraFee + roomTax).toLocaleString()}</strong>
                   </p>
-                </S.PriceDetialContent>
+                </S.PriceDetailContent>
               </S.FinallyCalc>
               <S.PriceNotice>
                 해외에서 결제가 처리되기 때문에 카드 발행사에서 추가 수수료를 부과할 수 있습니다.

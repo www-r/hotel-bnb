@@ -32,6 +32,11 @@ export const ContentContainer = styled.div`
 
 export const BookInfoWrapper = styled.div`
   width: 50%;
+  .bookInfo-title-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 `
 export const PriceInfoWrapper = styled.div`
   position: sticky;
@@ -61,6 +66,7 @@ export const DateDiv = styled.div``
 
 export const EditButton = styled.button`
   background-color: transparent;
+  font-weight: var(--font-semi-bold);
   text-decoration: underline;
   cursor: pointer;
 `
@@ -180,7 +186,7 @@ export const PriceRoomRate = styled.div`
 
 export const PriceDetailDiv = styled(PaymentDiv)``
 export const PriceDetailTitle = styled(PaymentTitle)``
-export const PriceDetialContent = styled(RuleInformDiv)`
+export const PriceDetailContent = styled(RuleInformDiv)`
   display: flex;
   justify-content: space-between;
 `

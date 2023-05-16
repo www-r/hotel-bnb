@@ -1,37 +1,44 @@
 import styled from '@emotion/styled'
-export { DivisionLineRow } from '@/styles/common.style'
+import { Image } from '@/styles/common.style'
+export { DivisionLineRow, DivisionLineCol } from '@/styles/common.style'
 export const Item = styled.div`
   border: var(--border);
   border-radius: var(--border-container-radius);
   margin: 0 0 24px 0;
   display: grid;
   grid-template-columns: 1fr 3fr;
-  width: 600px;
-  height: 150px;
+  min-width: 600px;
+  height: 165px;
   position: relative;
-  .thumbnail {
-    background-color: red;
+`
+export const Thumbnail = styled(Image)`
+  border-bottom-left-radius: var(--border-container-radius);
+  border-top-left-radius: var(--border-container-radius);
+  height: 165px;
+  width: 165px;
+  background-size: cover;
+`
+export const InfoWrapper = styled.div`
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+  .reservation--id {
+    /* border-bottom: var(--border); */
+    padding: 0 0 0 5px;
   }
-  .info-wrapper {
-    margin: 10px;
-    padding: 0 10px;
+  .reservation--info {
+  }
+  .reservation--period {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .room--rate {
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
-    h2 {
-      font-weight: var(--font-semi-bold);
-      font-size: 20px;
-      margin-bottom: 5px;
-    }
-    .reservation--info {
-      display: flex;
-      justify-content: space-between;
-    }
-    .room--rate {
-      display: flex;
-      justify-content: space-between;
-    }
   }
+`
+export const InfoItemBold = styled.span`
+  font-weight: var(--font-semi-bold);
 `
 export const PriceModal = styled.div`
   position: absolute;

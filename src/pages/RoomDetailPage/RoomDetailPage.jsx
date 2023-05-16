@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { createPortal } from 'react-dom'
+
 import { useLocation, useNavigate } from 'react-router-dom'
 // import { roomsRef, listAll } from '@/firebase.js'
 import Header from '@/components/Common/Header/Header'
@@ -19,34 +19,53 @@ import { AmenitiesData } from '../../constants/amenities'
 const RoomDetailPage = () => {
   const [modalOpened, setModalOpened] = useState(false)
   const [title, setTitle] = useState('')
+  const navigate = useNavigate()
   const location = useLocation()
   const room = location.state
-  const rates = room.rates
+  const roomPrice = room.price
+  const rates = room?.rates
   const calculateRating = (rates) => {
-    let sum = 0
-    for (let rate of rates) {
-      sum += rate
+    try {
+      let sum = 0
+      for (let rate of rates) {
+        sum += rate
+      }
+      const average = sum / rates.length
+      return average
+    } catch (error) {
+      console.log('why???????:', error)
     }
-    const average = sum / rates.length
-    return average
   }
   const rating = calculateRating(rates)
-  const navigate = useNavigate()
   const [checkInDate, setCheckInDate] = useState('')
   const [checkOutDate, setCheckOutDate] = useState('')
   const [numberOfPeople, setNumberOfPeople] = useState(1)
-  const handleNavigateToPayMentPage = () => {
+  const [roomPaymentData, setRoomPaymentData] = useState({
+    checkInDate: '',
+    checkOutDate: '',
+    numberOfPeople: 1,
+    roomDays: 0,
+    roomTotalPrice: 0,
+    roomExtraFee: 0,
+    roomTax: 0,
+    roomRating: 0,
+  })
+  const bringPaymentData = (data) => {
+    setRoomPaymentData(data)
+    return data
+  }
+  const handleNavigateToPayMentPage = (data) => {
     navigate(`/book/${room.id}`, {
-      state: room,
+      state: { room, data },
     })
   }
-  const handleReservationBtn = () => {
+  const handleReservationBtn = (data) => {
     if (!(checkInDate && checkOutDate)) {
       alert('날짜를 선택해주세요')
     } else if (numberOfPeople > room.maxNumber || numberOfPeople === 0) {
       alert('인원을 다시 설정해주세요')
     } else {
-      handleNavigateToPayMentPage()
+      handleNavigateToPayMentPage(data)
     }
   }
   const fixScrollEvent = () => {
@@ -99,12 +118,12 @@ const RoomDetailPage = () => {
             <S.DivisionLineRow />
             <S.ImagesSection>
               <div className="images-container">
-                <div className="image image-thumbnail"></div>
+                <S.ImageThumbnail thumbnail={room.thumbnail} />
                 <div className="images-wrapper">
-                  <div className="image image-item"></div>
-                  <div className="image image-item"></div>
-                  <div className="image image-item"></div>
-                  <div className="image image-item"></div>
+                  <S.ImageDetail />
+                  <S.ImageDetail />
+                  <S.ImageDetail />
+                  <S.ImageDetail />
                 </div>
               </div>
             </S.ImagesSection>
@@ -149,7 +168,7 @@ const RoomDetailPage = () => {
             </S.MainSection>
             <S.AsideSection className="reservation">
               <ReservationCard
-                roomPricePerDay={room.price}
+                roomPricePerDay={roomPrice}
                 rates={rates}
                 roomRating={rating}
                 checkInDate={checkInDate}
@@ -157,6 +176,7 @@ const RoomDetailPage = () => {
                 numberOfPeople={numberOfPeople}
                 setNumberOfPeople={setNumberOfPeople}
                 handleReservationBtn={handleReservationBtn}
+                bringPaymentData={bringPaymentData}
               />
             </S.AsideSection>
           </div>
