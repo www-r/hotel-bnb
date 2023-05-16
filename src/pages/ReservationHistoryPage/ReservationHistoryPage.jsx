@@ -4,7 +4,7 @@ import Header from '@/components/Common/Header/Header'
 import ReservedRoom from '@/components/Room/RoomItem/ReservedRoom'
 import * as S from '@/pages/ReservationHistoryPage/ReservationHistoryPage.style'
 import { ChevronRight, PaymentIcon } from '../../assets/images'
-import { getUserInfo, useGetUserInfo } from '../../hooks/useGetUserInfo'
+import { getUserInfo, useGetUserInfo } from '@/hooks/useGetUserInfo'
 import { useGetRooms } from '@/hooks/useGetRooms'
 import { LoginContext } from '../../contexts/LoginProvider'
 
@@ -20,8 +20,11 @@ const ReservationHistoryPage = () => {
     setReservations(userInfo.reservations)
     setData(true)
   }
-  const { rooms } = useGetRooms()
-  console.log('rooms:', rooms)
+  useEffect(() => {
+    reservations.length !== 0 ? setData(true) : setData(false)
+  }, [reservations])
+  // const { rooms } = useGetRooms()
+  // console.log('rooms:', rooms)
   // const { user } = useGetUserInfo()
   // console.log(user)
   // setTimeout(() => {
@@ -52,19 +55,19 @@ const ReservationHistoryPage = () => {
             <h2>예약 내역 / 결제 내역</h2>
             <p>내가 예약한 숙소들의 목록과 내가 남긴 별점들을 확인할 수 있습니다.</p>
             <p> 별점을 남기지 않은 숙소들의 평점도 남길 수 있습니다.</p>
-            {reservations.length ? (
+            {data ? (
               <div className="lists">
                 {reservations.length !== 0 &&
                   // reservations &&
                   reservations.map((reservation) => (
                     <ReservedRoom
-                      reservationId={reservation.reservationId}
-                      roomId={reservation.roomId}
-                      dates={reservation.reservationDates}
-                      price={reservation.reservationPrice}
-                      rate={reservation.rate}
+                      // reservationId={reservation.reservationId}
+                      // roomId={reservation.roomId}
+                      // dates={reservation.reservationDates}
+                      // price={reservation.reservationPrice}
+                      // rate={reservation.rate}
+                      reservation={reservation}
                       key={reservation.reservationId}
-                      rooms={rooms}
                     />
                   ))}
               </div>
