@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
-
+import React, { useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-// import { roomsRef, listAll } from '@/firebase.js'
-import Header from '@/components/Common/Header/Header'
+import { ref } from '@firebase/storage'
+import { storage } from '../../firebase'
 import 'react-day-picker/dist/style.css'
+import Header from '@/components/Common/Header/Header'
 import Calendar from '@/components/Common/Calendar/Calendar'
 import MapList from '@/components/Map/MapList/MapList'
 import ReservationCard from '@/components/RoomDetail/ReservationCard'
@@ -15,7 +15,6 @@ import * as S from './RoomDetailPage.style' // @ 쓰면 에러남
 import RoomDetailModal from '../../components/Common/Modal/RoomDetail/RoomDetailModal'
 // import './RoomDetailPage.css'
 import { AmenitiesData } from '../../constants/amenities'
-
 const RoomDetailPage = () => {
   const [modalOpened, setModalOpened] = useState(false)
   const [title, setTitle] = useState('')
@@ -54,6 +53,15 @@ const RoomDetailPage = () => {
     setRoomPaymentData(data)
     return data
   }
+  const handleShareBtn = () => {
+    if (navigator.clipboard) {
+      const text = 'localhost:3000' + location.pathname
+      alert(`${text}을/를 복사하시겠습니까?`)
+      navigator.clipboard.writeText(text)
+    } else {
+      console.log('브라우저에서 지원하지 못합니다.')
+    }
+  }
   const handleNavigateToPayMentPage = (data) => {
     navigate(`/book/${room.id}`, {
       state: { room, data },
@@ -71,7 +79,9 @@ const RoomDetailPage = () => {
   const fixScrollEvent = () => {
     document.body.style.overflow = 'hidden'
   }
-
+  // useEffect(() => {
+  //   console.log(ref(storage, 'rooms'))
+  // }, [])
   return (
     <>
       {modalOpened && title === '숙소 이용규칙' && (
@@ -99,11 +109,7 @@ const RoomDetailPage = () => {
                 </div>
                 <div className="title-desc--right">
                   <div className="buttons">
-                    <S.Button
-                      onClick={() => {
-                        console.log(location.pathname)
-                      }}
-                    >
+                    <S.Button onClick={handleShareBtn}>
                       <ShareIcon />
                       <span>공유하기</span>
                     </S.Button>
