@@ -42,7 +42,7 @@ const PersonalInfoPage = () => {
     await deleteUser(user)
     alert('삭제 성공!')
   }
-  console.log(currentUser)
+  // console.log(currentUser)
   return (
     <>
       <Header />

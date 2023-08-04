@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { Image as image } from '@/styles/common.style'
+import { Image } from '@/styles/common.style'
 export { Inner, DivisionLineRow, Button, UnderlinedButton } from '@/styles/common.style'
 
 export const Main = styled.main`
@@ -49,13 +49,17 @@ export const TitleSection = styled.div`
 `
 export const ImagesSection = styled.div`
   margin: 48px 0;
-  width: 100%;
-  height: 450px;
-  .images-container {
-    /* width: 100%; */
+  img {
+    border-radius: var(--border-container-radius);
+    padding: 5px;
+    width: 100%;
     height: 100%;
+    object-fit: fill;
+  }
+  .images-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: 450px;
     .images-wrapper {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -63,16 +67,15 @@ export const ImagesSection = styled.div`
     }
   }
 `
-const Image = styled(image)`
-  border-radius: var(--border-container-radius);
-  margin: 5px;
-`
-export const ImageThumbnail = styled(Image)`
-  background-position: center;
-`
-export const ImageDetail = styled(Image)`
-  background-color: blue;
-`
+// export const ImageThumbnail = styled(Image)`
+//   border-radius: var(--border-container-radius);
+//   margin: 5px;
+// `
+// export const ImageDetail = styled(Image)`
+//   border-radius: var(--border-container-radius);
+//   margin: 5px;
+// `
+
 export const MainSection = styled.div`
   position: relative;
   .room--detail-explanation {

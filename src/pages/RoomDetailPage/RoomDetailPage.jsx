@@ -79,9 +79,7 @@ const RoomDetailPage = () => {
   const fixScrollEvent = () => {
     document.body.style.overflow = 'hidden'
   }
-  // useEffect(() => {
-  //   console.log(ref(storage, 'rooms'))
-  // }, [])
+
   return (
     <>
       {modalOpened && title === '숙소 이용규칙' && (
@@ -124,12 +122,12 @@ const RoomDetailPage = () => {
             <S.DivisionLineRow />
             <S.ImagesSection>
               <div className="images-container">
-                <S.ImageThumbnail thumbnail={room.thumbnail} />
+                <img src={room.thumbnail} alt="thumbnail" />
                 <div className="images-wrapper">
-                  <S.ImageDetail />
-                  <S.ImageDetail />
-                  <S.ImageDetail />
-                  <S.ImageDetail />
+                  <img src={room.detailPhotos[0]} alt="detail" />
+                  <img src={room.detailPhotos[1]} alt="detail" />
+                  <img src={room.detailPhotos[2]} alt="detail" />
+                  <img src={room.detailPhotos[3]} alt="detail" />
                 </div>
               </div>
             </S.ImagesSection>
@@ -144,15 +142,17 @@ const RoomDetailPage = () => {
               <S.DivisionLineRow />
               <div className="description-item room--amenities">
                 <h2>숙소 편의시설</h2>
-                {/* <ul className="room--amenities-list">
-                    {AmenitiesData.filter((data) => {}).map(({ img, text }) => {
-                      return (
-                        <li className="room--amenity" key={index} src={img}>
-                          {text}
-                        </li>
-                      )
-                    })}
-                  </ul> */}
+                <ul className="room--amenities-list">
+                  {AmenitiesData.filter((item) => {
+                    return room.amenities.filter((amenity) => amenity === item.text)
+                  }).map(({ img, text, index }) => {
+                    return (
+                      <li className="room--amenity" key={index} src={img}>
+                        {text}
+                      </li>
+                    )
+                  })}
+                </ul>
               </div>
               <S.DivisionLineRow />
               <div className="description-item room--calendar">

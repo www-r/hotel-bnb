@@ -1,5 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app'
+import { getStorage } from '@firebase/storage'
 import { getDatabase, get, onValue, ref, set, push, update, child } from 'firebase/database'
 import {
   getAuth,
@@ -25,6 +26,7 @@ const firebaseConfig = {
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig)
 export const db = getDatabase(app)
+export const storage = getStorage()
 
 // 데이터 읽기
 

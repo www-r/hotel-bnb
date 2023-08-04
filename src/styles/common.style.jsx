@@ -28,7 +28,7 @@ export const MainContainer = styled.div`
 export const Main = styled.main`
   padding: 0 8px;
 `
-export const ListItem = styled.form`
+export const ListItem = styled.div`
   width: 600px;
   padding: 24px 0;
   h3 {
@@ -72,6 +72,7 @@ export const DivisionLineCol = styled.div`
 export const Image = styled.div`
   background-image: url(${({ thumbnail }) => thumbnail});
   background-repeat: no-repeat;
+  background-position: center;
 `
 export const Button = styled.button`
   border-radius: 8px;
